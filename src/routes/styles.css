@@ -10,6 +10,25 @@
   --color-theme-1: #ff3e00;
   --color-theme-2: #4075a6;
   --color-text: rgba(0, 0, 0, 0.7);
+
+  /* Color palette http://alumni.media.mit.edu/~wad/color/palette.html */
+  --color-black: rgb(0, 0, 0);
+  --color-dark-gray: rgb(87, 87, 87);
+  --color-red: rgb(173, 35, 35);
+  --color-blue: rgb(42, 75, 215);
+  --color-green: rgb(29, 105, 20);
+  --color-brown: rgb(129, 74, 25);
+  --color-purple: rgb(129, 38, 192);
+  --color-light-gray: rgb(160, 160, 160);
+  --color-light-green: rgb(129, 197, 122);
+  --color-light-blue: rgb(157, 175, 255);
+  --color-cyan: rgb(41, 208, 208);
+  --color-orange: rgb(255, 146, 51);
+  --color-yellow: rgb(255, 238, 51);
+  --color-tan: rgb(233, 222, 187);
+  --color-pink: rgb(255, 205, 243);
+  --color-white: rgb(255, 255, 255);
+
   --column-width: 42rem;
   --column-margin-top: 4rem;
   font-family: var(--font-body);

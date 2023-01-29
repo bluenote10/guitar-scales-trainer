@@ -41,6 +41,14 @@
 		<text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
 		-->
 
+    <filter id="brightness-filter">
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="2" />
+        <feFuncG type="linear" slope="2" />
+        <feFuncB type="linear" slope="2" />
+      </feComponentTransfer>
+    </filter>
+
     {#each centerInlays as centerInlay}
       <circle cx={geom.getFingerX(centerInlay)} cy={centerInlayY} r={inlayRadius} fill="#FFF8DC" />
     {/each}
@@ -56,12 +64,28 @@
     {/each}
 
     {#each annotations as annotation}
+      <!--
+        Note that a filter (for brightness) cannot be applied only to stroke, but not to fill,
+        which is why we draw the circle twice...
+        https://stackoverflow.com/questions/58132952/how-to-set-brightness-over-a-svg-path-element
+        https://stackoverflow.com/questions/23703854/apply-svg-filter-to-fill-only
+      -->
       <circle
         class="shadow"
         cx={geom.getFingerX(annotation.fret)}
         cy={geom.getStringY(annotation.string)}
         r={annotationsRadius}
         fill={annotation.color}
+        stroke={annotation.color}
+      />
+      <circle
+        cx={geom.getFingerX(annotation.fret)}
+        cy={geom.getStringY(annotation.string)}
+        r={annotationsRadius}
+        stroke={annotation.color}
+        fill="none"
+        filter="url(#brightness-filter)"
+        stroke-width="1"
       />
     {/each}
   </svg>
@@ -85,7 +109,7 @@
   }
 
   .shadow {
-    -webkit-filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.9));
-    filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.9));
+    -webkit-filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.99));
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.99));
   }
 </style>

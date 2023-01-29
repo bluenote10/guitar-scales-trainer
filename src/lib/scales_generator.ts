@@ -68,7 +68,28 @@ export function getNeighborMode(mode: Mode, direction: "up" | "down"): [Mode, nu
   }
 }
 
-export type Locator3NPS = {
+function getPitchOffset(mode: Mode): number {
+  switch (mode) {
+    case Mode.ionian:
+      return 0;
+    case Mode.dorian:
+      return 2;
+    case Mode.phrygian:
+      return 4;
+    case Mode.lydian:
+      return 5;
+    case Mode.mixolydian:
+      return 7;
+    case Mode.aeolian:
+      return 9;
+    case Mode.locrian:
+      return 11;
+    default:
+      assertUnreachable(mode);
+  }
+}
+
+export type ScaleLocator = {
   baseFret: number;
   mode: Mode;
 };
@@ -76,7 +97,7 @@ export type Locator3NPS = {
 // Using acronym "3NPS" for "three notes per string" scale.
 
 export function genScale3NPS(
-  locator: Locator3NPS,
+  locator: ScaleLocator,
   maxFret: number,
   tuning: GuitarTuning = defaultGuitarTuning(),
 ): Annotations | undefined {
@@ -94,7 +115,7 @@ export function genScale3NPS(
       annotations.push({
         string: stringIdx,
         fret: curPitch - stringBasePitch,
-        color: "#F00",
+        color: pitchOffsetToColor(getPitchOffset(curMode)),
       });
       const [nxtMode, pitchDelta] = getNeighborMode(curMode, "up");
       curPitch += pitchDelta;
@@ -103,4 +124,43 @@ export function genScale3NPS(
   }
 
   return annotations;
+}
+
+/**
+ * This is based on a palette mentions in the SO post below.
+ *
+ * I like it because it has enough colors, and avoids ugly colors like #F00.
+ *
+ * https://stackoverflow.com/a/4382138/1804173
+ * http://alumni.media.mit.edu/~wad/color/palette.html
+ */
+function pitchOffsetToColor(offset: number): string {
+  offset = offset % 12;
+  switch (offset) {
+    case 0:
+      return "var(--color-blue)";
+    case 1:
+      return "var(--color-yellow)";
+    case 2:
+      return "var(--color-orange)";
+    case 3:
+      return "var(--color-tan)";
+    case 4:
+      return "var(--color-red)";
+    case 5:
+      return "var(--color-light-green)";
+    case 6:
+      return "var(--color-cyan)";
+    case 7:
+      return "var(--color-light-blue)";
+    case 8:
+      return "var(--color-pink)";
+    case 9:
+      return "var(--color-purple)";
+    case 10:
+      return "var(--color-green)";
+    case 11:
+      return "var(--color-brown)";
+  }
+  throw new Error("Didn't expect to get here");
 }
