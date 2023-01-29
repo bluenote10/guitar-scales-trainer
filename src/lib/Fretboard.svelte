@@ -23,9 +23,9 @@
   $: strings = range(numStrings).map((i) => geom.getStringY(i));
   $: frets = range(numFrets).map((i) => geom.getFretX(i + 1));
 
-  $: console.log(width);
-  $: console.log(frets);
-  $: console.log(strings);
+  // $: console.log(width);
+  // $: console.log(frets);
+  // $: console.log(strings);
 
   $: height = geom.height; // Why can't we use geom.height directly below?
   $: maxX = geom.width;
