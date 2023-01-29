@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 
-import { genScale3NPS, getNeighborMode, Mode } from "./scales_generator";
+import { genScale3NPS, getNeighborMode, Mode, ALL_MODES } from "./scales_generator";
 
 describe("getNeighborMode", () => {
   it("should go up", () => {
@@ -36,6 +36,31 @@ describe("genScale3NPS", () => {
       { string: 0, fret: 7 },
       { string: 0, fret: 9 },
       { string: 0, fret: 10 },
+    ]);
+  });
+
+  it("should respect max fret", () => {
+    {
+      const maxFret = 10;
+      expect(genScale3NPS({ mode: Mode.ionian, baseFret: 5 }, maxFret)).toBeDefined();
+    }
+    {
+      const maxFret = 9;
+      expect(genScale3NPS({ mode: Mode.ionian, baseFret: 5 }, maxFret)).toBeUndefined();
+    }
+  });
+});
+
+describe("ALL_MODES", () => {
+  it("should contain all modes", () => {
+    expect(ALL_MODES).toStrictEqual([
+      Mode.ionian,
+      Mode.dorian,
+      Mode.phrygian,
+      Mode.lydian,
+      Mode.mixolydian,
+      Mode.aeolian,
+      Mode.locrian,
     ]);
   });
 });

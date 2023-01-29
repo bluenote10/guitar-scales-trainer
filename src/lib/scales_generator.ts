@@ -1,5 +1,5 @@
 import type { Annotation, Annotations } from "./Fretboard.svelte";
-import { assertUnreachable } from "$lib/utils";
+import { assertUnreachable, randChoice, randRange } from "$lib/utils";
 
 export type GuitarTuning = number[];
 
@@ -24,7 +24,11 @@ export enum Mode {
   locrian = "locrian",
 }
 
-export function getNeighborMode(mode: Mode, direction: "up" | "down"): [Mode, number] {
+export const ALL_MODES = Object.values(Mode);
+
+export type Direction = "up" | "down";
+
+export function getNeighborMode(mode: Mode, direction: Direction): [Mode, number] {
   if (direction == "up") {
     switch (mode) {
       case Mode.ionian:
@@ -89,43 +93,6 @@ function getPitchOffset(mode: Mode): number {
   }
 }
 
-export type ScaleLocator = {
-  baseFret: number;
-  mode: Mode;
-};
-
-// Using acronym "3NPS" for "three notes per string" scale.
-
-export function genScale3NPS(
-  locator: ScaleLocator,
-  maxFret: number,
-  tuning: GuitarTuning = defaultGuitarTuning(),
-): Annotations | undefined {
-  let curPitch = tuning[tuning.length - 1] + locator.baseFret;
-  let curMode = locator.mode;
-
-  const stringIndicesAndPitches = tuning
-    .map((pitch, idx) => [idx, pitch] as [number, number])
-    .reverse();
-
-  const annotations: Annotations = [];
-
-  for (const [stringIdx, stringBasePitch] of stringIndicesAndPitches) {
-    for (let i = 0; i < 3; ++i) {
-      annotations.push({
-        string: stringIdx,
-        fret: curPitch - stringBasePitch,
-        color: pitchOffsetToColor(getPitchOffset(curMode)),
-      });
-      const [nxtMode, pitchDelta] = getNeighborMode(curMode, "up");
-      curPitch += pitchDelta;
-      curMode = nxtMode;
-    }
-  }
-
-  return annotations;
-}
-
 /**
  * This is based on a palette mentions in the SO post below.
  *
@@ -163,4 +130,78 @@ function pitchOffsetToColor(offset: number): string {
       return "var(--color-brown)";
   }
   throw new Error("Didn't expect to get here");
+}
+
+export type ScaleLocator = {
+  baseFret: number;
+  mode: Mode;
+};
+
+export function getNeighborLocator(locator: ScaleLocator, direction: Direction): ScaleLocator {
+  const [neighborMode, pitchDelta] = getNeighborMode(locator.mode, direction);
+  return { baseFret: locator.baseFret + pitchDelta, mode: neighborMode };
+}
+
+// Using acronym "3NPS" for "three notes per string" scale.
+
+export function genScale3NPS(
+  locator: ScaleLocator,
+  maxFret: number,
+  tuning: GuitarTuning = defaultGuitarTuning(),
+): Annotations | undefined {
+  let curPitch = tuning[tuning.length - 1] + locator.baseFret;
+  let curMode = locator.mode;
+
+  const stringIndicesAndPitches = tuning
+    .map((pitch, idx) => [idx, pitch] as [number, number])
+    .reverse();
+
+  const annotations: Annotations = [];
+
+  for (const [stringIdx, stringBasePitch] of stringIndicesAndPitches) {
+    for (let i = 0; i < 3; ++i) {
+      const fret = curPitch - stringBasePitch;
+      if (fret > maxFret) {
+        return undefined;
+      }
+      annotations.push({
+        string: stringIdx,
+        fret: fret,
+        color: pitchOffsetToColor(getPitchOffset(curMode)),
+      });
+      const [nxtMode, pitchDelta] = getNeighborMode(curMode, "up");
+      curPitch += pitchDelta;
+      curMode = nxtMode;
+    }
+  }
+
+  return annotations;
+}
+
+type QAPair = {
+  question: Annotations;
+  answer: Annotations;
+  direction: Direction;
+};
+
+export function genScale3NPSRandomQandAPair(maxFret: number): QAPair {
+  for (;;) {
+    const questionLocation = {
+      baseFret: randRange(1, maxFret),
+      mode: randChoice(ALL_MODES),
+    };
+    const questionsAnnotations = genScale3NPS(questionLocation, maxFret);
+
+    if (questionsAnnotations == null) {
+      continue;
+    }
+
+    const direction = randChoice(["up", "down"] as Direction[]);
+    const answerLocator = getNeighborLocator(questionLocation, direction);
+    const answerAnnotations = genScale3NPS(answerLocator, maxFret);
+
+    if (answerAnnotations != null) {
+      return { question: questionsAnnotations, answer: answerAnnotations, direction };
+    }
+  }
 }
