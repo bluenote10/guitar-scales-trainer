@@ -1,15 +1,22 @@
+<script context="module" lang="ts">
+	export type Annotation = { string: number; fret: number; color: string };
+	export type Annotations = Annotation[];
+</script>
+
 <script lang="ts">
 	import { range } from "$lib/utils";
 	import { Geometry } from "./fretboard_geometry";
 
 	export let numFrets = 24;
 	export let numStrings = 6;
+	export let annotations: Annotations = [];
 
 	let width: number = 300;
 
 	const centerInlays = [3, 5, 7, 9, 15, 17, 19, 21];
-	$: inlayRadius = (height / numStrings) * 0.5 * 0.6;
 	$: centerInlayY = height / 2;
+	$: inlayRadius = (height / numStrings) * 0.5 * 0.6;
+	$: annotationsRadius = (height / numStrings) * 0.5 * 0.8;
 
 	$: geom = new Geometry(width, numStrings, numFrets);
 
@@ -47,6 +54,16 @@
 		{#each strings as string}
 			<line x1="0" y1={string} x2={maxX} y2={string} style="stroke:#98817B;stroke-width:1" />
 		{/each}
+
+		{#each annotations as annotation}
+			<circle
+				class="shadow"
+				cx={geom.getFingerX(annotation.fret)}
+				cy={geom.getStringY(annotation.string)}
+				r={annotationsRadius}
+				fill={annotation.color}
+			/>
+		{/each}
 	</svg>
 </div>
 
@@ -65,5 +82,10 @@
 		as if it was a character, which makes the surrounding div taller due to space
 		at the bottom */
 		display: block;
+	}
+
+	.shadow {
+		-webkit-filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.9));
+		filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.9));
 	}
 </style>
