@@ -1,5 +1,5 @@
-import type { Annotation, Annotations } from "./Fretboard.svelte";
-import { assertUnreachable, randChoice, randRange } from "$lib/utils";
+import type { Annotations } from "./Fretboard.svelte";
+import { assertUnreachable, randChoice, randRangeBiased } from "$lib/utils";
 
 export type GuitarTuning = number[];
 
@@ -146,6 +146,7 @@ export function getNeighborLocator(locator: ScaleLocator, direction: Direction):
 
 export function genScale3NPS(
   locator: ScaleLocator,
+  minFret: number,
   maxFret: number,
   tuning: GuitarTuning = defaultGuitarTuning(),
 ): Annotations | undefined {
@@ -161,7 +162,7 @@ export function genScale3NPS(
   for (const [stringIdx, stringBasePitch] of stringIndicesAndPitches) {
     for (let i = 0; i < 3; ++i) {
       const fret = curPitch - stringBasePitch;
-      if (fret > maxFret) {
+      if (fret < minFret || fret > maxFret) {
         return undefined;
       }
       annotations.push({
@@ -185,12 +186,13 @@ type QAPair = {
 };
 
 export function genScale3NPSRandomQandAPair(maxFret: number): QAPair {
+  const minFret = 1; // we don't have proper rendering support for fret = 0.
   for (;;) {
     const questionLocation = {
-      baseFret: randRange(1, maxFret),
+      baseFret: randRangeBiased(minFret, maxFret),
       mode: randChoice(ALL_MODES),
     };
-    const questionsAnnotations = genScale3NPS(questionLocation, maxFret);
+    const questionsAnnotations = genScale3NPS(questionLocation, minFret, maxFret);
 
     if (questionsAnnotations == null) {
       continue;
@@ -198,7 +200,7 @@ export function genScale3NPSRandomQandAPair(maxFret: number): QAPair {
 
     const direction = randChoice(["up", "down"] as Direction[]);
     const answerLocator = getNeighborLocator(questionLocation, direction);
-    const answerAnnotations = genScale3NPS(answerLocator, maxFret);
+    const answerAnnotations = genScale3NPS(answerLocator, minFret, maxFret);
 
     if (answerAnnotations != null) {
       return { question: questionsAnnotations, answer: answerAnnotations, direction };

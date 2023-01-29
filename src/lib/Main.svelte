@@ -4,14 +4,26 @@
   import { genScale3NPSRandomQandAPair } from "./scales_generator";
 
   const maxFret = 24;
-  const qaPair = genScale3NPSRandomQandAPair(maxFret);
+  let qaPair = genScale3NPSRandomQandAPair(maxFret);
 </script>
 
-<QACard>
-  <Fretboard slot="question" annotations={qaPair.question} />
-  <Fretboard slot="answer_hidden" />
-  <Fretboard slot="answer_revealed" annotations={qaPair.answer} />
+<QACard on:next={() => (qaPair = genScale3NPSRandomQandAPair(maxFret))}>
+  <div slot="question">
+    <p class="question">
+      Imagine the corresponding <b>{qaPair.direction == "up" ? "upper" : "lower"}</b> position.
+    </p>
+    <Fretboard annotations={qaPair.question} />
+  </div>
+  <div slot="answer_hidden">
+    <Fretboard />
+  </div>
+  <div slot="answer_revealed">
+    <Fretboard annotations={qaPair.answer} />
+  </div>
 </QACard>
 
 <style>
+  .question {
+    text-align: center;
+  }
 </style>

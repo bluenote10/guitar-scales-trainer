@@ -13,7 +13,7 @@ describe("getNeighborMode", () => {
 
 describe("genScale3NPS", () => {
   it("should work", () => {
-    const result = genScale3NPS({ mode: Mode.ionian, baseFret: 5 }, 24)?.map((annotation) => ({
+    const result = genScale3NPS({ mode: Mode.ionian, baseFret: 5 }, 1, 24)?.map((annotation) => ({
       string: annotation.string,
       fret: annotation.fret,
     }));
@@ -40,13 +40,26 @@ describe("genScale3NPS", () => {
   });
 
   it("should respect max fret", () => {
+    const minFret = 1;
     {
       const maxFret = 10;
-      expect(genScale3NPS({ mode: Mode.ionian, baseFret: 5 }, maxFret)).toBeDefined();
+      expect(genScale3NPS({ mode: Mode.ionian, baseFret: 5 }, minFret, maxFret)).toBeDefined();
     }
     {
       const maxFret = 9;
-      expect(genScale3NPS({ mode: Mode.ionian, baseFret: 5 }, maxFret)).toBeUndefined();
+      expect(genScale3NPS({ mode: Mode.ionian, baseFret: 5 }, minFret, maxFret)).toBeUndefined();
+    }
+  });
+
+  it("should respect min fret", () => {
+    const maxFret = 24;
+    {
+      const minFret = 5;
+      expect(genScale3NPS({ mode: Mode.ionian, baseFret: 5 }, minFret, maxFret)).toBeDefined();
+    }
+    {
+      const minFret = 6;
+      expect(genScale3NPS({ mode: Mode.ionian, baseFret: 5 }, minFret, maxFret)).toBeUndefined();
     }
   });
 });
