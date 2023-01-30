@@ -2,6 +2,11 @@
   import "./styles.css";
 </script>
 
+<svelte:head>
+  <title>Guitar Scales</title>
+  <meta name="description" content="Guitar scales viewer / trainer" />
+</svelte:head>
+
 <div class="app">
   <main>
     <slot />

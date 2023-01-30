@@ -1,10 +1,8 @@
 <script lang="ts">
-  import Main from "$lib/Main.svelte";
+  import DiatonicBasic from "$lib/modes/DiatonicBasic.svelte";
 </script>
 
-<svelte:head>
-  <title>Guitar Scales</title>
-  <meta name="description" content="Guitar scales viewer / trainer" />
-</svelte:head>
-
-<Main />
+<ul>
+  <li><a href="/diatonic_01">Diatonic 1</a></li>
+  <li><a href="/diatonic_02">Diatonic 2</a></li>
+</ul>

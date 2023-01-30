@@ -8,6 +8,8 @@
 </script>
 
 <div>
+  <a href="/">back</a>
+
   <h1>Question</h1>
 
   <slot name="question" />

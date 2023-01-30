@@ -1,3 +1,4 @@
+// Eventually we may want to switch to: https://kit.svelte.dev/docs/adapter-static#github-pages
 import adapter from "@sveltejs/adapter-auto";
 import { vitePreprocess } from "@sveltejs/kit/vite";
 
