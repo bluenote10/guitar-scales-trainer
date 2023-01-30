@@ -185,7 +185,7 @@ type QAPair = {
   direction: Direction;
 };
 
-export function genScale3NPSRandomQandAPair(maxFret: number): QAPair {
+export function genRandom3NPSScaleNeighborPair(maxFret: number): QAPair {
   const minFret = 1; // we don't have proper rendering support for fret = 0.
   for (;;) {
     const questionLocation = {
@@ -206,4 +206,30 @@ export function genScale3NPSRandomQandAPair(maxFret: number): QAPair {
       return { question: questionsAnnotations, answer: answerAnnotations, direction };
     }
   }
+}
+
+export function genRandom3NPSScale(maxFret: number): Annotations {
+  const minFret = 1; // we don't have proper rendering support for fret = 0.
+  for (;;) {
+    const location = {
+      baseFret: randRangeBiased(minFret, maxFret),
+      mode: randChoice(ALL_MODES),
+    };
+    const annotations = genScale3NPS(location, minFret, maxFret);
+
+    if (annotations != null) {
+      return annotations;
+    }
+  }
+}
+
+export function filterToTwoRandomStrings(annotations: Annotations): Annotations {
+  const [i, j] = randChoice([
+    [0, 1],
+    [1, 2],
+    [2, 3],
+    [3, 4],
+    [4, 5],
+  ]);
+  return annotations.filter((a) => a.string == i || a.string == j);
 }

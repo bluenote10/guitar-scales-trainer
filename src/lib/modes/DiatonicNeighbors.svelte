@@ -1,17 +1,18 @@
 <script lang="ts">
   import Fretboard from "../Fretboard.svelte";
   import QACard from "../QACard.svelte";
-  import { genScale3NPSRandomQandAPair } from "../scales_generator";
+  import { genRandom3NPSScaleNeighborPair } from "../scales_generator";
+  import TaskDescription from "$lib/TaskDescription.svelte";
 
   const maxFret = 24;
-  let qaPair = genScale3NPSRandomQandAPair(maxFret);
+  let qaPair = genRandom3NPSScaleNeighborPair(maxFret);
 </script>
 
-<QACard on:next={() => (qaPair = genScale3NPSRandomQandAPair(maxFret))}>
+<QACard on:next={() => (qaPair = genRandom3NPSScaleNeighborPair(maxFret))}>
   <div slot="question">
-    <p class="question">
+    <TaskDescription>
       Visualize the corresponding <b>{qaPair.direction == "up" ? "upper" : "lower"}</b> position.
-    </p>
+    </TaskDescription>
     <Fretboard annotations={qaPair.question} />
   </div>
   <div slot="answer_hidden">
@@ -21,9 +22,3 @@
     <Fretboard annotations={qaPair.answer} />
   </div>
 </QACard>
-
-<style>
-  .question {
-    text-align: center;
-  }
-</style>
