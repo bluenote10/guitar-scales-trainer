@@ -10,7 +10,7 @@
 <QACard on:next={() => (qaPair = genScale3NPSRandomQandAPair(maxFret))}>
   <div slot="question">
     <p class="question">
-      Imagine the corresponding <b>{qaPair.direction == "up" ? "upper" : "lower"}</b> position.
+      Visualize the corresponding <b>{qaPair.direction == "up" ? "upper" : "lower"}</b> position.
     </p>
     <Fretboard annotations={qaPair.question} />
   </div>
