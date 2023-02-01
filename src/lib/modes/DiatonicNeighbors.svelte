@@ -1,6 +1,6 @@
 <script lang="ts">
   import Fretboard from "../Fretboard.svelte";
-  import InlineCard from "../InlineCard.svelte";
+  import InlineCard from "../task_templates/InlineTask.svelte";
   import { genRandom3NPSScaleNeighborPair } from "../scales_generator";
   import TaskDescription from "$lib/TaskDescription.svelte";
 

@@ -3,7 +3,7 @@
 -->
 <script lang="ts">
   import Fretboard, { type Annotations } from "../Fretboard.svelte";
-  import QACard from "../QACard.svelte";
+  import QACard from "../task_templates/QATask.svelte";
   import { genRandom3NPSScale, filterToTwoRandomStrings } from "../scales_generator";
   import TaskDescription from "$lib/TaskDescription.svelte";
 
