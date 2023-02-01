@@ -16,7 +16,7 @@
   }
 </script>
 
-<InlineCard on:next={() => generate()}>
+<InlineCard on:next={generate}>
   <div slot="description">
     <TaskDescription>Visualize the full scale pattern in that position.</TaskDescription>
   </div>

@@ -5,7 +5,7 @@
       title: "Diatonic – Neighboring scales",
       scales: "Diatonic (three notes per string)",
       description:
-        "This exercises helps to improve the relationship between neighboring diatonic scales.",
+        "This exercises helps to improve the relationship between neighboring diatonic scales in the next upper/lower position.",
     },
     {
       route: "/diatonic_two_strings",
@@ -13,6 +13,13 @@
       scales: "Diatonic (three notes per string)",
       description:
         "This exercises helps to improve fretboard orientation based on small, two-string fragments.",
+    },
+    {
+      route: "/diatonic_circle_of_fifths_neighbors",
+      title: "Diatonic – Circle of fifths neighboring scales",
+      scales: "Diatonic (three notes per string)",
+      description:
+        "This exercises helps to improve the relationship between diatonic scales in the same position, which are neighbors in the circle of fifths.",
     },
   ];
 </script>

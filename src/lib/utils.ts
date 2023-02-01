@@ -16,5 +16,7 @@ export function randRange(low: number, high: number) {
 }
 
 export function randRangeBiased(low: number, high: number) {
-  return randChoice([randRange(low, 5), randRange(low, 12), randRange(low, high)]);
+  const a = randRange(low, high);
+  const b = randRange(low, high);
+  return Math.min(a, b);
 }

@@ -2,4 +2,4 @@
   import DiatonicNeighbors from "$lib/modes/DiatonicNeighbors.svelte";
 </script>
 
-<DiatonicNeighbors mode="direct_neighbors" />
+<DiatonicNeighbors mode="circle_of_fifth_neigbors" />

@@ -72,6 +72,50 @@ export function getNeighborMode(mode: Mode, direction: Direction): [Mode, number
   }
 }
 
+export function getCircleOfFifthsNeighborMode(mode: Mode, direction: Direction): [Mode, number] {
+  if (direction == "up") {
+    switch (mode) {
+      case Mode.ionian:
+        return [Mode.lydian, 0];
+      case Mode.dorian:
+        return [Mode.mixolydian, 0];
+      case Mode.phrygian:
+        return [Mode.aeolian, 0];
+      case Mode.lydian:
+        return [Mode.locrian, 1];
+      case Mode.mixolydian:
+        return [Mode.ionian, 0];
+      case Mode.aeolian:
+        return [Mode.dorian, 0];
+      case Mode.locrian:
+        return [Mode.phrygian, 0];
+      default:
+        assertUnreachable(mode);
+    }
+  } else if (direction == "down") {
+    switch (mode) {
+      case Mode.ionian:
+        return [Mode.mixolydian, 0];
+      case Mode.dorian:
+        return [Mode.aeolian, 0];
+      case Mode.phrygian:
+        return [Mode.locrian, 0];
+      case Mode.lydian:
+        return [Mode.ionian, 0];
+      case Mode.mixolydian:
+        return [Mode.dorian, 0];
+      case Mode.aeolian:
+        return [Mode.phrygian, 0];
+      case Mode.locrian:
+        return [Mode.lydian, -1];
+      default:
+        assertUnreachable(mode);
+    }
+  } else {
+    assertUnreachable(direction);
+  }
+}
+
 function getPitchOffset(mode: Mode): number {
   switch (mode) {
     case Mode.ionian:
@@ -137,8 +181,16 @@ export type ScaleLocator = {
   mode: Mode;
 };
 
-export function getNeighborLocator(locator: ScaleLocator, direction: Direction): ScaleLocator {
+export function getNextNeighborLocator(locator: ScaleLocator, direction: Direction): ScaleLocator {
   const [neighborMode, pitchDelta] = getNeighborMode(locator.mode, direction);
+  return { baseFret: locator.baseFret + pitchDelta, mode: neighborMode };
+}
+
+export function getNextCircleOfFifthsLocator(
+  locator: ScaleLocator,
+  direction: Direction,
+): ScaleLocator {
+  const [neighborMode, pitchDelta] = getCircleOfFifthsNeighborMode(locator.mode, direction);
   return { baseFret: locator.baseFret + pitchDelta, mode: neighborMode };
 }
 
@@ -179,7 +231,7 @@ export function genScale3NPS(
   return annotations;
 }
 
-type QAPair = {
+export type QAPair = {
   question: Annotations;
   answer: Annotations;
   direction: Direction;
@@ -199,7 +251,7 @@ export function genRandom3NPSScaleNeighborPair(maxFret: number): QAPair {
     }
 
     const direction = randChoice(["up", "down"] as Direction[]);
-    const answerLocator = getNeighborLocator(questionLocation, direction);
+    const answerLocator = getNextNeighborLocator(questionLocation, direction);
     const answerAnnotations = genScale3NPS(answerLocator, minFret, maxFret);
 
     if (answerAnnotations != null) {
@@ -232,4 +284,27 @@ export function filterToTwoRandomStrings(annotations: Annotations): Annotations 
     [4, 5],
   ]);
   return annotations.filter((a) => a.string == i || a.string == j);
+}
+
+export function genRandom3NPSScaleCircleOfFithsPair(maxFret: number): QAPair {
+  const minFret = 1; // we don't have proper rendering support for fret = 0.
+  for (;;) {
+    const questionLocation = {
+      baseFret: randRangeBiased(minFret, maxFret),
+      mode: randChoice(ALL_MODES),
+    };
+    const questionsAnnotations = genScale3NPS(questionLocation, minFret, maxFret);
+
+    if (questionsAnnotations == null) {
+      continue;
+    }
+
+    const direction = randChoice(["up", "down"] as Direction[]);
+    const answerLocator = getNextCircleOfFifthsLocator(questionLocation, direction);
+    const answerAnnotations = genScale3NPS(answerLocator, minFret, maxFret);
+
+    if (answerAnnotations != null) {
+      return { question: questionsAnnotations, answer: answerAnnotations, direction };
+    }
+  }
 }
