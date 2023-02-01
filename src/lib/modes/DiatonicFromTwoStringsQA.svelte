@@ -1,6 +1,9 @@
+<!--
+  Old implementation based on Q/A card.
+-->
 <script lang="ts">
   import Fretboard, { type Annotations } from "../Fretboard.svelte";
-  import InlineCard from "../InlineCard.svelte";
+  import QACard from "../QACard.svelte";
   import { genRandom3NPSScale, filterToTwoRandomStrings } from "../scales_generator";
   import TaskDescription from "$lib/TaskDescription.svelte";
 
@@ -16,14 +19,15 @@
   }
 </script>
 
-<InlineCard on:next={() => generate()}>
-  <div slot="description">
-    <TaskDescription>Visualize the full scale pattern in that position.</TaskDescription>
-  </div>
+<QACard on:next={() => generate()}>
   <div slot="question">
+    <TaskDescription>Visualize the full scale pattern in that position.</TaskDescription>
     <Fretboard annotations={qAnnotations} />
   </div>
-  <div slot="answer">
+  <div slot="answer_hidden">
+    <Fretboard />
+  </div>
+  <div slot="answer_revealed">
     <Fretboard annotations={aAnnotations} />
   </div>
-</InlineCard>
+</QACard>
