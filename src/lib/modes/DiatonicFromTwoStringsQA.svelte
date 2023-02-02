@@ -3,7 +3,7 @@
 -->
 <script lang="ts">
   import Fretboard, { type Annotations } from "../Fretboard.svelte";
-  import QACard from "../task_templates/QATask.svelte";
+  import QATask from "../task_templates/QATask.svelte";
   import { genRandom3NPSScale, filterToTwoRandomStrings } from "../scales_generator";
   import TaskDescription from "$lib/TaskDescription.svelte";
 
@@ -19,7 +19,7 @@
   }
 </script>
 
-<QACard on:next={() => generate()}>
+<QATask on:next={() => generate()}>
   <div slot="question">
     <TaskDescription>Visualize the full scale pattern in that position.</TaskDescription>
     <Fretboard annotations={qAnnotations} />
@@ -30,4 +30,4 @@
   <div slot="answer_revealed">
     <Fretboard annotations={aAnnotations} />
   </div>
-</QACard>
+</QATask>

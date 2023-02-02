@@ -3,7 +3,7 @@
   import Center from "$lib/Center.svelte";
   import Button from "$lib/Button.svelte";
   import Kbd from "$lib/Kbd.svelte";
-  import { shortcut, type ShortcutEventDetails } from "@svelte-put/shortcut";
+  import { shortcut } from "@svelte-put/shortcut";
 
   const dispatch = createEventDispatcher();
 
@@ -31,12 +31,14 @@
     trigger: {
       key: " ",
       callback: onRevealHide,
+      preventDefault: true,
     },
   }}
   use:shortcut={{
     trigger: {
       key: "Enter",
       callback: onNext,
+      preventDefault: true,
     },
   }}
 />

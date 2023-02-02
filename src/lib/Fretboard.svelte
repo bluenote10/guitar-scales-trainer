@@ -11,7 +11,7 @@
   export let numStrings = 6;
   export let annotations: Annotations = [];
 
-  let width: number = 300;
+  let width = 300;
 
   const centerInlays = [3, 5, 7, 9, 15, 17, 19, 21];
   $: centerInlayY = height / 2;

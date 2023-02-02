@@ -7,21 +7,27 @@
 
   const dispatch = createEventDispatcher();
 
-  let isHidden = true;
-  let wasRevealedOnce = false;
+  export let sequenceLength: number;
+  export let curIdx = 0;
 
-  function onRevealHide() {
-    isHidden = !isHidden;
-    if (!isHidden) {
-      wasRevealedOnce = true;
+  let wasRevealedEntirely = false;
+
+  function onIncrementIdx() {
+    if (curIdx === sequenceLength - 1) {
+      curIdx = 0;
+    } else {
+      curIdx++;
+      if (curIdx === sequenceLength - 1) {
+        wasRevealedEntirely = true;
+      }
     }
   }
 
   function onNext() {
-    if (wasRevealedOnce) {
+    if (wasRevealedEntirely) {
       dispatch("next");
-      isHidden = true;
-      wasRevealedOnce = false;
+      curIdx = 0;
+      wasRevealedEntirely = false;
     }
   }
 </script>
@@ -30,7 +36,7 @@
   use:shortcut={{
     trigger: {
       key: " ",
-      callback: onRevealHide,
+      callback: onIncrementIdx,
       preventDefault: true,
     },
   }}
@@ -50,25 +56,21 @@
 
   <slot name="description" />
 
-  {#if isHidden}
-    <slot name="question" />
-  {:else}
-    <slot name="answer" />
-  {/if}
+  <slot name="sequence" />
 
   <div class="footer">
     <Center gap={20}>
-      <Button on:click={onRevealHide}>
-        <div class="fixed-width">{isHidden ? "Reveal" : "Hide"}</div>
+      <Button on:click={onIncrementIdx}>
+        <div class="fixed-width">Reveal</div>
       </Button>
-      <Button on:click={onNext} disabled={!wasRevealedOnce}>
+      <Button on:click={onNext} disabled={!wasRevealedEntirely}>
         <div class="fixed-width">Next</div>
       </Button>
     </Center>
     <Center>
       <p class="hint">
         Hint: You can press
-        <Kbd fontSize={11}>&lt;SPACE&gt;</Kbd> to reveal/hide, and
+        <Kbd fontSize={11}>&lt;SPACE&gt;</Kbd> to reveal, and
         <Kbd fontSize={11}>&lt;ENTER&gt;</Kbd> for next.
       </p>
     </Center>

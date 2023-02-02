@@ -1,6 +1,6 @@
 <script lang="ts">
   import Fretboard from "../Fretboard.svelte";
-  import InlineCard from "../task_templates/InlineTask.svelte";
+  import InlineTask from "../task_templates/InlineTask.svelte";
   import {
     genRandom3NPSScaleNeighborPair,
     genRandom3NPSScaleCircleOfFithsPair,
@@ -23,7 +23,7 @@
   }
 </script>
 
-<InlineCard on:next={generate}>
+<InlineTask on:next={generate}>
   <div slot="description">
     <TaskDescription>
       {#if mode == "direct_neighbors"}
@@ -42,4 +42,4 @@
   <div slot="answer">
     <Fretboard annotations={qaPair.answer} />
   </div>
-</InlineCard>
+</InlineTask>

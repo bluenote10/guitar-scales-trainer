@@ -1,3 +1,7 @@
+export function allDefined<T>(array: Array<T | undefined | null>): array is Array<T> {
+  return array.every((x) => x != null);
+}
+
 export function range(n: number): number[] {
   return [...Array(n).keys()];
 }
@@ -13,6 +17,16 @@ export function randChoice<T>(choices: Array<T>): T {
 
 export function randRange(low: number, high: number) {
   return Math.floor(Math.random() * (high - low + 1)) + low;
+}
+
+export function randTwoStrings(): [number, number] {
+  return randChoice([
+    [0, 1],
+    [1, 2],
+    [2, 3],
+    [3, 4],
+    [4, 5],
+  ]);
 }
 
 export function randRangeBiased(low: number, high: number) {

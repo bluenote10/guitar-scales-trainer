@@ -1,5 +1,12 @@
 import type { Annotations } from "./Fretboard.svelte";
-import { assertUnreachable, randChoice, randRangeBiased } from "$lib/utils";
+import {
+  allDefined,
+  assertUnreachable,
+  randChoice,
+  randRange,
+  randRangeBiased,
+  randTwoStrings,
+} from "$lib/utils";
 
 export type GuitarTuning = number[];
 
@@ -275,7 +282,7 @@ export function genRandom3NPSScale(maxFret: number): Annotations {
   }
 }
 
-export function filterToTwoRandomStrings(annotations: Annotations): Annotations {
+export function randTwoRandomStrings(annotations: Annotations): Annotations {
   const [i, j] = randChoice([
     [0, 1],
     [1, 2],
@@ -284,6 +291,14 @@ export function filterToTwoRandomStrings(annotations: Annotations): Annotations 
     [4, 5],
   ]);
   return annotations.filter((a) => a.string == i || a.string == j);
+}
+
+export function filterToStrings(annotations: Annotations, stringsToKeep: number[]): Annotations {
+  return annotations.filter((a) => stringsToKeep.includes(a.string));
+}
+
+export function filterToTwoRandomStrings(annotations: Annotations): Annotations {
+  return filterToStrings(annotations, randTwoStrings());
 }
 
 export function genRandom3NPSScaleCircleOfFithsPair(maxFret: number): QAPair {
@@ -305,6 +320,40 @@ export function genRandom3NPSScaleCircleOfFithsPair(maxFret: number): QAPair {
 
     if (answerAnnotations != null) {
       return { question: questionsAnnotations, answer: answerAnnotations, direction };
+    }
+  }
+}
+
+export type AnnotationsSequence = {
+  allAnnotations: Annotations[];
+  direction: Direction;
+};
+
+export function genRandom3NPSTwoStringsUpDownSequence(maxFret: number): AnnotationsSequence {
+  const minFret = 1; // we don't have proper rendering support for fret = 0.
+  for (;;) {
+    const direction = randChoice(["up", "down"] as Direction[]);
+    const twoStrings = randTwoStrings();
+
+    let locator = {
+      baseFret: randRange(minFret, maxFret),
+      mode: randChoice(ALL_MODES),
+    };
+
+    const allLocators = [locator];
+
+    for (let i = 0; i < 7; ++i) {
+      locator = getNextNeighborLocator(locator, direction);
+      allLocators.push(locator);
+    }
+
+    const allAnnotations = allLocators.map((loc) => genScale3NPS(loc, minFret, maxFret));
+
+    if (allDefined(allAnnotations)) {
+      return {
+        allAnnotations: allAnnotations.map((a) => filterToStrings(a, twoStrings)),
+        direction,
+      };
     }
   }
 }

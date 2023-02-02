@@ -21,6 +21,13 @@
       description:
         "This exercises helps to improve the relationship between diatonic scales in the same position, which are neighbors in the circle of fifths.",
     },
+    {
+      route: "/diatonic_two_strings_sequential",
+      title: "Diatonic – Two strings up and down the neck",
+      scales: "Diatonic (three notes per string)",
+      description:
+        "This exercises helps to improve moving a scale up and down the neck on just two strings.",
+    },
   ];
 </script>
 

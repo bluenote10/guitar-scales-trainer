@@ -1,6 +1,6 @@
 <script lang="ts">
   import Fretboard, { type Annotations } from "../Fretboard.svelte";
-  import InlineCard from "../task_templates/InlineTask.svelte";
+  import InlineTask from "../task_templates/InlineTask.svelte";
   import { genRandom3NPSScale, filterToTwoRandomStrings } from "../scales_generator";
   import TaskDescription from "$lib/TaskDescription.svelte";
 
@@ -16,7 +16,7 @@
   }
 </script>
 
-<InlineCard on:next={generate}>
+<InlineTask on:next={generate}>
   <div slot="description">
     <TaskDescription>Visualize the full scale pattern in that position.</TaskDescription>
   </div>
@@ -26,4 +26,4 @@
   <div slot="answer">
     <Fretboard annotations={aAnnotations} />
   </div>
-</InlineCard>
+</InlineTask>
