@@ -16,12 +16,12 @@
     <TaskDescription>
       Visualize the corresponding <b>{qaPair.direction == "up" ? "upper" : "lower"}</b> position.
     </TaskDescription>
-    <Fretboard annotations={qaPair.question} />
+    <Fretboard notes={qaPair.question} />
   </div>
   <div slot="answer_hidden">
     <Fretboard />
   </div>
   <div slot="answer_revealed">
-    <Fretboard annotations={qaPair.answer} />
+    <Fretboard notes={qaPair.answer} />
   </div>
 </QATask>

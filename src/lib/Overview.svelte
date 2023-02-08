@@ -28,6 +28,12 @@
       description:
         "This exercises helps to improve moving a scale up and down the neck on just two strings.",
     },
+    {
+      route: "/diatonic_intervals",
+      title: "Diatonic – Intervals",
+      scales: "Diatonic (three notes per string)",
+      description: "This exercises helps to improve thinking in intervals.",
+    },
   ];
 </script>
 

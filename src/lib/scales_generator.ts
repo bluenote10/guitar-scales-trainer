@@ -1,4 +1,4 @@
-import type { Annotations } from "./Fretboard.svelte";
+import type { Note, Notes } from "./Fretboard.svelte";
 import {
   allDefined,
   assertUnreachable,
@@ -77,6 +77,20 @@ export function getNeighborMode(mode: Mode, direction: Direction): [Mode, number
   } else {
     assertUnreachable(direction);
   }
+}
+
+function getNeighborModeMultiSteps(
+  mode: Mode,
+  direction: Direction,
+  steps: number,
+): [Mode, number] {
+  let totalDelta = 0;
+  for (let i = 0; i < steps; ++i) {
+    const [nextMode, delta] = getNeighborMode(mode, direction);
+    mode = nextMode;
+    totalDelta += delta;
+  }
+  return [mode, totalDelta];
 }
 
 export function getCircleOfFifthsNeighborMode(mode: Mode, direction: Direction): [Mode, number] {
@@ -201,6 +215,10 @@ export function getNextCircleOfFifthsLocator(
   return { baseFret: locator.baseFret + pitchDelta, mode: neighborMode };
 }
 
+type DiatonicNote = Note & { mode: Mode };
+
+type DiatonicNotes = DiatonicNote[];
+
 // Using acronym "3NPS" for "three notes per string" scale.
 
 export function genScale3NPS(
@@ -208,25 +226,22 @@ export function genScale3NPS(
   minFret: number,
   maxFret: number,
   tuning: GuitarTuning = defaultGuitarTuning(),
-): Annotations | undefined {
+): DiatonicNotes | undefined {
   let curPitch = tuning[tuning.length - 1] + locator.baseFret;
   let curMode = locator.mode;
 
-  const stringIndicesAndPitches = tuning
-    .map((pitch, idx) => [idx, pitch] as [number, number])
-    .reverse();
+  const notes: DiatonicNotes = [];
 
-  const annotations: Annotations = [];
-
-  for (const [stringIdx, stringBasePitch] of stringIndicesAndPitches) {
+  for (let string = tuning.length - 1; string >= 0; --string) {
     for (let i = 0; i < 3; ++i) {
-      const fret = curPitch - stringBasePitch;
+      const fret = getFretOnString(curPitch, string, tuning);
       if (fret < minFret || fret > maxFret) {
         return undefined;
       }
-      annotations.push({
-        string: stringIdx,
-        fret: fret,
+      notes.push({
+        string,
+        fret,
+        mode: curMode,
         color: pitchOffsetToColor(getPitchOffset(curMode)),
       });
       const [nxtMode, pitchDelta] = getNeighborMode(curMode, "up");
@@ -235,54 +250,54 @@ export function genScale3NPS(
     }
   }
 
-  return annotations;
+  return notes;
 }
 
 export type QAPair = {
-  question: Annotations;
-  answer: Annotations;
+  question: Notes;
+  answer: Notes;
   direction: Direction;
 };
 
 export function genRandom3NPSScaleNeighborPair(maxFret: number): QAPair {
   const minFret = 1; // we don't have proper rendering support for fret = 0.
   for (;;) {
-    const questionLocation = {
+    const questionLocator = {
       baseFret: randRangeBiased(minFret, maxFret),
       mode: randChoice(ALL_MODES),
     };
-    const questionsAnnotations = genScale3NPS(questionLocation, minFret, maxFret);
+    const questionsNotes = genScale3NPS(questionLocator, minFret, maxFret);
 
-    if (questionsAnnotations == null) {
+    if (questionsNotes == null) {
       continue;
     }
 
     const direction = randChoice(["up", "down"] as Direction[]);
-    const answerLocator = getNextNeighborLocator(questionLocation, direction);
-    const answerAnnotations = genScale3NPS(answerLocator, minFret, maxFret);
+    const answerLocator = getNextNeighborLocator(questionLocator, direction);
+    const answerNotes = genScale3NPS(answerLocator, minFret, maxFret);
 
-    if (answerAnnotations != null) {
-      return { question: questionsAnnotations, answer: answerAnnotations, direction };
+    if (answerNotes != null) {
+      return { question: questionsNotes, answer: answerNotes, direction };
     }
   }
 }
 
-export function genRandom3NPSScale(maxFret: number): Annotations {
+export function genRandom3NPSScale(maxFret: number): Notes {
   const minFret = 1; // we don't have proper rendering support for fret = 0.
   for (;;) {
-    const location = {
+    const locator = {
       baseFret: randRangeBiased(minFret, maxFret),
       mode: randChoice(ALL_MODES),
     };
-    const annotations = genScale3NPS(location, minFret, maxFret);
+    const notes = genScale3NPS(locator, minFret, maxFret);
 
-    if (annotations != null) {
-      return annotations;
+    if (notes != null) {
+      return notes;
     }
   }
 }
 
-export function randTwoRandomStrings(annotations: Annotations): Annotations {
+export function randTwoRandomStrings(notes: Notes): Notes {
   const [i, j] = randChoice([
     [0, 1],
     [1, 2],
@@ -290,46 +305,46 @@ export function randTwoRandomStrings(annotations: Annotations): Annotations {
     [3, 4],
     [4, 5],
   ]);
-  return annotations.filter((a) => a.string == i || a.string == j);
+  return notes.filter((a) => a.string == i || a.string == j);
 }
 
-export function filterToStrings(annotations: Annotations, stringsToKeep: number[]): Annotations {
-  return annotations.filter((a) => stringsToKeep.includes(a.string));
+export function filterToStrings(notes: Notes, stringsToKeep: number[]): Notes {
+  return notes.filter((a) => stringsToKeep.includes(a.string));
 }
 
-export function filterToTwoRandomStrings(annotations: Annotations): Annotations {
-  return filterToStrings(annotations, randTwoStrings());
+export function filterToTwoRandomStrings(notes: Notes): Notes {
+  return filterToStrings(notes, randTwoStrings());
 }
 
 export function genRandom3NPSScaleCircleOfFithsPair(maxFret: number): QAPair {
   const minFret = 1; // we don't have proper rendering support for fret = 0.
   for (;;) {
-    const questionLocation = {
+    const questionLocator = {
       baseFret: randRangeBiased(minFret, maxFret),
       mode: randChoice(ALL_MODES),
     };
-    const questionsAnnotations = genScale3NPS(questionLocation, minFret, maxFret);
+    const questionsNotes = genScale3NPS(questionLocator, minFret, maxFret);
 
-    if (questionsAnnotations == null) {
+    if (questionsNotes == null) {
       continue;
     }
 
     const direction = randChoice(["up", "down"] as Direction[]);
-    const answerLocator = getNextCircleOfFifthsLocator(questionLocation, direction);
-    const answerAnnotations = genScale3NPS(answerLocator, minFret, maxFret);
+    const answerLocator = getNextCircleOfFifthsLocator(questionLocator, direction);
+    const answerNotes = genScale3NPS(answerLocator, minFret, maxFret);
 
-    if (answerAnnotations != null) {
-      return { question: questionsAnnotations, answer: answerAnnotations, direction };
+    if (answerNotes != null) {
+      return { question: questionsNotes, answer: answerNotes, direction };
     }
   }
 }
 
-export type AnnotationsSequence = {
-  allAnnotations: Annotations[];
+export type NotesSequence = {
+  sequence: Notes[];
   direction: Direction;
 };
 
-export function genRandom3NPSTwoStringsUpDownSequence(maxFret: number): AnnotationsSequence {
+export function genRandom3NPSTwoStringsUpDownSequence(maxFret: number): NotesSequence {
   const minFret = 1; // we don't have proper rendering support for fret = 0.
   for (;;) {
     const direction = randChoice(["up", "down"] as Direction[]);
@@ -347,13 +362,86 @@ export function genRandom3NPSTwoStringsUpDownSequence(maxFret: number): Annotati
       allLocators.push(locator);
     }
 
-    const allAnnotations = allLocators.map((loc) => genScale3NPS(loc, minFret, maxFret));
+    const sequence = allLocators.map((loc) => genScale3NPS(loc, minFret, maxFret));
 
-    if (allDefined(allAnnotations)) {
+    if (allDefined(sequence)) {
       return {
-        allAnnotations: allAnnotations.map((a) => filterToStrings(a, twoStrings)),
+        sequence: sequence.map((a) => filterToStrings(a, twoStrings)),
         direction,
       };
     }
   }
+}
+
+export function genRandom3NPSIntervalsUpDownSequence(
+  maxFret: number,
+  interval: Interval,
+): NotesSequence {
+  const minFret = 1; // we don't have proper rendering support for fret = 0.
+  for (;;) {
+    const direction = randChoice(["up", "down"] as Direction[]);
+
+    const locator = {
+      baseFret: randRange(minFret, maxFret),
+      mode: randChoice(ALL_MODES),
+    };
+
+    const notes = genScale3NPS(locator, minFret, maxFret);
+    if (notes == null) {
+      continue;
+    }
+
+    const baseNotes = direction === "up" ? notes.slice(0, -3) : notes.slice(3).reverse();
+    const sequence = baseNotes.map((note) => [note, getIntervalNote(note, interval, direction)]);
+
+    if (allValid(sequence, minFret, maxFret)) {
+      return { sequence, direction };
+    }
+  }
+}
+
+export enum Interval {
+  third = 3,
+  fifth = 5,
+  octave = 8,
+}
+
+function getIntervalNote(
+  note: DiatonicNote,
+  interval: Interval,
+  direction: Direction,
+): DiatonicNote {
+  const [mode, delta] = getNeighborModeMultiSteps(note.mode, direction, (interval as number) - 1);
+
+  const string = direction === "up" ? note.string - 1 : note.string + 1;
+
+  if (string < 0 || string > 5) {
+    throw new RangeError(`String index ${string} out of bounds`);
+  } else {
+    const fret = getFretOnString(getPitch(note) + delta, string);
+    return { string, fret, mode, color: pitchOffsetToColor(getPitchOffset(mode)) };
+  }
+}
+
+function getPitch(note: Note, tuning: GuitarTuning = defaultGuitarTuning()): number {
+  return tuning[note.string] + note.fret;
+}
+
+function getFretOnString(
+  pitch: number,
+  stringIdx: number,
+  tuning: GuitarTuning = defaultGuitarTuning(),
+): number {
+  return pitch - tuning[stringIdx];
+}
+
+function allValid(sequence: Notes[], minFret: number, maxFret: number): boolean {
+  for (const notes of sequence) {
+    for (const note of notes) {
+      if (note.fret < minFret || note.fret > maxFret) {
+        return false;
+      }
+    }
+  }
+  return true;
 }

@@ -13,9 +13,9 @@ describe("getNeighborMode", () => {
 
 describe("genScale3NPS", () => {
   it("should work", () => {
-    const result = genScale3NPS({ mode: Mode.ionian, baseFret: 5 }, 1, 24)?.map((annotation) => ({
-      string: annotation.string,
-      fret: annotation.fret,
+    const result = genScale3NPS({ mode: Mode.ionian, baseFret: 5 }, 1, 24)?.map((note) => ({
+      string: note.string,
+      fret: note.fret,
     }));
     expect(result).toStrictEqual([
       { string: 5, fret: 5 },

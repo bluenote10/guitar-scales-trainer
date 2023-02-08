@@ -1,7 +1,11 @@
 <script lang="ts">
   import Fretboard from "../Fretboard.svelte";
   import SequentialTask from "../task_templates/SequentialTask.svelte";
-  import { genRandom3NPSTwoStringsUpDownSequence, type NotesSequence } from "../scales_generator";
+  import {
+    genRandom3NPSIntervalsUpDownSequence,
+    type NotesSequence,
+    Interval,
+  } from "../scales_generator";
   import TaskDescription from "$lib/TaskDescription.svelte";
 
   const maxFret = 24;
@@ -11,15 +15,13 @@
   generate();
 
   function generate() {
-    sequence = genRandom3NPSTwoStringsUpDownSequence(maxFret);
+    sequence = genRandom3NPSIntervalsUpDownSequence(maxFret, Interval.third);
   }
 </script>
 
 <SequentialTask on:next={generate} sequenceLength={sequence.sequence.length} bind:curIdx>
   <div slot="description">
-    <TaskDescription>
-      Visualize the scale on just two strings step by step <b>{sequence.direction}</b> the neck.
-    </TaskDescription>
+    <TaskDescription>Visualize the scale in thirds.</TaskDescription>
   </div>
   <div slot="sequence">
     <Fretboard notes={sequence.sequence[curIdx]} />

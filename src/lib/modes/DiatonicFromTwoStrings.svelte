@@ -1,18 +1,18 @@
 <script lang="ts">
-  import Fretboard, { type Annotations } from "../Fretboard.svelte";
+  import Fretboard, { type Notes } from "../Fretboard.svelte";
   import InlineTask from "../task_templates/InlineTask.svelte";
   import { genRandom3NPSScale, filterToTwoRandomStrings } from "../scales_generator";
   import TaskDescription from "$lib/TaskDescription.svelte";
 
   const maxFret = 24;
-  let qAnnotations: Annotations;
-  let aAnnotations: Annotations;
+  let qNotes: Notes;
+  let aNotes: Notes;
 
   generate();
 
   function generate() {
-    aAnnotations = genRandom3NPSScale(maxFret);
-    qAnnotations = filterToTwoRandomStrings(aAnnotations);
+    aNotes = genRandom3NPSScale(maxFret);
+    qNotes = filterToTwoRandomStrings(aNotes);
   }
 </script>
 
@@ -21,9 +21,9 @@
     <TaskDescription>Visualize the full scale pattern in that position.</TaskDescription>
   </div>
   <div slot="question">
-    <Fretboard annotations={qAnnotations} />
+    <Fretboard notes={qNotes} />
   </div>
   <div slot="answer">
-    <Fretboard annotations={aAnnotations} />
+    <Fretboard notes={aNotes} />
   </div>
 </InlineTask>

@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
-  export type Annotation = { string: number; fret: number; color: string };
-  export type Annotations = Annotation[];
+  export type Note = { string: number; fret: number; color: string };
+  export type Notes = Note[];
 </script>
 
 <script lang="ts">
@@ -9,7 +9,7 @@
 
   export let numFrets = 24;
   export let numStrings = 6;
-  export let annotations: Annotations = [];
+  export let notes: Notes = [];
 
   let width = 300;
 
@@ -63,7 +63,7 @@
       <line x1="0" y1={string} x2={maxX} y2={string} style="stroke:#98817B;stroke-width:1" />
     {/each}
 
-    {#each annotations as annotation}
+    {#each notes as note}
       <!--
         Note that a filter (for brightness) cannot be applied only to stroke, but not to fill,
         which is why we draw the circle twice...
@@ -72,17 +72,17 @@
       -->
       <circle
         class="shadow"
-        cx={geom.getFingerX(annotation.fret)}
-        cy={geom.getStringY(annotation.string)}
+        cx={geom.getFingerX(note.fret)}
+        cy={geom.getStringY(note.string)}
         r={annotationsRadius}
-        fill={annotation.color}
-        stroke={annotation.color}
+        fill={note.color}
+        stroke={note.color}
       />
       <circle
-        cx={geom.getFingerX(annotation.fret)}
-        cy={geom.getStringY(annotation.string)}
+        cx={geom.getFingerX(note.fret)}
+        cy={geom.getStringY(note.string)}
         r={annotationsRadius}
-        stroke={annotation.color}
+        stroke={note.color}
         fill="none"
         filter="url(#brightness-filter)"
         stroke-width="1"

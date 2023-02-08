@@ -37,9 +37,9 @@
     </TaskDescription>
   </div>
   <div slot="question">
-    <Fretboard annotations={qaPair.question} />
+    <Fretboard notes={qaPair.question} />
   </div>
   <div slot="answer">
-    <Fretboard annotations={qaPair.answer} />
+    <Fretboard notes={qaPair.answer} />
   </div>
 </InlineTask>
