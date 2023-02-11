@@ -12,9 +12,11 @@
     <slot />
   </main>
 
+  <!--
   <footer>
     <p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
   </footer>
+  -->
 </div>
 
 <style>
@@ -35,6 +37,7 @@
     box-sizing: border-box;
   }
 
+  /*
   footer {
     display: flex;
     flex-direction: column;
@@ -52,4 +55,5 @@
       padding: 12px 0;
     }
   }
+  */
 </style>

@@ -1,35 +1,37 @@
 <script lang="ts">
+  import { base } from "$app/paths";
+
   const tasks = [
     {
-      route: "/diatonic_neighbors",
+      route: `${base}/diatonic_neighbors`,
       title: "Diatonic – Neighboring scales",
       scales: "Diatonic (three notes per string)",
       description:
         "This exercises helps to improve the relationship between neighboring diatonic scales in the next upper/lower position.",
     },
     {
-      route: "/diatonic_two_strings",
+      route: `${base}/diatonic_two_strings`,
       title: "Diatonic – From two strings to full scale pattern",
       scales: "Diatonic (three notes per string)",
       description:
         "This exercises helps to improve fretboard orientation based on small, two-string fragments.",
     },
     {
-      route: "/diatonic_circle_of_fifths_neighbors",
+      route: `${base}/diatonic_circle_of_fifths_neighbors`,
       title: "Diatonic – Circle of fifths neighboring scales",
       scales: "Diatonic (three notes per string)",
       description:
         "This exercises helps to improve the relationship between diatonic scales in the same position, which are neighbors in the circle of fifths.",
     },
     {
-      route: "/diatonic_two_strings_sequential",
+      route: `${base}/diatonic_two_strings_sequential`,
       title: "Diatonic – Two strings up and down the neck",
       scales: "Diatonic (three notes per string)",
       description:
         "This exercises helps to improve moving a scale up and down the neck on just two strings.",
     },
     {
-      route: "/diatonic_intervals",
+      route: `${base}/diatonic_intervals`,
       title: "Diatonic – Intervals",
       scales: "Diatonic (three notes per string)",
       description: "This exercises helps to improve thinking in intervals.",
@@ -38,7 +40,18 @@
 </script>
 
 <ul>
-  <h1>Exercises</h1>
+  <h1>Guitar Scale Trainer – Exercises</h1>
+
+  <p class="preamble">
+    This is a small app that helps to master the guitar fretboard by visualizing various scales and
+    patterns. The exercises force you to visualize different aspects of a scale, like horizontally
+    or vertically related scales, musically related scales, and so on. The idea is to challenge the
+    brain in all sorts of different ways to gain a deeper understanding of the guitar fretboard. The
+    exercises are randomly generated to make to practice all aspects equally, and avoiding to become
+    for instance only familiar with moving a scale upwards, but not downwards. All exercises can be
+    done without a guitar, but of course if can even be more effective to practice the scale along
+    on the instrument to add muscle memory to the process.
+  </p>
 
   {#each tasks as task}
     <li>
@@ -54,6 +67,11 @@
 </ul>
 
 <style>
+  .preamble {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
   ul {
     list-style: none;
     padding: 0;

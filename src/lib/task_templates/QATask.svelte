@@ -4,6 +4,7 @@
   import Button from "$lib/Button.svelte";
   import Kbd from "$lib/Kbd.svelte";
   import { shortcut } from "@svelte-put/shortcut";
+  import { base } from "$app/paths";
 
   const dispatch = createEventDispatcher();
 
@@ -44,7 +45,7 @@
 />
 
 <div>
-  <a href="/">back</a>
+  <a href="{base}/">back</a>
 
   <h1>Question</h1>
 

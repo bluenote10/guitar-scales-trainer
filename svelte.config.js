@@ -1,5 +1,8 @@
-// Eventually we may want to switch to: https://kit.svelte.dev/docs/adapter-static#github-pages
-import adapter from "@sveltejs/adapter-auto";
+// Initially this was adapter-auto, but I think we need adapter-static
+// for GitHub pages.
+// https://kit.svelte.dev/docs/adapter-static#usage
+// https://kit.svelte.dev/docs/adapter-static#github-pages
+import adapter from "@sveltejs/adapter-static";
 import { vitePreprocess } from "@sveltejs/kit/vite";
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -10,6 +13,9 @@ const config = {
 
   kit: {
     adapter: adapter(),
+    paths: {
+      base: process.env.NODE_ENV === "production" ? "/guitar-scales-trainer" : "",
+    },
   },
 };
 
