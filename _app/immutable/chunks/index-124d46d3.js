@@ -4,7 +4,104 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { S as SvelteComponent, i as init, s as safe_not_equal, k as element, L as svg_element, e as empty, l as claim_element, m as children, M as claim_svg_element, h as detach, n as attr, N as add_render_callback, b as insert_hydration, F as append_hydration, O as add_resize_listener, C as noop, K as destroy_each, p as set_style, D as create_slot, G as update_slot_base, H as get_all_dirty_from_scope, I as get_slot_changes, f as transition_in, t as transition_out, P as listen, Q as bubble } from "./index-949c6c01.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, D as create_slot, k as element, l as claim_element, m as children, h as detach, n as attr, b as insert_hydration, G as update_slot_base, H as get_all_dirty_from_scope, I as get_slot_changes, f as transition_in, t as transition_out, L as svg_element, e as empty, M as claim_svg_element, N as add_render_callback, F as append_hydration, O as add_resize_listener, C as noop, K as destroy_each, p as set_style, P as listen, Q as bubble } from "./index-949c6c01.js";
+const TaskDescription_svelte_svelte_type_style_lang = "";
+function create_fragment$4(ctx) {
+  let p;
+  let current;
+  const default_slot_template = (
+    /*#slots*/
+    ctx[1].default
+  );
+  const default_slot = create_slot(
+    default_slot_template,
+    ctx,
+    /*$$scope*/
+    ctx[0],
+    null
+  );
+  return {
+    c() {
+      p = element("p");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      p = claim_element(nodes, "P", { class: true });
+      var p_nodes = children(p);
+      if (default_slot)
+        default_slot.l(p_nodes);
+      p_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(p, "class", "question svelte-1knkfc2");
+    },
+    m(target, anchor) {
+      insert_hydration(target, p, anchor);
+      if (default_slot) {
+        default_slot.m(p, null);
+      }
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & /*$$scope*/
+        1)) {
+          update_slot_base(
+            default_slot,
+            default_slot_template,
+            ctx2,
+            /*$$scope*/
+            ctx2[0],
+            !current ? get_all_dirty_from_scope(
+              /*$$scope*/
+              ctx2[0]
+            ) : get_slot_changes(
+              default_slot_template,
+              /*$$scope*/
+              ctx2[0],
+              dirty,
+              null
+            ),
+            null
+          );
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(p);
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+function instance$4($$self, $$props, $$invalidate) {
+  let { $$slots: slots = {}, $$scope } = $$props;
+  $$self.$$set = ($$props2) => {
+    if ("$$scope" in $$props2)
+      $$invalidate(0, $$scope = $$props2.$$scope);
+  };
+  return [$$scope, slots];
+}
+class TaskDescription extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$4, create_fragment$4, safe_not_equal, {});
+  }
+}
 function allDefined(array) {
   return array.every((x) => x != null);
 }
@@ -444,7 +541,7 @@ function create_each_block(ctx) {
     }
   };
 }
-function create_fragment$4(ctx) {
+function create_fragment$3(ctx) {
   let div;
   let svg;
   let rect;
@@ -803,7 +900,7 @@ function create_fragment$4(ctx) {
     }
   };
 }
-function instance$4($$self, $$props, $$invalidate) {
+function instance$3($$self, $$props, $$invalidate) {
   let centerInlayY;
   let inlayRadius;
   let annotationsRadius;
@@ -889,416 +986,9 @@ function instance$4($$self, $$props, $$invalidate) {
 class Fretboard extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$4, create_fragment$4, safe_not_equal, { numFrets: 12, numStrings: 13, notes: 0 });
+    init(this, options, instance$3, create_fragment$3, safe_not_equal, { numFrets: 12, numStrings: 13, notes: 0 });
   }
 }
-const Center_svelte_svelte_type_style_lang = "";
-function create_fragment$3(ctx) {
-  let div;
-  let current;
-  const default_slot_template = (
-    /*#slots*/
-    ctx[2].default
-  );
-  const default_slot = create_slot(
-    default_slot_template,
-    ctx,
-    /*$$scope*/
-    ctx[1],
-    null
-  );
-  return {
-    c() {
-      div = element("div");
-      if (default_slot)
-        default_slot.c();
-      this.h();
-    },
-    l(nodes) {
-      div = claim_element(nodes, "DIV", { class: true });
-      var div_nodes = children(div);
-      if (default_slot)
-        default_slot.l(div_nodes);
-      div_nodes.forEach(detach);
-      this.h();
-    },
-    h() {
-      attr(div, "class", "outer svelte-1567fvx");
-      set_style(div, "--gap", `${/*gap*/
-      ctx[0]}px`);
-    },
-    m(target, anchor) {
-      insert_hydration(target, div, anchor);
-      if (default_slot) {
-        default_slot.m(div, null);
-      }
-      current = true;
-    },
-    p(ctx2, [dirty]) {
-      if (default_slot) {
-        if (default_slot.p && (!current || dirty & /*$$scope*/
-        2)) {
-          update_slot_base(
-            default_slot,
-            default_slot_template,
-            ctx2,
-            /*$$scope*/
-            ctx2[1],
-            !current ? get_all_dirty_from_scope(
-              /*$$scope*/
-              ctx2[1]
-            ) : get_slot_changes(
-              default_slot_template,
-              /*$$scope*/
-              ctx2[1],
-              dirty,
-              null
-            ),
-            null
-          );
-        }
-      }
-      if (dirty & /*gap*/
-      1) {
-        set_style(div, "--gap", `${/*gap*/
-        ctx2[0]}px`);
-      }
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(default_slot, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(default_slot, local);
-      current = false;
-    },
-    d(detaching) {
-      if (detaching)
-        detach(div);
-      if (default_slot)
-        default_slot.d(detaching);
-    }
-  };
-}
-function instance$3($$self, $$props, $$invalidate) {
-  let { $$slots: slots = {}, $$scope } = $$props;
-  let { gap = 10 } = $$props;
-  $$self.$$set = ($$props2) => {
-    if ("gap" in $$props2)
-      $$invalidate(0, gap = $$props2.gap);
-    if ("$$scope" in $$props2)
-      $$invalidate(1, $$scope = $$props2.$$scope);
-  };
-  return [gap, $$scope, slots];
-}
-class Center extends SvelteComponent {
-  constructor(options) {
-    super();
-    init(this, options, instance$3, create_fragment$3, safe_not_equal, { gap: 0 });
-  }
-}
-const Button_svelte_svelte_type_style_lang = "";
-function create_fragment$2(ctx) {
-  let button;
-  let current;
-  let mounted;
-  let dispose;
-  const default_slot_template = (
-    /*#slots*/
-    ctx[2].default
-  );
-  const default_slot = create_slot(
-    default_slot_template,
-    ctx,
-    /*$$scope*/
-    ctx[1],
-    null
-  );
-  return {
-    c() {
-      button = element("button");
-      if (default_slot)
-        default_slot.c();
-      this.h();
-    },
-    l(nodes) {
-      button = claim_element(nodes, "BUTTON", { class: true });
-      var button_nodes = children(button);
-      if (default_slot)
-        default_slot.l(button_nodes);
-      button_nodes.forEach(detach);
-      this.h();
-    },
-    h() {
-      attr(button, "class", "button svelte-jo4c4i");
-      button.disabled = /*disabled*/
-      ctx[0];
-    },
-    m(target, anchor) {
-      insert_hydration(target, button, anchor);
-      if (default_slot) {
-        default_slot.m(button, null);
-      }
-      current = true;
-      if (!mounted) {
-        dispose = listen(
-          button,
-          "click",
-          /*click_handler*/
-          ctx[3]
-        );
-        mounted = true;
-      }
-    },
-    p(ctx2, [dirty]) {
-      if (default_slot) {
-        if (default_slot.p && (!current || dirty & /*$$scope*/
-        2)) {
-          update_slot_base(
-            default_slot,
-            default_slot_template,
-            ctx2,
-            /*$$scope*/
-            ctx2[1],
-            !current ? get_all_dirty_from_scope(
-              /*$$scope*/
-              ctx2[1]
-            ) : get_slot_changes(
-              default_slot_template,
-              /*$$scope*/
-              ctx2[1],
-              dirty,
-              null
-            ),
-            null
-          );
-        }
-      }
-      if (!current || dirty & /*disabled*/
-      1) {
-        button.disabled = /*disabled*/
-        ctx2[0];
-      }
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(default_slot, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(default_slot, local);
-      current = false;
-    },
-    d(detaching) {
-      if (detaching)
-        detach(button);
-      if (default_slot)
-        default_slot.d(detaching);
-      mounted = false;
-      dispose();
-    }
-  };
-}
-function instance$2($$self, $$props, $$invalidate) {
-  let { $$slots: slots = {}, $$scope } = $$props;
-  let { disabled = false } = $$props;
-  function click_handler(event) {
-    bubble.call(this, $$self, event);
-  }
-  $$self.$$set = ($$props2) => {
-    if ("disabled" in $$props2)
-      $$invalidate(0, disabled = $$props2.disabled);
-    if ("$$scope" in $$props2)
-      $$invalidate(1, $$scope = $$props2.$$scope);
-  };
-  return [disabled, $$scope, slots, click_handler];
-}
-class Button extends SvelteComponent {
-  constructor(options) {
-    super();
-    init(this, options, instance$2, create_fragment$2, safe_not_equal, { disabled: 0 });
-  }
-}
-const Kbd_svelte_svelte_type_style_lang = "";
-function create_fragment$1(ctx) {
-  let kbd;
-  let current;
-  const default_slot_template = (
-    /*#slots*/
-    ctx[2].default
-  );
-  const default_slot = create_slot(
-    default_slot_template,
-    ctx,
-    /*$$scope*/
-    ctx[1],
-    null
-  );
-  return {
-    c() {
-      kbd = element("kbd");
-      if (default_slot)
-        default_slot.c();
-      this.h();
-    },
-    l(nodes) {
-      kbd = claim_element(nodes, "KBD", { class: true });
-      var kbd_nodes = children(kbd);
-      if (default_slot)
-        default_slot.l(kbd_nodes);
-      kbd_nodes.forEach(detach);
-      this.h();
-    },
-    h() {
-      attr(kbd, "class", "kbd svelte-1pykyw7");
-      set_style(kbd, "--fontSize", `${/*fontSize*/
-      ctx[0]}px`);
-    },
-    m(target, anchor) {
-      insert_hydration(target, kbd, anchor);
-      if (default_slot) {
-        default_slot.m(kbd, null);
-      }
-      current = true;
-    },
-    p(ctx2, [dirty]) {
-      if (default_slot) {
-        if (default_slot.p && (!current || dirty & /*$$scope*/
-        2)) {
-          update_slot_base(
-            default_slot,
-            default_slot_template,
-            ctx2,
-            /*$$scope*/
-            ctx2[1],
-            !current ? get_all_dirty_from_scope(
-              /*$$scope*/
-              ctx2[1]
-            ) : get_slot_changes(
-              default_slot_template,
-              /*$$scope*/
-              ctx2[1],
-              dirty,
-              null
-            ),
-            null
-          );
-        }
-      }
-      if (dirty & /*fontSize*/
-      1) {
-        set_style(kbd, "--fontSize", `${/*fontSize*/
-        ctx2[0]}px`);
-      }
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(default_slot, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(default_slot, local);
-      current = false;
-    },
-    d(detaching) {
-      if (detaching)
-        detach(kbd);
-      if (default_slot)
-        default_slot.d(detaching);
-    }
-  };
-}
-function instance$1($$self, $$props, $$invalidate) {
-  let { $$slots: slots = {}, $$scope } = $$props;
-  let { fontSize } = $$props;
-  $$self.$$set = ($$props2) => {
-    if ("fontSize" in $$props2)
-      $$invalidate(0, fontSize = $$props2.fontSize);
-    if ("$$scope" in $$props2)
-      $$invalidate(1, $$scope = $$props2.$$scope);
-  };
-  return [fontSize, $$scope, slots];
-}
-class Kbd extends SvelteComponent {
-  constructor(options) {
-    super();
-    init(this, options, instance$1, create_fragment$1, safe_not_equal, { fontSize: 0 });
-  }
-}
-var __assign = function() {
-  __assign = Object.assign || function __assign2(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-      s = arguments[i];
-      for (var p in s)
-        if (Object.prototype.hasOwnProperty.call(s, p))
-          t[p] = s[p];
-    }
-    return t;
-  };
-  return __assign.apply(this, arguments);
-};
-var shortcut = function(node, params) {
-  if (!(params === null || params === void 0 ? void 0 : params.trigger))
-    throw new Error("@svelte-put/shortcut requires a parameter object with a `trigger` property");
-  var _a = params.enabled, enabled = _a === void 0 ? true : _a, trigger = params.trigger, _b = params.type, type = _b === void 0 ? "keydown" : _b;
-  var handler = function(event) {
-    var normalizedTriggers = Array.isArray(trigger) ? trigger : [trigger];
-    var modifiedMap = {
-      alt: event.altKey,
-      ctrl: event.ctrlKey,
-      shift: event.shiftKey,
-      meta: event.metaKey
-    };
-    for (var _i = 0, normalizedTriggers_1 = normalizedTriggers; _i < normalizedTriggers_1.length; _i++) {
-      var trigger_1 = normalizedTriggers_1[_i];
-      var mergedTrigger = __assign({ modifier: [], preventDefault: false, enabled: true }, trigger_1);
-      var modifier = mergedTrigger.modifier, key = mergedTrigger.key, callback = mergedTrigger.callback, preventDefault = mergedTrigger.preventDefault, triggerEnabled = mergedTrigger.enabled;
-      if (triggerEnabled) {
-        if (modifier.length) {
-          var modifierDefs = (Array.isArray(modifier) ? modifier : [modifier]).map(function(def) {
-            return typeof def === "string" ? [def] : def;
-          });
-          var modified = modifierDefs.some(function(def) {
-            return def.every(function(modifier2) {
-              return modifiedMap[modifier2];
-            });
-          });
-          if (!modified)
-            continue;
-        }
-        if (event.key === key) {
-          if (preventDefault)
-            event.preventDefault();
-          var detail = { node, trigger: mergedTrigger };
-          node.dispatchEvent(new CustomEvent("shortcut", { detail }));
-          callback === null || callback === void 0 ? void 0 : callback(detail);
-        }
-      }
-    }
-  };
-  if (enabled)
-    node.addEventListener(type, handler);
-  return {
-    update: function(update) {
-      var _a2 = update.enabled, newEnabled = _a2 === void 0 ? true : _a2, _b2 = update.type, newType = _b2 === void 0 ? "keydown" : _b2;
-      if (enabled && (!newEnabled || type !== newType)) {
-        node.removeEventListener(type, handler);
-      } else if (!enabled && newEnabled) {
-        node.addEventListener(newType, handler);
-      }
-      enabled = newEnabled;
-      type = newType;
-      trigger = update.trigger;
-    },
-    destroy: function() {
-      node.removeEventListener(type, handler);
-    }
-  };
-};
 function defaultGuitarTuning() {
   return [
     64,
@@ -1633,69 +1323,87 @@ function allValid(sequence, minFret, maxFret) {
   }
   return true;
 }
-const TaskDescription_svelte_svelte_type_style_lang = "";
-function create_fragment(ctx) {
-  let p;
+const Button_svelte_svelte_type_style_lang = "";
+function create_fragment$2(ctx) {
+  let button;
   let current;
+  let mounted;
+  let dispose;
   const default_slot_template = (
     /*#slots*/
-    ctx[1].default
+    ctx[2].default
   );
   const default_slot = create_slot(
     default_slot_template,
     ctx,
     /*$$scope*/
-    ctx[0],
+    ctx[1],
     null
   );
   return {
     c() {
-      p = element("p");
+      button = element("button");
       if (default_slot)
         default_slot.c();
       this.h();
     },
     l(nodes) {
-      p = claim_element(nodes, "P", { class: true });
-      var p_nodes = children(p);
+      button = claim_element(nodes, "BUTTON", { class: true });
+      var button_nodes = children(button);
       if (default_slot)
-        default_slot.l(p_nodes);
-      p_nodes.forEach(detach);
+        default_slot.l(button_nodes);
+      button_nodes.forEach(detach);
       this.h();
     },
     h() {
-      attr(p, "class", "question svelte-1knkfc2");
+      attr(button, "class", "button svelte-jo4c4i");
+      button.disabled = /*disabled*/
+      ctx[0];
     },
     m(target, anchor) {
-      insert_hydration(target, p, anchor);
+      insert_hydration(target, button, anchor);
       if (default_slot) {
-        default_slot.m(p, null);
+        default_slot.m(button, null);
       }
       current = true;
+      if (!mounted) {
+        dispose = listen(
+          button,
+          "click",
+          /*click_handler*/
+          ctx[3]
+        );
+        mounted = true;
+      }
     },
     p(ctx2, [dirty]) {
       if (default_slot) {
         if (default_slot.p && (!current || dirty & /*$$scope*/
-        1)) {
+        2)) {
           update_slot_base(
             default_slot,
             default_slot_template,
             ctx2,
             /*$$scope*/
-            ctx2[0],
+            ctx2[1],
             !current ? get_all_dirty_from_scope(
               /*$$scope*/
-              ctx2[0]
+              ctx2[1]
             ) : get_slot_changes(
               default_slot_template,
               /*$$scope*/
-              ctx2[0],
+              ctx2[1],
               dirty,
               null
             ),
             null
           );
         }
+      }
+      if (!current || dirty & /*disabled*/
+      1) {
+        button.disabled = /*disabled*/
+        ctx2[0];
       }
     },
     i(local) {
@@ -1710,7 +1418,226 @@ function create_fragment(ctx) {
     },
     d(detaching) {
       if (detaching)
-        detach(p);
+        detach(button);
+      if (default_slot)
+        default_slot.d(detaching);
+      mounted = false;
+      dispose();
+    }
+  };
+}
+function instance$2($$self, $$props, $$invalidate) {
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let { disabled = false } = $$props;
+  function click_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  $$self.$$set = ($$props2) => {
+    if ("disabled" in $$props2)
+      $$invalidate(0, disabled = $$props2.disabled);
+    if ("$$scope" in $$props2)
+      $$invalidate(1, $$scope = $$props2.$$scope);
+  };
+  return [disabled, $$scope, slots, click_handler];
+}
+class Button extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$2, create_fragment$2, safe_not_equal, { disabled: 0 });
+  }
+}
+const Center_svelte_svelte_type_style_lang = "";
+function create_fragment$1(ctx) {
+  let div;
+  let current;
+  const default_slot_template = (
+    /*#slots*/
+    ctx[2].default
+  );
+  const default_slot = create_slot(
+    default_slot_template,
+    ctx,
+    /*$$scope*/
+    ctx[1],
+    null
+  );
+  return {
+    c() {
+      div = element("div");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", { class: true });
+      var div_nodes = children(div);
+      if (default_slot)
+        default_slot.l(div_nodes);
+      div_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(div, "class", "outer svelte-1567fvx");
+      set_style(div, "--gap", `${/*gap*/
+      ctx[0]}px`);
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      if (default_slot) {
+        default_slot.m(div, null);
+      }
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & /*$$scope*/
+        2)) {
+          update_slot_base(
+            default_slot,
+            default_slot_template,
+            ctx2,
+            /*$$scope*/
+            ctx2[1],
+            !current ? get_all_dirty_from_scope(
+              /*$$scope*/
+              ctx2[1]
+            ) : get_slot_changes(
+              default_slot_template,
+              /*$$scope*/
+              ctx2[1],
+              dirty,
+              null
+            ),
+            null
+          );
+        }
+      }
+      if (dirty & /*gap*/
+      1) {
+        set_style(div, "--gap", `${/*gap*/
+        ctx2[0]}px`);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+function instance$1($$self, $$props, $$invalidate) {
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let { gap = 10 } = $$props;
+  $$self.$$set = ($$props2) => {
+    if ("gap" in $$props2)
+      $$invalidate(0, gap = $$props2.gap);
+    if ("$$scope" in $$props2)
+      $$invalidate(1, $$scope = $$props2.$$scope);
+  };
+  return [gap, $$scope, slots];
+}
+class Center extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$1, create_fragment$1, safe_not_equal, { gap: 0 });
+  }
+}
+const Kbd_svelte_svelte_type_style_lang = "";
+function create_fragment(ctx) {
+  let kbd;
+  let current;
+  const default_slot_template = (
+    /*#slots*/
+    ctx[2].default
+  );
+  const default_slot = create_slot(
+    default_slot_template,
+    ctx,
+    /*$$scope*/
+    ctx[1],
+    null
+  );
+  return {
+    c() {
+      kbd = element("kbd");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      kbd = claim_element(nodes, "KBD", { class: true });
+      var kbd_nodes = children(kbd);
+      if (default_slot)
+        default_slot.l(kbd_nodes);
+      kbd_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(kbd, "class", "kbd svelte-1pykyw7");
+      set_style(kbd, "--fontSize", `${/*fontSize*/
+      ctx[0]}px`);
+    },
+    m(target, anchor) {
+      insert_hydration(target, kbd, anchor);
+      if (default_slot) {
+        default_slot.m(kbd, null);
+      }
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & /*$$scope*/
+        2)) {
+          update_slot_base(
+            default_slot,
+            default_slot_template,
+            ctx2,
+            /*$$scope*/
+            ctx2[1],
+            !current ? get_all_dirty_from_scope(
+              /*$$scope*/
+              ctx2[1]
+            ) : get_slot_changes(
+              default_slot_template,
+              /*$$scope*/
+              ctx2[1],
+              dirty,
+              null
+            ),
+            null
+          );
+        }
+      }
+      if (dirty & /*fontSize*/
+      1) {
+        set_style(kbd, "--fontSize", `${/*fontSize*/
+        ctx2[0]}px`);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(kbd);
       if (default_slot)
         default_slot.d(detaching);
     }
@@ -1718,18 +1645,91 @@ function create_fragment(ctx) {
 }
 function instance($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
+  let { fontSize } = $$props;
   $$self.$$set = ($$props2) => {
+    if ("fontSize" in $$props2)
+      $$invalidate(0, fontSize = $$props2.fontSize);
     if ("$$scope" in $$props2)
-      $$invalidate(0, $$scope = $$props2.$$scope);
+      $$invalidate(1, $$scope = $$props2.$$scope);
   };
-  return [$$scope, slots];
+  return [fontSize, $$scope, slots];
 }
-class TaskDescription extends SvelteComponent {
+class Kbd extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance, create_fragment, safe_not_equal, {});
+    init(this, options, instance, create_fragment, safe_not_equal, { fontSize: 0 });
   }
 }
+var __assign = function() {
+  __assign = Object.assign || function __assign2(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s)
+        if (Object.prototype.hasOwnProperty.call(s, p))
+          t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign.apply(this, arguments);
+};
+var shortcut = function(node, params) {
+  if (!(params === null || params === void 0 ? void 0 : params.trigger))
+    throw new Error("@svelte-put/shortcut requires a parameter object with a `trigger` property");
+  var _a = params.enabled, enabled = _a === void 0 ? true : _a, trigger = params.trigger, _b = params.type, type = _b === void 0 ? "keydown" : _b;
+  var handler = function(event) {
+    var normalizedTriggers = Array.isArray(trigger) ? trigger : [trigger];
+    var modifiedMap = {
+      alt: event.altKey,
+      ctrl: event.ctrlKey,
+      shift: event.shiftKey,
+      meta: event.metaKey
+    };
+    for (var _i = 0, normalizedTriggers_1 = normalizedTriggers; _i < normalizedTriggers_1.length; _i++) {
+      var trigger_1 = normalizedTriggers_1[_i];
+      var mergedTrigger = __assign({ modifier: [], preventDefault: false, enabled: true }, trigger_1);
+      var modifier = mergedTrigger.modifier, key = mergedTrigger.key, callback = mergedTrigger.callback, preventDefault = mergedTrigger.preventDefault, triggerEnabled = mergedTrigger.enabled;
+      if (triggerEnabled) {
+        if (modifier.length) {
+          var modifierDefs = (Array.isArray(modifier) ? modifier : [modifier]).map(function(def) {
+            return typeof def === "string" ? [def] : def;
+          });
+          var modified = modifierDefs.some(function(def) {
+            return def.every(function(modifier2) {
+              return modifiedMap[modifier2];
+            });
+          });
+          if (!modified)
+            continue;
+        }
+        if (event.key === key) {
+          if (preventDefault)
+            event.preventDefault();
+          var detail = { node, trigger: mergedTrigger };
+          node.dispatchEvent(new CustomEvent("shortcut", { detail }));
+          callback === null || callback === void 0 ? void 0 : callback(detail);
+        }
+      }
+    }
+  };
+  if (enabled)
+    node.addEventListener(type, handler);
+  return {
+    update: function(update) {
+      var _a2 = update.enabled, newEnabled = _a2 === void 0 ? true : _a2, _b2 = update.type, newType = _b2 === void 0 ? "keydown" : _b2;
+      if (enabled && (!newEnabled || type !== newType)) {
+        node.removeEventListener(type, handler);
+      } else if (!enabled && newEnabled) {
+        node.addEventListener(newType, handler);
+      }
+      enabled = newEnabled;
+      type = newType;
+      trigger = update.trigger;
+    },
+    destroy: function() {
+      node.removeEventListener(type, handler);
+    }
+  };
+};
 export {
   Button as B,
   Center as C,

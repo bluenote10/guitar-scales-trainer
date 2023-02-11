@@ -1,6 +1,6 @@
 import { S as SvelteComponent, i as init, s as safe_not_equal, D as create_slot, k as element, q as text, a as space, x as create_component, l as claim_element, m as children, r as claim_text, h as detach, c as claim_space, y as claim_component, n as attr, b as insert_hydration, F as append_hydration, z as mount_component, R as action_destroyer, G as update_slot_base, H as get_all_dirty_from_scope, I as get_slot_changes, f as transition_in, t as transition_out, A as destroy_component, T as run_all, U as createEventDispatcher, C as noop } from "./index-949c6c01.js";
-import { C as Center, s as shortcut, B as Button, K as Kbd } from "./TaskDescription-5e8df044.js";
 import { b as base } from "./paths-054c37c3.js";
+import { C as Center, s as shortcut, B as Button, K as Kbd } from "./index-124d46d3.js";
 const SequentialTask_svelte_svelte_type_style_lang = "";
 const get_sequence_slot_changes = (dirty) => ({});
 const get_sequence_slot_context = (ctx) => ({});

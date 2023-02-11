@@ -1,21 +1,49 @@
-import { S as SvelteComponent, i as init, s as safe_not_equal, v as binding_callbacks, V as bind, x as create_component, y as claim_component, z as mount_component, W as add_flush_callback, f as transition_in, t as transition_out, A as destroy_component, k as element, l as claim_element, m as children, h as detach, n as attr, b as insert_hydration, q as text, r as claim_text, C as noop } from "../../../chunks/index-949c6c01.js";
-import { b as genRandom3NPSIntervalsUpDownSequence, I as Interval, T as TaskDescription, F as Fretboard } from "../../../chunks/TaskDescription-5e8df044.js";
-import { S as SequentialTask } from "../../../chunks/SequentialTask-c91c7d26.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, v as binding_callbacks, V as bind, x as create_component, y as claim_component, z as mount_component, W as add_flush_callback, f as transition_in, t as transition_out, A as destroy_component, k as element, l as claim_element, m as children, h as detach, n as attr, b as insert_hydration, q as text, r as claim_text, F as append_hydration, u as set_data, C as noop } from "../../../chunks/index-949c6c01.js";
+import { d as genRandom3NPSTwoStringsUpDownSequence, T as TaskDescription, F as Fretboard } from "../../../chunks/index-124d46d3.js";
+import { S as SequentialTask } from "../../../chunks/SequentialTask-5b2868a0.js";
 function create_default_slot(ctx) {
-  let t;
+  let t0;
+  let b;
+  let t1_value = (
+    /*sequence*/
+    ctx[0].direction + ""
+  );
+  let t1;
+  let t2;
   return {
     c() {
-      t = text("Visualize the scale in thirds.");
+      t0 = text("Visualize the scale on just two strings step by step ");
+      b = element("b");
+      t1 = text(t1_value);
+      t2 = text(" the neck.");
     },
     l(nodes) {
-      t = claim_text(nodes, "Visualize the scale in thirds.");
+      t0 = claim_text(nodes, "Visualize the scale on just two strings step by step ");
+      b = claim_element(nodes, "B", {});
+      var b_nodes = children(b);
+      t1 = claim_text(b_nodes, t1_value);
+      b_nodes.forEach(detach);
+      t2 = claim_text(nodes, " the neck.");
     },
     m(target, anchor) {
-      insert_hydration(target, t, anchor);
+      insert_hydration(target, t0, anchor);
+      insert_hydration(target, b, anchor);
+      append_hydration(b, t1);
+      insert_hydration(target, t2, anchor);
+    },
+    p(ctx2, dirty) {
+      if (dirty & /*sequence*/
+      1 && t1_value !== (t1_value = /*sequence*/
+      ctx2[0].direction + ""))
+        set_data(t1, t1_value);
     },
     d(detaching) {
       if (detaching)
-        detach(t);
+        detach(t0);
+      if (detaching)
+        detach(b);
+      if (detaching)
+        detach(t2);
     }
   };
 }
@@ -52,8 +80,8 @@ function create_description_slot(ctx) {
     },
     p(ctx2, dirty) {
       const taskdescription_changes = {};
-      if (dirty & /*$$scope*/
-      16) {
+      if (dirty & /*$$scope, sequence*/
+      17) {
         taskdescription_changes.$$scope = { dirty, ctx: ctx2 };
       }
       taskdescription.$set(taskdescription_changes);
@@ -222,7 +250,7 @@ function instance($$self, $$props, $$invalidate) {
   let curIdx = 0;
   generate();
   function generate() {
-    $$invalidate(0, sequence = genRandom3NPSIntervalsUpDownSequence(maxFret, Interval.third));
+    $$invalidate(0, sequence = genRandom3NPSTwoStringsUpDownSequence(maxFret));
   }
   function sequentialtask_curIdx_binding(value) {
     curIdx = value;
@@ -230,40 +258,40 @@ function instance($$self, $$props, $$invalidate) {
   }
   return [sequence, curIdx, generate, sequentialtask_curIdx_binding];
 }
-class DiatonicIntervalsSequential extends SvelteComponent {
+class DiatonicSequential extends SvelteComponent {
   constructor(options) {
     super();
     init(this, options, instance, create_fragment$1, safe_not_equal, {});
   }
 }
 function create_fragment(ctx) {
-  let diatonicintervalssequential;
+  let diatonicsequential;
   let current;
-  diatonicintervalssequential = new DiatonicIntervalsSequential({});
+  diatonicsequential = new DiatonicSequential({});
   return {
     c() {
-      create_component(diatonicintervalssequential.$$.fragment);
+      create_component(diatonicsequential.$$.fragment);
     },
     l(nodes) {
-      claim_component(diatonicintervalssequential.$$.fragment, nodes);
+      claim_component(diatonicsequential.$$.fragment, nodes);
     },
     m(target, anchor) {
-      mount_component(diatonicintervalssequential, target, anchor);
+      mount_component(diatonicsequential, target, anchor);
       current = true;
     },
     p: noop,
     i(local) {
       if (current)
         return;
-      transition_in(diatonicintervalssequential.$$.fragment, local);
+      transition_in(diatonicsequential.$$.fragment, local);
       current = true;
     },
     o(local) {
-      transition_out(diatonicintervalssequential.$$.fragment, local);
+      transition_out(diatonicsequential.$$.fragment, local);
       current = false;
     },
     d(detaching) {
-      destroy_component(diatonicintervalssequential, detaching);
+      destroy_component(diatonicsequential, detaching);
     }
   };
 }
