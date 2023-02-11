@@ -1,3 +1,6 @@
+# Basically just following:
+# https://github.com/JamesIves/github-pages-deploy-action
+
 name: Deploy
 
 on:
@@ -9,7 +12,7 @@ permissions:
   contents: write
 
 jobs:
-  build-and-deploy:
+  deploy:
     concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
     steps:

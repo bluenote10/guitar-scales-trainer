@@ -4,7 +4,7 @@ on:
   pull_request:
 
 jobs:
-  tests:
+  pull-request:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout 🛎️
