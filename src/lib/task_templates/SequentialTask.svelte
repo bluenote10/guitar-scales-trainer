@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
-  import Center from "$lib/Center.svelte";
+  import { base } from "$app/paths";
   import Button from "$lib/Button.svelte";
+  import Center from "$lib/Center.svelte";
   import Kbd from "$lib/Kbd.svelte";
   import { shortcut } from "@svelte-put/shortcut";
-  import { base } from "$app/paths";
+  import { createEventDispatcher } from "svelte";
 
   const dispatch = createEventDispatcher();
 

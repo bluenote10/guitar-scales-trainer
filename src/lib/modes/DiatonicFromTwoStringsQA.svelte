@@ -2,10 +2,10 @@
   Old implementation based on Q/A card.
 -->
 <script lang="ts">
-  import Fretboard, { type Notes } from "../Fretboard.svelte";
-  import QATask from "../task_templates/QATask.svelte";
-  import { genRandom3NPSScale, filterToTwoRandomStrings } from "../scales_generator";
   import TaskDescription from "$lib/TaskDescription.svelte";
+  import Fretboard, { type Notes } from "../Fretboard.svelte";
+  import { genRandom3NPSScale, filterToTwoRandomStrings } from "../scales_generator";
+  import QATask from "../task_templates/QATask.svelte";
 
   const maxFret = 24;
   let qNotes: Notes;

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Fretboard, { type Notes } from "../Fretboard.svelte";
-  import InlineTask from "../task_templates/InlineTask.svelte";
-  import { genRandom3NPSScale, filterToTwoRandomStrings } from "../scales_generator";
   import TaskDescription from "$lib/TaskDescription.svelte";
+  import Fretboard, { type Notes } from "../Fretboard.svelte";
+  import { genRandom3NPSScale, filterToTwoRandomStrings } from "../scales_generator";
+  import InlineTask from "../task_templates/InlineTask.svelte";
 
   const maxFret = 24;
   let qNotes: Notes;

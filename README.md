@@ -1,6 +1,6 @@
 # Guitar Scales Trainer
 
-Link to app: [Guitar Scales Trainer](https://bluenote10.github.io/guitar-scales-trainer/).
+Link to app: [Guitar Scales Trainer](https://bluenote10.github.io/guitar-scales-trainer/)
 
 This is a small app that helps to master the guitar fretboard by visualizing various scales and
 patterns. The exercises force you to visualize different aspects of a scale, like horizontally

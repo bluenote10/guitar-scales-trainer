@@ -1,12 +1,12 @@
 <script lang="ts">
+  import TaskDescription from "$lib/TaskDescription.svelte";
   import Fretboard from "../Fretboard.svelte";
-  import InlineTask from "../task_templates/InlineTask.svelte";
   import {
     genRandom3NPSScaleNeighborPair,
     genRandom3NPSScaleCircleOfFithsPair,
     type QAPair,
   } from "../scales_generator";
-  import TaskDescription from "$lib/TaskDescription.svelte";
+  import InlineTask from "../task_templates/InlineTask.svelte";
 
   export let mode: "direct_neighbors" | "circle_of_fifth_neigbors";
 

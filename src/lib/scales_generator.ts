@@ -1,4 +1,3 @@
-import type { Note, Notes } from "./Fretboard.svelte";
 import {
   allDefined,
   assertUnreachable,
@@ -7,6 +6,7 @@ import {
   randRangeBiased,
   randTwoStrings,
 } from "$lib/utils";
+import type { Note, Notes } from "./Fretboard.svelte";
 
 export type GuitarTuning = number[];
 

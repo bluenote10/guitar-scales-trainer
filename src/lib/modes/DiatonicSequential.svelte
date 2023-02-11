@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Fretboard from "../Fretboard.svelte";
-  import SequentialTask from "../task_templates/SequentialTask.svelte";
-  import { genRandom3NPSTwoStringsUpDownSequence, type NotesSequence } from "../scales_generator";
   import TaskDescription from "$lib/TaskDescription.svelte";
+  import Fretboard from "../Fretboard.svelte";
+  import { genRandom3NPSTwoStringsUpDownSequence, type NotesSequence } from "../scales_generator";
+  import SequentialTask from "../task_templates/SequentialTask.svelte";
 
   const maxFret = 24;
   let sequence: NotesSequence;

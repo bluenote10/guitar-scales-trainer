@@ -2,10 +2,10 @@
   Old implementation based on Q/A card.
 -->
 <script lang="ts">
-  import Fretboard from "../Fretboard.svelte";
-  import QATask from "../task_templates/QATask.svelte";
-  import { genRandom3NPSScaleNeighborPair } from "../scales_generator";
   import TaskDescription from "$lib/TaskDescription.svelte";
+  import Fretboard from "../Fretboard.svelte";
+  import { genRandom3NPSScaleNeighborPair } from "../scales_generator";
+  import QATask from "../task_templates/QATask.svelte";
 
   const maxFret = 24;
   let qaPair = genRandom3NPSScaleNeighborPair(maxFret);

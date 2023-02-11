@@ -1,6 +1,5 @@
-import { describe, it, expect } from "vitest";
-
 import { genScale3NPS, getNeighborMode, Mode, ALL_MODES } from "./scales_generator";
+import { describe, it, expect } from "vitest";
 
 describe("getNeighborMode", () => {
   it("should go up", () => {
