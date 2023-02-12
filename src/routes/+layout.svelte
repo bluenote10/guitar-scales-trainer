@@ -3,8 +3,8 @@
 </script>
 
 <svelte:head>
-  <title>Guitar Scales</title>
-  <meta name="description" content="Guitar scales viewer / trainer" />
+  <title>Guitar Scales Trainer</title>
+  <meta name="description" content="Guitar scales trainer helps to master the guitar fretboard." />
 </svelte:head>
 
 <div class="app">
