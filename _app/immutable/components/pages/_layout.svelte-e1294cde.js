@@ -29,7 +29,7 @@ function create_fragment(ctx) {
       this.h();
     },
     l(nodes) {
-      const head_nodes = head_selector("svelte-7e8q1", document.head);
+      const head_nodes = head_selector("svelte-17dztrs", document.head);
       meta = claim_element(head_nodes, "META", { name: true, content: true });
       head_nodes.forEach(detach);
       t = claim_space(nodes);
@@ -44,9 +44,9 @@ function create_fragment(ctx) {
       this.h();
     },
     h() {
-      document.title = "Guitar Scales";
+      document.title = "Guitar Scales Trainer";
       attr(meta, "name", "description");
-      attr(meta, "content", "Guitar scales viewer / trainer");
+      attr(meta, "content", "Guitar scales trainer helps to master the guitar fretboard.");
       attr(main, "class", "svelte-cqxbd3");
       attr(div, "class", "app svelte-cqxbd3");
     },
