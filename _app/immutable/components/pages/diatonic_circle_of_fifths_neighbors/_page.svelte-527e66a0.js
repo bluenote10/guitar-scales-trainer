@@ -1,9 +1,11 @@
-import { S as SvelteComponent, i as init, s as safe_not_equal, x as create_component, y as claim_component, z as mount_component, C as noop, f as transition_in, t as transition_out, A as destroy_component } from "../../../chunks/index-949c6c01.js";
-import { D as DiatonicNeighbors } from "../../../chunks/DiatonicNeighbors-186b0803.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, x as create_component, y as claim_component, z as mount_component, C as noop, f as transition_in, t as transition_out, A as destroy_component } from "../../../chunks/index-56902217.js";
+import { D as DiatonicNeighbors } from "../../../chunks/DiatonicNeighbors-345ee669.js";
 function create_fragment(ctx) {
   let diatonicneighbors;
   let current;
-  diatonicneighbors = new DiatonicNeighbors({ props: { mode: "direct_neighbors" } });
+  diatonicneighbors = new DiatonicNeighbors({
+    props: { mode: "circle_of_fifth_neighbors" }
+  });
   return {
     c() {
       create_component(diatonicneighbors.$$.fragment);

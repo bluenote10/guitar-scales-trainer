@@ -1,6 +1,7 @@
-import { S as SvelteComponent, i as init, s as safe_not_equal, x as create_component, y as claim_component, z as mount_component, f as transition_in, t as transition_out, A as destroy_component, k as element, l as claim_element, m as children, h as detach, n as attr, b as insert_hydration, e as empty, q as text, r as claim_text, F as append_hydration, u as set_data } from "./index-949c6c01.js";
-import { g as genRandom3NPSScaleNeighborPair, a as genRandom3NPSScaleCircleOfFithsPair, T as TaskDescription, F as Fretboard } from "./index-124d46d3.js";
-import { I as InlineTask } from "./InlineTask-751692db.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, x as create_component, y as claim_component, z as mount_component, f as transition_in, t as transition_out, A as destroy_component, k as element, l as claim_element, m as children, h as detach, n as attr, b as insert_hydration, e as empty, q as text, r as claim_text, F as append_hydration, u as set_data } from "./index-56902217.js";
+import { g as genRandom3NPSScaleNeighborPair, a as genRandom3NPSScaleCircleOfFifthsPair, T as TaskDescription, F as Fretboard } from "./index-716012fb.js";
+import { I as InlineTask } from "./InlineTask-820f6a3c.js";
+const DiatonicNeighbors_svelte_svelte_type_style_lang = "";
 function create_else_block(ctx) {
   let t0;
   let b0;
@@ -26,19 +27,25 @@ function create_else_block(ctx) {
       b1 = element("b");
       t3 = text(t3_value);
       t4 = text("\n        in the circle of fifths.");
+      this.h();
     },
     l(nodes) {
       t0 = claim_text(nodes, "Visualize the scale that results from adding a\n        ");
-      b0 = claim_element(nodes, "B", {});
+      b0 = claim_element(nodes, "B", { class: true });
       var b0_nodes = children(b0);
       t1 = claim_text(b0_nodes, t1_value);
       b0_nodes.forEach(detach);
       t2 = claim_text(nodes, ", or going\n        ");
-      b1 = claim_element(nodes, "B", {});
+      b1 = claim_element(nodes, "B", { class: true });
       var b1_nodes = children(b1);
       t3 = claim_text(b1_nodes, t3_value);
       b1_nodes.forEach(detach);
       t4 = claim_text(nodes, "\n        in the circle of fifths.");
+      this.h();
+    },
+    h() {
+      attr(b0, "class", "svelte-c6wr47");
+      attr(b1, "class", "svelte-c6wr47");
     },
     m(target, anchor) {
       insert_hydration(target, t0, anchor);
@@ -88,14 +95,19 @@ function create_if_block(ctx) {
       b = element("b");
       t1 = text(t1_value);
       t2 = text(" position.");
+      this.h();
     },
     l(nodes) {
       t0 = claim_text(nodes, "Visualize the corresponding ");
-      b = claim_element(nodes, "B", {});
+      b = claim_element(nodes, "B", { class: true });
       var b_nodes = children(b);
       t1 = claim_text(b_nodes, t1_value);
       b_nodes.forEach(detach);
       t2 = claim_text(nodes, " position.");
+      this.h();
+    },
+    h() {
+      attr(b, "class", "svelte-c6wr47");
     },
     m(target, anchor) {
       insert_hydration(target, t0, anchor);
@@ -389,7 +401,7 @@ function instance($$self, $$props, $$invalidate) {
   let qaPair;
   generate();
   function generate() {
-    $$invalidate(1, qaPair = mode == "direct_neighbors" ? genRandom3NPSScaleNeighborPair(maxFret) : genRandom3NPSScaleCircleOfFithsPair(maxFret));
+    $$invalidate(1, qaPair = mode == "direct_neighbors" ? genRandom3NPSScaleNeighborPair(maxFret) : genRandom3NPSScaleCircleOfFifthsPair(maxFret));
   }
   $$self.$$set = ($$props2) => {
     if ("mode" in $$props2)

@@ -1,184 +1,34 @@
-import { S as SvelteComponent, i as init, s as safe_not_equal, D as create_slot, k as element, q as text, a as space, x as create_component, l as claim_element, m as children, r as claim_text, h as detach, c as claim_space, y as claim_component, n as attr, b as insert_hydration, F as append_hydration, z as mount_component, R as action_destroyer, G as update_slot_base, H as get_all_dirty_from_scope, I as get_slot_changes, g as group_outros, t as transition_out, d as check_outros, f as transition_in, A as destroy_component, T as run_all, U as createEventDispatcher, u as set_data, C as noop } from "./index-949c6c01.js";
-import { b as base } from "./paths-054c37c3.js";
-import { C as Center, s as shortcut, B as Button, K as Kbd } from "./index-124d46d3.js";
-const InlineTask_svelte_svelte_type_style_lang = "";
-const get_answer_slot_changes = (dirty) => ({});
-const get_answer_slot_context = (ctx) => ({});
-const get_question_slot_changes = (dirty) => ({});
-const get_question_slot_context = (ctx) => ({});
+import { S as SvelteComponent, i as init, s as safe_not_equal, D as create_slot, k as element, x as create_component, a as space, q as text, l as claim_element, m as children, y as claim_component, c as claim_space, r as claim_text, h as detach, n as attr, b as insert_hydration, z as mount_component, F as append_hydration, Z as action_destroyer, G as update_slot_base, H as get_all_dirty_from_scope, I as get_slot_changes, f as transition_in, t as transition_out, A as destroy_component, X as run_all, _ as createEventDispatcher, C as noop } from "./index-56902217.js";
+import { B as BackButton, C as Center, s as shortcut, b as Button, K as Kbd } from "./index-716012fb.js";
+const SequentialTask_svelte_svelte_type_style_lang = "";
+const get_sequence_slot_changes = (dirty) => ({});
+const get_sequence_slot_context = (ctx) => ({});
 const get_description_slot_changes = (dirty) => ({});
 const get_description_slot_context = (ctx) => ({});
-function create_else_block(ctx) {
-  let current;
-  const answer_slot_template = (
-    /*#slots*/
-    ctx[4].answer
-  );
-  const answer_slot = create_slot(
-    answer_slot_template,
-    ctx,
-    /*$$scope*/
-    ctx[5],
-    get_answer_slot_context
-  );
-  return {
-    c() {
-      if (answer_slot)
-        answer_slot.c();
-    },
-    l(nodes) {
-      if (answer_slot)
-        answer_slot.l(nodes);
-    },
-    m(target, anchor) {
-      if (answer_slot) {
-        answer_slot.m(target, anchor);
-      }
-      current = true;
-    },
-    p(ctx2, dirty) {
-      if (answer_slot) {
-        if (answer_slot.p && (!current || dirty & /*$$scope*/
-        32)) {
-          update_slot_base(
-            answer_slot,
-            answer_slot_template,
-            ctx2,
-            /*$$scope*/
-            ctx2[5],
-            !current ? get_all_dirty_from_scope(
-              /*$$scope*/
-              ctx2[5]
-            ) : get_slot_changes(
-              answer_slot_template,
-              /*$$scope*/
-              ctx2[5],
-              dirty,
-              get_answer_slot_changes
-            ),
-            get_answer_slot_context
-          );
-        }
-      }
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(answer_slot, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(answer_slot, local);
-      current = false;
-    },
-    d(detaching) {
-      if (answer_slot)
-        answer_slot.d(detaching);
-    }
-  };
-}
-function create_if_block(ctx) {
-  let current;
-  const question_slot_template = (
-    /*#slots*/
-    ctx[4].question
-  );
-  const question_slot = create_slot(
-    question_slot_template,
-    ctx,
-    /*$$scope*/
-    ctx[5],
-    get_question_slot_context
-  );
-  return {
-    c() {
-      if (question_slot)
-        question_slot.c();
-    },
-    l(nodes) {
-      if (question_slot)
-        question_slot.l(nodes);
-    },
-    m(target, anchor) {
-      if (question_slot) {
-        question_slot.m(target, anchor);
-      }
-      current = true;
-    },
-    p(ctx2, dirty) {
-      if (question_slot) {
-        if (question_slot.p && (!current || dirty & /*$$scope*/
-        32)) {
-          update_slot_base(
-            question_slot,
-            question_slot_template,
-            ctx2,
-            /*$$scope*/
-            ctx2[5],
-            !current ? get_all_dirty_from_scope(
-              /*$$scope*/
-              ctx2[5]
-            ) : get_slot_changes(
-              question_slot_template,
-              /*$$scope*/
-              ctx2[5],
-              dirty,
-              get_question_slot_changes
-            ),
-            get_question_slot_context
-          );
-        }
-      }
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(question_slot, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(question_slot, local);
-      current = false;
-    },
-    d(detaching) {
-      if (question_slot)
-        question_slot.d(detaching);
-    }
-  };
-}
 function create_default_slot_5(ctx) {
   let div;
-  let t_value = (
-    /*isHidden*/
-    ctx[0] ? "Reveal" : "Hide"
-  );
   let t;
   return {
     c() {
       div = element("div");
-      t = text(t_value);
+      t = text("Reveal");
       this.h();
     },
     l(nodes) {
       div = claim_element(nodes, "DIV", { class: true });
       var div_nodes = children(div);
-      t = claim_text(div_nodes, t_value);
+      t = claim_text(div_nodes, "Reveal");
       div_nodes.forEach(detach);
       this.h();
     },
     h() {
-      attr(div, "class", "fixed-width svelte-1q5x90i");
+      attr(div, "class", "fixed-width svelte-14pwbha");
     },
     m(target, anchor) {
       insert_hydration(target, div, anchor);
       append_hydration(div, t);
     },
-    p(ctx2, dirty) {
-      if (dirty & /*isHidden*/
-      1 && t_value !== (t_value = /*isHidden*/
-      ctx2[0] ? "Reveal" : "Hide"))
-        set_data(t, t_value);
-    },
+    p: noop,
     d(detaching) {
       if (detaching)
         detach(div);
@@ -202,7 +52,7 @@ function create_default_slot_4(ctx) {
       this.h();
     },
     h() {
-      attr(div, "class", "fixed-width svelte-1q5x90i");
+      attr(div, "class", "fixed-width svelte-14pwbha");
     },
     m(target, anchor) {
       insert_hydration(target, div, anchor);
@@ -228,13 +78,13 @@ function create_default_slot_3(ctx) {
   });
   button0.$on(
     "click",
-    /*onRevealHide*/
-    ctx[2]
+    /*onIncrementIdx*/
+    ctx[1]
   );
   button1 = new Button({
     props: {
-      disabled: !/*wasRevealedOnce*/
-      ctx[1],
+      disabled: !/*wasRevealedEntirely*/
+      ctx[0],
       $$slots: { default: [create_default_slot_4] },
       $$scope: { ctx }
     }
@@ -242,7 +92,7 @@ function create_default_slot_3(ctx) {
   button1.$on(
     "click",
     /*onNext*/
-    ctx[3]
+    ctx[2]
   );
   return {
     c() {
@@ -263,18 +113,18 @@ function create_default_slot_3(ctx) {
     },
     p(ctx2, dirty) {
       const button0_changes = {};
-      if (dirty & /*$$scope, isHidden*/
-      33) {
+      if (dirty & /*$$scope*/
+      64) {
         button0_changes.$$scope = { dirty, ctx: ctx2 };
       }
       button0.$set(button0_changes);
       const button1_changes = {};
-      if (dirty & /*wasRevealedOnce*/
-      2)
-        button1_changes.disabled = !/*wasRevealedOnce*/
-        ctx2[1];
+      if (dirty & /*wasRevealedEntirely*/
+      1)
+        button1_changes.disabled = !/*wasRevealedEntirely*/
+        ctx2[0];
       if (dirty & /*$$scope*/
-      32) {
+      64) {
         button1_changes.$$scope = { dirty, ctx: ctx2 };
       }
       button1.$set(button1_changes);
@@ -362,7 +212,7 @@ function create_default_slot(ctx) {
       p = element("p");
       t0 = text("Hint: You can press\n        ");
       create_component(kbd0.$$.fragment);
-      t1 = text(" to reveal/hide, and\n        ");
+      t1 = text(" to reveal, and\n        ");
       create_component(kbd1.$$.fragment);
       t2 = text(" for next.");
       this.h();
@@ -372,14 +222,14 @@ function create_default_slot(ctx) {
       var p_nodes = children(p);
       t0 = claim_text(p_nodes, "Hint: You can press\n        ");
       claim_component(kbd0.$$.fragment, p_nodes);
-      t1 = claim_text(p_nodes, " to reveal/hide, and\n        ");
+      t1 = claim_text(p_nodes, " to reveal, and\n        ");
       claim_component(kbd1.$$.fragment, p_nodes);
       t2 = claim_text(p_nodes, " for next.");
       p_nodes.forEach(detach);
       this.h();
     },
     h() {
-      attr(p, "class", "hint svelte-1q5x90i");
+      attr(p, "class", "hint svelte-14pwbha");
     },
     m(target, anchor) {
       insert_hydration(target, p, anchor);
@@ -393,13 +243,13 @@ function create_default_slot(ctx) {
     p(ctx2, dirty) {
       const kbd0_changes = {};
       if (dirty & /*$$scope*/
-      32) {
+      64) {
         kbd0_changes.$$scope = { dirty, ctx: ctx2 };
       }
       kbd0.$set(kbd0_changes);
       const kbd1_changes = {};
       if (dirty & /*$$scope*/
-      32) {
+      64) {
         kbd1_changes.$$scope = { dirty, ctx: ctx2 };
       }
       kbd1.$set(kbd1_changes);
@@ -426,46 +276,43 @@ function create_default_slot(ctx) {
 }
 function create_fragment(ctx) {
   let div1;
-  let a;
+  let backbutton;
   let t0;
-  let t1;
   let h1;
+  let t1;
   let t2;
   let t3;
   let t4;
-  let current_block_type_index;
-  let if_block;
-  let t5;
   let div0;
   let center0;
-  let t6;
+  let t5;
   let center1;
   let current;
   let mounted;
   let dispose;
+  backbutton = new BackButton({});
   const description_slot_template = (
     /*#slots*/
-    ctx[4].description
+    ctx[5].description
   );
   const description_slot = create_slot(
     description_slot_template,
     ctx,
     /*$$scope*/
-    ctx[5],
+    ctx[6],
     get_description_slot_context
   );
-  const if_block_creators = [create_if_block, create_else_block];
-  const if_blocks = [];
-  function select_block_type(ctx2, dirty) {
-    if (
-      /*isHidden*/
-      ctx2[0]
-    )
-      return 0;
-    return 1;
-  }
-  current_block_type_index = select_block_type(ctx);
-  if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+  const sequence_slot_template = (
+    /*#slots*/
+    ctx[5].sequence
+  );
+  const sequence_slot = create_slot(
+    sequence_slot_template,
+    ctx,
+    /*$$scope*/
+    ctx[6],
+    get_sequence_slot_context
+  );
   center0 = new Center({
     props: {
       gap: 20,
@@ -482,72 +329,70 @@ function create_fragment(ctx) {
   return {
     c() {
       div1 = element("div");
-      a = element("a");
-      t0 = text("back");
-      t1 = space();
+      create_component(backbutton.$$.fragment);
+      t0 = space();
       h1 = element("h1");
-      t2 = text("Question / Answer");
-      t3 = space();
+      t1 = text("Question / Answer");
+      t2 = space();
       if (description_slot)
         description_slot.c();
+      t3 = space();
+      if (sequence_slot)
+        sequence_slot.c();
       t4 = space();
-      if_block.c();
-      t5 = space();
       div0 = element("div");
       create_component(center0.$$.fragment);
-      t6 = space();
+      t5 = space();
       create_component(center1.$$.fragment);
       this.h();
     },
     l(nodes) {
       div1 = claim_element(nodes, "DIV", {});
       var div1_nodes = children(div1);
-      a = claim_element(div1_nodes, "A", { href: true });
-      var a_nodes = children(a);
-      t0 = claim_text(a_nodes, "back");
-      a_nodes.forEach(detach);
-      t1 = claim_space(div1_nodes);
+      claim_component(backbutton.$$.fragment, div1_nodes);
+      t0 = claim_space(div1_nodes);
       h1 = claim_element(div1_nodes, "H1", { class: true });
       var h1_nodes = children(h1);
-      t2 = claim_text(h1_nodes, "Question / Answer");
+      t1 = claim_text(h1_nodes, "Question / Answer");
       h1_nodes.forEach(detach);
-      t3 = claim_space(div1_nodes);
+      t2 = claim_space(div1_nodes);
       if (description_slot)
         description_slot.l(div1_nodes);
+      t3 = claim_space(div1_nodes);
+      if (sequence_slot)
+        sequence_slot.l(div1_nodes);
       t4 = claim_space(div1_nodes);
-      if_block.l(div1_nodes);
-      t5 = claim_space(div1_nodes);
       div0 = claim_element(div1_nodes, "DIV", { class: true });
       var div0_nodes = children(div0);
       claim_component(center0.$$.fragment, div0_nodes);
-      t6 = claim_space(div0_nodes);
+      t5 = claim_space(div0_nodes);
       claim_component(center1.$$.fragment, div0_nodes);
       div0_nodes.forEach(detach);
       div1_nodes.forEach(detach);
       this.h();
     },
     h() {
-      attr(a, "href", base + "/");
-      attr(h1, "class", "svelte-1q5x90i");
-      attr(div0, "class", "footer svelte-1q5x90i");
+      attr(h1, "class", "svelte-14pwbha");
+      attr(div0, "class", "footer svelte-14pwbha");
     },
     m(target, anchor) {
       insert_hydration(target, div1, anchor);
-      append_hydration(div1, a);
-      append_hydration(a, t0);
-      append_hydration(div1, t1);
+      mount_component(backbutton, div1, null);
+      append_hydration(div1, t0);
       append_hydration(div1, h1);
-      append_hydration(h1, t2);
-      append_hydration(div1, t3);
+      append_hydration(h1, t1);
+      append_hydration(div1, t2);
       if (description_slot) {
         description_slot.m(div1, null);
       }
+      append_hydration(div1, t3);
+      if (sequence_slot) {
+        sequence_slot.m(div1, null);
+      }
       append_hydration(div1, t4);
-      if_blocks[current_block_type_index].m(div1, null);
-      append_hydration(div1, t5);
       append_hydration(div1, div0);
       mount_component(center0, div0, null);
-      append_hydration(div0, t6);
+      append_hydration(div0, t5);
       mount_component(center1, div0, null);
       current = true;
       if (!mounted) {
@@ -556,8 +401,8 @@ function create_fragment(ctx) {
             trigger: {
               key: " ",
               callback: (
-                /*onRevealHide*/
-                ctx[2]
+                /*onIncrementIdx*/
+                ctx[1]
               ),
               preventDefault: true
             }
@@ -567,7 +412,7 @@ function create_fragment(ctx) {
               key: "Enter",
               callback: (
                 /*onNext*/
-                ctx[3]
+                ctx[2]
               ),
               preventDefault: true
             }
@@ -579,20 +424,20 @@ function create_fragment(ctx) {
     p(ctx2, [dirty]) {
       if (description_slot) {
         if (description_slot.p && (!current || dirty & /*$$scope*/
-        32)) {
+        64)) {
           update_slot_base(
             description_slot,
             description_slot_template,
             ctx2,
             /*$$scope*/
-            ctx2[5],
+            ctx2[6],
             !current ? get_all_dirty_from_scope(
               /*$$scope*/
-              ctx2[5]
+              ctx2[6]
             ) : get_slot_changes(
               description_slot_template,
               /*$$scope*/
-              ctx2[5],
+              ctx2[6],
               dirty,
               get_description_slot_changes
             ),
@@ -600,35 +445,38 @@ function create_fragment(ctx) {
           );
         }
       }
-      let previous_block_index = current_block_type_index;
-      current_block_type_index = select_block_type(ctx2);
-      if (current_block_type_index === previous_block_index) {
-        if_blocks[current_block_type_index].p(ctx2, dirty);
-      } else {
-        group_outros();
-        transition_out(if_blocks[previous_block_index], 1, 1, () => {
-          if_blocks[previous_block_index] = null;
-        });
-        check_outros();
-        if_block = if_blocks[current_block_type_index];
-        if (!if_block) {
-          if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
-          if_block.c();
-        } else {
-          if_block.p(ctx2, dirty);
+      if (sequence_slot) {
+        if (sequence_slot.p && (!current || dirty & /*$$scope*/
+        64)) {
+          update_slot_base(
+            sequence_slot,
+            sequence_slot_template,
+            ctx2,
+            /*$$scope*/
+            ctx2[6],
+            !current ? get_all_dirty_from_scope(
+              /*$$scope*/
+              ctx2[6]
+            ) : get_slot_changes(
+              sequence_slot_template,
+              /*$$scope*/
+              ctx2[6],
+              dirty,
+              get_sequence_slot_changes
+            ),
+            get_sequence_slot_context
+          );
         }
-        transition_in(if_block, 1);
-        if_block.m(div1, t5);
       }
       const center0_changes = {};
-      if (dirty & /*$$scope, wasRevealedOnce, isHidden*/
-      35) {
+      if (dirty & /*$$scope, wasRevealedEntirely*/
+      65) {
         center0_changes.$$scope = { dirty, ctx: ctx2 };
       }
       center0.$set(center0_changes);
       const center1_changes = {};
       if (dirty & /*$$scope*/
-      32) {
+      64) {
         center1_changes.$$scope = { dirty, ctx: ctx2 };
       }
       center1.$set(center1_changes);
@@ -636,15 +484,17 @@ function create_fragment(ctx) {
     i(local) {
       if (current)
         return;
+      transition_in(backbutton.$$.fragment, local);
       transition_in(description_slot, local);
-      transition_in(if_block);
+      transition_in(sequence_slot, local);
       transition_in(center0.$$.fragment, local);
       transition_in(center1.$$.fragment, local);
       current = true;
     },
     o(local) {
+      transition_out(backbutton.$$.fragment, local);
       transition_out(description_slot, local);
-      transition_out(if_block);
+      transition_out(sequence_slot, local);
       transition_out(center0.$$.fragment, local);
       transition_out(center1.$$.fragment, local);
       current = false;
@@ -652,9 +502,11 @@ function create_fragment(ctx) {
     d(detaching) {
       if (detaching)
         detach(div1);
+      destroy_component(backbutton);
       if (description_slot)
         description_slot.d(detaching);
-      if_blocks[current_block_type_index].d();
+      if (sequence_slot)
+        sequence_slot.d(detaching);
       destroy_component(center0);
       destroy_component(center1);
       mounted = false;
@@ -665,33 +517,50 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   const dispatch = createEventDispatcher();
-  let isHidden = true;
-  let wasRevealedOnce = false;
-  function onRevealHide() {
-    $$invalidate(0, isHidden = !isHidden);
-    if (!isHidden) {
-      $$invalidate(1, wasRevealedOnce = true);
+  let { sequenceLength } = $$props;
+  let { curIdx = 0 } = $$props;
+  let wasRevealedEntirely = false;
+  function onIncrementIdx() {
+    if (curIdx === sequenceLength - 1) {
+      $$invalidate(3, curIdx = 0);
+    } else {
+      $$invalidate(3, curIdx++, curIdx);
+      if (curIdx === sequenceLength - 1) {
+        $$invalidate(0, wasRevealedEntirely = true);
+      }
     }
   }
   function onNext() {
-    if (wasRevealedOnce) {
+    if (wasRevealedEntirely) {
       dispatch("next");
-      $$invalidate(0, isHidden = true);
-      $$invalidate(1, wasRevealedOnce = false);
+      $$invalidate(3, curIdx = 0);
+      $$invalidate(0, wasRevealedEntirely = false);
     }
   }
   $$self.$$set = ($$props2) => {
+    if ("sequenceLength" in $$props2)
+      $$invalidate(4, sequenceLength = $$props2.sequenceLength);
+    if ("curIdx" in $$props2)
+      $$invalidate(3, curIdx = $$props2.curIdx);
     if ("$$scope" in $$props2)
-      $$invalidate(5, $$scope = $$props2.$$scope);
+      $$invalidate(6, $$scope = $$props2.$$scope);
   };
-  return [isHidden, wasRevealedOnce, onRevealHide, onNext, slots, $$scope];
+  return [
+    wasRevealedEntirely,
+    onIncrementIdx,
+    onNext,
+    curIdx,
+    sequenceLength,
+    slots,
+    $$scope
+  ];
 }
-class InlineTask extends SvelteComponent {
+class SequentialTask extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance, create_fragment, safe_not_equal, {});
+    init(this, options, instance, create_fragment, safe_not_equal, { sequenceLength: 4, curIdx: 3 });
   }
 }
 export {
-  InlineTask as I
+  SequentialTask as S
 };

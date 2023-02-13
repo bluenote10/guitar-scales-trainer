@@ -4,9 +4,10 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { S as SvelteComponent, i as init, s as safe_not_equal, D as create_slot, k as element, l as claim_element, m as children, h as detach, n as attr, b as insert_hydration, G as update_slot_base, H as get_all_dirty_from_scope, I as get_slot_changes, f as transition_in, t as transition_out, L as svg_element, e as empty, M as claim_svg_element, N as add_render_callback, F as append_hydration, O as add_resize_listener, C as noop, K as destroy_each, p as set_style, P as listen, Q as bubble } from "./index-949c6c01.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, D as create_slot, k as element, l as claim_element, m as children, h as detach, n as attr, b as insert_hydration, G as update_slot_base, H as get_all_dirty_from_scope, I as get_slot_changes, f as transition_in, t as transition_out, L as svg_element, e as empty, M as claim_svg_element, N as add_render_callback, F as append_hydration, O as add_resize_listener, C as noop, K as destroy_each, p as set_style, P as getContext, Q as assign, R as exclude_internal_props, T as set_custom_element_data_map, U as set_attributes, V as listen, W as get_spread_update, X as run_all, Y as bubble, x as create_component, y as claim_component, z as mount_component, A as destroy_component, q as text, r as claim_text } from "./index-56902217.js";
+import { b as base } from "./paths-054c37c3.js";
 const TaskDescription_svelte_svelte_type_style_lang = "";
-function create_fragment$4(ctx) {
+function create_fragment$6(ctx) {
   let p;
   let current;
   const default_slot_template = (
@@ -36,7 +37,7 @@ function create_fragment$4(ctx) {
       this.h();
     },
     h() {
-      attr(p, "class", "question svelte-1knkfc2");
+      attr(p, "class", "question svelte-1n4bhye");
     },
     m(target, anchor) {
       insert_hydration(target, p, anchor);
@@ -88,7 +89,7 @@ function create_fragment$4(ctx) {
     }
   };
 }
-function instance$4($$self, $$props, $$invalidate) {
+function instance$5($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   $$self.$$set = ($$props2) => {
     if ("$$scope" in $$props2)
@@ -99,7 +100,7 @@ function instance$4($$self, $$props, $$invalidate) {
 class TaskDescription extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$4, create_fragment$4, safe_not_equal, {});
+    init(this, options, instance$5, create_fragment$6, safe_not_equal, {});
   }
 }
 function allDefined(array) {
@@ -419,7 +420,7 @@ function create_each_block(ctx) {
       this.h();
     },
     h() {
-      attr(circle0, "class", "shadow svelte-cz2ahw");
+      attr(circle0, "class", "shadow svelte-1f7dm2n");
       attr(circle0, "cx", circle0_cx_value = /*geom*/
       ctx[2].getFingerX(
         /*note*/
@@ -541,7 +542,7 @@ function create_each_block(ctx) {
     }
   };
 }
-function create_fragment$3(ctx) {
+function create_fragment$5(ctx) {
   let div;
   let svg;
   let rect;
@@ -698,7 +699,7 @@ function create_fragment$3(ctx) {
         ctx[8]
       );
       attr(circle1, "fill", "#FFF8DC");
-      attr(svg, "class", "svg svelte-cz2ahw");
+      attr(svg, "class", "svg svelte-1f7dm2n");
       attr(
         svg,
         "width",
@@ -712,7 +713,7 @@ function create_fragment$3(ctx) {
         ctx[3]
       );
       attr(svg, "xmlns", "http://www.w3.org/2000/svg");
-      attr(div, "class", "frame svelte-cz2ahw");
+      attr(div, "class", "frame svelte-1f7dm2n");
       add_render_callback(() => (
         /*div_elementresize_handler*/
         ctx[14].call(div)
@@ -900,7 +901,7 @@ function create_fragment$3(ctx) {
     }
   };
 }
-function instance$3($$self, $$props, $$invalidate) {
+function instance$4($$self, $$props, $$invalidate) {
   let centerInlayY;
   let inlayRadius;
   let annotationsRadius;
@@ -986,7 +987,7 @@ function instance$3($$self, $$props, $$invalidate) {
 class Fretboard extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$3, create_fragment$3, safe_not_equal, { numFrets: 12, numStrings: 13, notes: 0 });
+    init(this, options, instance$4, create_fragment$5, safe_not_equal, { numFrets: 12, numStrings: 13, notes: 0 });
   }
 }
 function defaultGuitarTuning() {
@@ -1230,7 +1231,7 @@ function filterToStrings(notes, stringsToKeep) {
 function filterToTwoRandomStrings(notes) {
   return filterToStrings(notes, randTwoStrings());
 }
-function genRandom3NPSScaleCircleOfFithsPair(maxFret) {
+function genRandom3NPSScaleCircleOfFifthsPair(maxFret) {
   const minFret = 1;
   for (; ; ) {
     const questionLocator = {
@@ -1323,6 +1324,525 @@ function allValid(sequence, minFret, maxFret) {
   }
   return true;
 }
+var classnamesExports = {};
+var classnames = {
+  get exports() {
+    return classnamesExports;
+  },
+  set exports(v) {
+    classnamesExports = v;
+  }
+};
+/*!
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
+*/
+(function(module) {
+  (function() {
+    var hasOwn = {}.hasOwnProperty;
+    function classNames2() {
+      var classes = [];
+      for (var i = 0; i < arguments.length; i++) {
+        var arg = arguments[i];
+        if (!arg)
+          continue;
+        var argType = typeof arg;
+        if (argType === "string" || argType === "number") {
+          classes.push(arg);
+        } else if (Array.isArray(arg)) {
+          if (arg.length) {
+            var inner = classNames2.apply(null, arg);
+            if (inner) {
+              classes.push(inner);
+            }
+          }
+        } else if (argType === "object") {
+          if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes("[native code]")) {
+            classes.push(arg.toString());
+            continue;
+          }
+          for (var key in arg) {
+            if (hasOwn.call(arg, key) && arg[key]) {
+              classes.push(key);
+            }
+          }
+        }
+      }
+      return classes.join(" ");
+    }
+    if (module.exports) {
+      classNames2.default = classNames2;
+      module.exports = classNames2;
+    } else {
+      window.classNames = classNames2;
+    }
+  })();
+})(classnames);
+const classNames = classnamesExports;
+const Thumbnail_svelte_svelte_type_style_lang = "";
+const Indicator_svelte_svelte_type_style_lang = "";
+function create_dynamic_element(ctx) {
+  let svelte_element;
+  let current;
+  let mounted;
+  let dispose;
+  const default_slot_template = (
+    /*#slots*/
+    ctx[6].default
+  );
+  const default_slot = create_slot(
+    default_slot_template,
+    ctx,
+    /*$$scope*/
+    ctx[5],
+    null
+  );
+  let svelte_element_levels = [{ href: (
+    /*href*/
+    ctx[0]
+  ) }, { class: (
+    /*defaultClass*/
+    ctx[1]
+  ) }];
+  let svelte_element_data = {};
+  for (let i = 0; i < svelte_element_levels.length; i += 1) {
+    svelte_element_data = assign(svelte_element_data, svelte_element_levels[i]);
+  }
+  return {
+    c() {
+      svelte_element = element(
+        /*href*/
+        ctx[0] ? "a" : "button"
+      );
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      svelte_element = claim_element(
+        nodes,
+        /*href*/
+        ((ctx[0] ? "a" : "button") || "null").toUpperCase(),
+        { href: true, class: true }
+      );
+      var svelte_element_nodes = children(svelte_element);
+      if (default_slot)
+        default_slot.l(svelte_element_nodes);
+      svelte_element_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      if (/-/.test(
+        /*href*/
+        ctx[0] ? "a" : "button"
+      )) {
+        set_custom_element_data_map(svelte_element, svelte_element_data);
+      } else {
+        set_attributes(svelte_element, svelte_element_data);
+      }
+    },
+    m(target, anchor) {
+      insert_hydration(target, svelte_element, anchor);
+      if (default_slot) {
+        default_slot.m(svelte_element, null);
+      }
+      current = true;
+      if (!mounted) {
+        dispose = [
+          listen(
+            svelte_element,
+            "blur",
+            /*blur_handler*/
+            ctx[7]
+          ),
+          listen(
+            svelte_element,
+            "change",
+            /*change_handler*/
+            ctx[8]
+          ),
+          listen(
+            svelte_element,
+            "click",
+            /*click_handler*/
+            ctx[9]
+          ),
+          listen(
+            svelte_element,
+            "focus",
+            /*focus_handler*/
+            ctx[10]
+          ),
+          listen(
+            svelte_element,
+            "keydown",
+            /*keydown_handler*/
+            ctx[11]
+          ),
+          listen(
+            svelte_element,
+            "keypress",
+            /*keypress_handler*/
+            ctx[12]
+          ),
+          listen(
+            svelte_element,
+            "keyup",
+            /*keyup_handler*/
+            ctx[13]
+          ),
+          listen(
+            svelte_element,
+            "mouseenter",
+            /*mouseenter_handler*/
+            ctx[14]
+          ),
+          listen(
+            svelte_element,
+            "mouseleave",
+            /*mouseleave_handler*/
+            ctx[15]
+          ),
+          listen(
+            svelte_element,
+            "mouseover",
+            /*mouseover_handler*/
+            ctx[16]
+          )
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, dirty) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & /*$$scope*/
+        32)) {
+          update_slot_base(
+            default_slot,
+            default_slot_template,
+            ctx2,
+            /*$$scope*/
+            ctx2[5],
+            !current ? get_all_dirty_from_scope(
+              /*$$scope*/
+              ctx2[5]
+            ) : get_slot_changes(
+              default_slot_template,
+              /*$$scope*/
+              ctx2[5],
+              dirty,
+              null
+            ),
+            null
+          );
+        }
+      }
+      svelte_element_data = get_spread_update(svelte_element_levels, [
+        (!current || dirty & /*href*/
+        1) && { href: (
+          /*href*/
+          ctx2[0]
+        ) },
+        (!current || dirty & /*defaultClass*/
+        2) && { class: (
+          /*defaultClass*/
+          ctx2[1]
+        ) }
+      ]);
+      if (/-/.test(
+        /*href*/
+        ctx2[0] ? "a" : "button"
+      )) {
+        set_custom_element_data_map(svelte_element, svelte_element_data);
+      } else {
+        set_attributes(svelte_element, svelte_element_data);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(svelte_element);
+      if (default_slot)
+        default_slot.d(detaching);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function create_fragment$4(ctx) {
+  let previous_tag = (
+    /*href*/
+    ctx[0] ? "a" : "button"
+  );
+  let svelte_element_anchor;
+  let current;
+  let svelte_element = (
+    /*href*/
+    (ctx[0] ? "a" : "button") && create_dynamic_element(ctx)
+  );
+  return {
+    c() {
+      if (svelte_element)
+        svelte_element.c();
+      svelte_element_anchor = empty();
+    },
+    l(nodes) {
+      if (svelte_element)
+        svelte_element.l(nodes);
+      svelte_element_anchor = empty();
+    },
+    m(target, anchor) {
+      if (svelte_element)
+        svelte_element.m(target, anchor);
+      insert_hydration(target, svelte_element_anchor, anchor);
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      if (
+        /*href*/
+        ctx2[0] ? "a" : "button"
+      ) {
+        if (!previous_tag) {
+          svelte_element = create_dynamic_element(ctx2);
+          svelte_element.c();
+          svelte_element.m(svelte_element_anchor.parentNode, svelte_element_anchor);
+        } else if (safe_not_equal(
+          previous_tag,
+          /*href*/
+          ctx2[0] ? "a" : "button"
+        )) {
+          svelte_element.d(1);
+          svelte_element = create_dynamic_element(ctx2);
+          svelte_element.c();
+          svelte_element.m(svelte_element_anchor.parentNode, svelte_element_anchor);
+        } else {
+          svelte_element.p(ctx2, dirty);
+        }
+      } else if (previous_tag) {
+        svelte_element.d(1);
+        svelte_element = null;
+      }
+      previous_tag = /*href*/
+      ctx2[0] ? "a" : "button";
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(svelte_element);
+      current = true;
+    },
+    o(local) {
+      transition_out(svelte_element);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(svelte_element_anchor);
+      if (svelte_element)
+        svelte_element.d(detaching);
+    }
+  };
+}
+function instance$3($$self, $$props, $$invalidate) {
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let { href = void 0 } = $$props;
+  let { active = false } = $$props;
+  let { activeClass = "" } = $$props;
+  let { normalClass = "text-gray-500 bg-white hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" } = $$props;
+  const group = getContext("group");
+  const table = getContext("table");
+  let defaultClass;
+  function blur_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  function change_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  function click_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  function focus_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  function keydown_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  function keypress_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  function keyup_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  function mouseenter_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  function mouseleave_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  function mouseover_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  $$self.$$set = ($$new_props) => {
+    $$invalidate(19, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
+    if ("href" in $$new_props)
+      $$invalidate(0, href = $$new_props.href);
+    if ("active" in $$new_props)
+      $$invalidate(2, active = $$new_props.active);
+    if ("activeClass" in $$new_props)
+      $$invalidate(3, activeClass = $$new_props.activeClass);
+    if ("normalClass" in $$new_props)
+      $$invalidate(4, normalClass = $$new_props.normalClass);
+    if ("$$scope" in $$new_props)
+      $$invalidate(5, $$scope = $$new_props.$$scope);
+  };
+  $$self.$$.update = () => {
+    $$invalidate(1, defaultClass = classNames("block py-2", group ? "px-3" : "px-4", "text-sm font-medium", table || "border border-gray-300", group || (table ? "rounded" : "rounded-lg"), active ? activeClass : normalClass, $$props.class));
+  };
+  $$props = exclude_internal_props($$props);
+  return [
+    href,
+    defaultClass,
+    active,
+    activeClass,
+    normalClass,
+    $$scope,
+    slots,
+    blur_handler,
+    change_handler,
+    click_handler,
+    focus_handler,
+    keydown_handler,
+    keypress_handler,
+    keyup_handler,
+    mouseenter_handler,
+    mouseleave_handler,
+    mouseover_handler
+  ];
+}
+class PaginationItem extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$3, create_fragment$4, safe_not_equal, {
+      href: 0,
+      active: 2,
+      activeClass: 3,
+      normalClass: 4
+    });
+  }
+}
+function create_default_slot(ctx) {
+  let svg;
+  let path;
+  let t;
+  return {
+    c() {
+      svg = svg_element("svg");
+      path = svg_element("path");
+      t = text("\n  Overview");
+      this.h();
+    },
+    l(nodes) {
+      svg = claim_svg_element(nodes, "svg", {
+        class: true,
+        fill: true,
+        viewBox: true,
+        xmlns: true
+      });
+      var svg_nodes = children(svg);
+      path = claim_svg_element(svg_nodes, "path", {
+        "fill-rule": true,
+        d: true,
+        "clip-rule": true
+      });
+      children(path).forEach(detach);
+      svg_nodes.forEach(detach);
+      t = claim_text(nodes, "\n  Overview");
+      this.h();
+    },
+    h() {
+      attr(path, "fill-rule", "evenodd");
+      attr(path, "d", "M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z");
+      attr(path, "clip-rule", "evenodd");
+      attr(svg, "class", "mr-2 w-5 h-5");
+      attr(svg, "fill", "currentColor");
+      attr(svg, "viewBox", "0 0 20 20");
+      attr(svg, "xmlns", "http://www.w3.org/2000/svg");
+    },
+    m(target, anchor) {
+      insert_hydration(target, svg, anchor);
+      append_hydration(svg, path);
+      insert_hydration(target, t, anchor);
+    },
+    p: noop,
+    d(detaching) {
+      if (detaching)
+        detach(svg);
+      if (detaching)
+        detach(t);
+    }
+  };
+}
+function create_fragment$3(ctx) {
+  let paginationitem;
+  let current;
+  paginationitem = new PaginationItem({
+    props: {
+      class: "inline-flex items-center",
+      href: base + "/",
+      $$slots: { default: [create_default_slot] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(paginationitem.$$.fragment);
+    },
+    l(nodes) {
+      claim_component(paginationitem.$$.fragment, nodes);
+    },
+    m(target, anchor) {
+      mount_component(paginationitem, target, anchor);
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      const paginationitem_changes = {};
+      if (dirty & /*$$scope*/
+      1) {
+        paginationitem_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      paginationitem.$set(paginationitem_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(paginationitem.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(paginationitem.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(paginationitem, detaching);
+    }
+  };
+}
+class BackButton extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, null, create_fragment$3, safe_not_equal, {});
+  }
+}
 const Button_svelte_svelte_type_style_lang = "";
 function create_fragment$2(ctx) {
   let button;
@@ -1356,7 +1876,7 @@ function create_fragment$2(ctx) {
       this.h();
     },
     h() {
-      attr(button, "class", "button svelte-jo4c4i");
+      attr(button, "class", "button svelte-uksn21");
       button.disabled = /*disabled*/
       ctx[0];
     },
@@ -1477,7 +1997,7 @@ function create_fragment$1(ctx) {
       this.h();
     },
     h() {
-      attr(div, "class", "outer svelte-1567fvx");
+      attr(div, "class", "outer svelte-t5s85t");
       set_style(div, "--gap", `${/*gap*/
       ctx[0]}px`);
     },
@@ -1584,7 +2104,7 @@ function create_fragment(ctx) {
       this.h();
     },
     h() {
-      attr(kbd, "class", "kbd svelte-1pykyw7");
+      attr(kbd, "class", "kbd svelte-1joz423");
       set_style(kbd, "--fontSize", `${/*fontSize*/
       ctx[0]}px`);
     },
@@ -1731,16 +2251,17 @@ var shortcut = function(node, params) {
   };
 };
 export {
-  Button as B,
+  BackButton as B,
   Center as C,
   Fretboard as F,
   Interval as I,
   Kbd as K,
   TaskDescription as T,
-  genRandom3NPSScaleCircleOfFithsPair as a,
-  genRandom3NPSIntervalsUpDownSequence as b,
-  genRandom3NPSScale as c,
-  genRandom3NPSTwoStringsUpDownSequence as d,
+  genRandom3NPSScaleCircleOfFifthsPair as a,
+  Button as b,
+  genRandom3NPSIntervalsUpDownSequence as c,
+  genRandom3NPSScale as d,
+  genRandom3NPSTwoStringsUpDownSequence as e,
   filterToTwoRandomStrings as f,
   genRandom3NPSScaleNeighborPair as g,
   shortcut as s

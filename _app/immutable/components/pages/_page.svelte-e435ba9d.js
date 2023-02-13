@@ -1,4 +1,4 @@
-import { S as SvelteComponent, i as init, s as safe_not_equal, k as element, q as text, a as space, l as claim_element, m as children, r as claim_text, h as detach, c as claim_space, n as attr, b as insert_hydration, F as append_hydration, C as noop, K as destroy_each, x as create_component, y as claim_component, z as mount_component, f as transition_in, t as transition_out, A as destroy_component } from "../../chunks/index-949c6c01.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, k as element, q as text, a as space, l as claim_element, m as children, r as claim_text, h as detach, c as claim_space, n as attr, b as insert_hydration, F as append_hydration, C as noop, K as destroy_each, x as create_component, y as claim_component, z as mount_component, f as transition_in, t as transition_out, A as destroy_component } from "../../chunks/index-56902217.js";
 import { b as base } from "../../chunks/paths-054c37c3.js";
 const Overview_svelte_svelte_type_style_lang = "";
 function get_each_context(ctx, list, i) {
@@ -86,18 +86,18 @@ function create_each_block(ctx) {
       this.h();
     },
     h() {
-      attr(h2, "class", "svelte-b9y5is");
-      attr(p0, "class", "description svelte-b9y5is");
-      attr(p1, "class", "scales svelte-b9y5is");
-      attr(div, "class", "block svelte-b9y5is");
+      attr(h2, "class", "svelte-1wjevnc");
+      attr(p0, "class", "description svelte-1wjevnc");
+      attr(p1, "class", "scales svelte-1wjevnc");
+      attr(div, "class", "block svelte-1wjevnc");
       attr(
         a,
         "href",
         /*task*/
         ctx[1].route
       );
-      attr(a, "class", "block-link svelte-b9y5is");
-      attr(li, "class", "svelte-b9y5is");
+      attr(a, "class", "block-link svelte-1wjevnc");
+      attr(li, "class", "svelte-1wjevnc");
     },
     m(target, anchor) {
       insert_hydration(target, li, anchor);
@@ -143,7 +143,7 @@ function create_fragment$1(ctx) {
     c() {
       ul = element("ul");
       h1 = element("h1");
-      t0 = text("Guitar Scale Trainer – Exercises");
+      t0 = text("Guitar Scales Trainer – Exercises");
       t1 = space();
       p = element("p");
       t2 = text("This is a small app that helps to master the guitar fretboard by visualizing various scales and\n    patterns. The exercises force you to visualize different aspects of a scale, like horizontally\n    or vertically related scales, musically related scales, and so on. The idea is to challenge the\n    brain in all sorts of different ways to gain a deeper understanding of the guitar fretboard. The\n    exercises are randomly generated to make to practice all aspects equally, and avoiding to become\n    for instance only familiar with moving a scale upwards, but not downwards. All exercises can be\n    done without a guitar, but of course if can even be more effective to practice the scale along\n    on the instrument to add muscle memory to the process.");
@@ -158,7 +158,7 @@ function create_fragment$1(ctx) {
       var ul_nodes = children(ul);
       h1 = claim_element(ul_nodes, "H1", {});
       var h1_nodes = children(h1);
-      t0 = claim_text(h1_nodes, "Guitar Scale Trainer – Exercises");
+      t0 = claim_text(h1_nodes, "Guitar Scales Trainer – Exercises");
       h1_nodes.forEach(detach);
       t1 = claim_space(ul_nodes);
       p = claim_element(ul_nodes, "P", { class: true });
@@ -173,8 +173,8 @@ function create_fragment$1(ctx) {
       this.h();
     },
     h() {
-      attr(p, "class", "preamble svelte-b9y5is");
-      attr(ul, "class", "svelte-b9y5is");
+      attr(p, "class", "preamble svelte-1wjevnc");
+      attr(ul, "class", "svelte-1wjevnc");
     },
     m(target, anchor) {
       insert_hydration(target, ul, anchor);

@@ -1,4 +1,5 @@
-import { S as SvelteComponent, i as init, s as safe_not_equal, D as create_slot, k as element, a as space, E as head_selector, l as claim_element, h as detach, c as claim_space, m as children, n as attr, F as append_hydration, b as insert_hydration, G as update_slot_base, H as get_all_dirty_from_scope, I as get_slot_changes, f as transition_in, t as transition_out } from "../../chunks/index-949c6c01.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, D as create_slot, k as element, a as space, E as head_selector, l as claim_element, h as detach, c as claim_space, m as children, n as attr, F as append_hydration, b as insert_hydration, G as update_slot_base, H as get_all_dirty_from_scope, I as get_slot_changes, f as transition_in, t as transition_out } from "../../chunks/index-56902217.js";
+const app = "";
 const styles = "";
 const _layout_svelte_svelte_type_style_lang = "";
 function create_fragment(ctx) {
@@ -47,8 +48,8 @@ function create_fragment(ctx) {
       document.title = "Guitar Scales Trainer";
       attr(meta, "name", "description");
       attr(meta, "content", "Guitar scales trainer helps to master the guitar fretboard.");
-      attr(main, "class", "svelte-cqxbd3");
-      attr(div, "class", "app svelte-cqxbd3");
+      attr(main, "class", "svelte-1szz0vn");
+      attr(div, "class", "app svelte-1szz0vn");
     },
     m(target, anchor) {
       append_hydration(document.head, meta);

@@ -77,6 +77,13 @@ function get_all_dirty_from_scope($$scope) {
   }
   return -1;
 }
+function exclude_internal_props(props) {
+  const result = {};
+  for (const k in props)
+    if (k[0] !== "$")
+      result[k] = props[k];
+  return result;
+}
 function action_destroyer(action_result) {
   return action_result && is_function(action_result.destroy) ? action_result.destroy : noop;
 }
@@ -213,6 +220,34 @@ function attr(node, attribute, value) {
     node.removeAttribute(attribute);
   else if (node.getAttribute(attribute) !== value)
     node.setAttribute(attribute, value);
+}
+function set_attributes(node, attributes) {
+  const descriptors = Object.getOwnPropertyDescriptors(node.__proto__);
+  for (const key in attributes) {
+    if (attributes[key] == null) {
+      node.removeAttribute(key);
+    } else if (key === "style") {
+      node.style.cssText = attributes[key];
+    } else if (key === "__value") {
+      node.value = node[key] = attributes[key];
+    } else if (descriptors[key] && descriptors[key].set) {
+      node[key] = attributes[key];
+    } else {
+      attr(node, key, attributes[key]);
+    }
+  }
+}
+function set_custom_element_data_map(node, data_map) {
+  Object.keys(data_map).forEach((key) => {
+    set_custom_element_data(node, key, data_map[key]);
+  });
+}
+function set_custom_element_data(node, prop, value) {
+  if (prop in node) {
+    node[prop] = typeof node[prop] === "boolean" && value === "" ? true : value;
+  } else {
+    attr(node, prop, value);
+  }
 }
 function children(element2) {
   return Array.from(element2.childNodes);
@@ -419,6 +454,9 @@ function createEventDispatcher() {
     return true;
   };
 }
+function getContext(key) {
+  return get_current_component().$$.context.get(key);
+}
 function bubble(component, event) {
   const callbacks = component.$$.callbacks[event.type];
   if (callbacks) {
@@ -537,6 +575,38 @@ function transition_out(block, local, detach2, callback) {
   } else if (callback) {
     callback();
   }
+}
+function get_spread_update(levels, updates) {
+  const update2 = {};
+  const to_null_out = {};
+  const accounted_for = { $$scope: 1 };
+  let i = levels.length;
+  while (i--) {
+    const o = levels[i];
+    const n = updates[i];
+    if (n) {
+      for (const key in o) {
+        if (!(key in n))
+          to_null_out[key] = 1;
+      }
+      for (const key in n) {
+        if (!accounted_for[key]) {
+          update2[key] = n[key];
+          accounted_for[key] = 1;
+        }
+      }
+      levels[i] = n;
+    } else {
+      for (const key in o) {
+        accounted_for[key] = 1;
+      }
+    }
+  }
+  for (const key in to_null_out) {
+    if (!(key in update2))
+      update2[key] = void 0;
+  }
+  return update2;
 }
 function bind(component, name, callback) {
   const index = component.$$.props[name];
@@ -667,6 +737,7 @@ class SvelteComponent {
   }
 }
 export {
+  bind as $,
   destroy_component as A,
   tick as B,
   noop as C,
@@ -682,15 +753,20 @@ export {
   claim_svg_element as M,
   add_render_callback as N,
   add_resize_listener as O,
-  listen as P,
-  bubble as Q,
-  action_destroyer as R,
+  getContext as P,
+  assign as Q,
+  exclude_internal_props as R,
   SvelteComponent as S,
-  run_all as T,
-  createEventDispatcher as U,
-  bind as V,
-  add_flush_callback as W,
+  set_custom_element_data_map as T,
+  set_attributes as U,
+  listen as V,
+  get_spread_update as W,
+  run_all as X,
+  bubble as Y,
+  action_destroyer as Z,
+  createEventDispatcher as _,
   space as a,
+  add_flush_callback as a0,
   insert_hydration as b,
   claim_space as c,
   check_outros as d,
