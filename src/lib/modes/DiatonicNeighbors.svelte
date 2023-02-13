@@ -3,15 +3,26 @@
   import Fretboard from "../Fretboard.svelte";
   import {
     genRandom3NPSScaleNeighborPair,
-    genRandom3NPSScaleCircleOfFithsPair,
+    genRandom3NPSScaleCircleOfFifthsPair,
     type QAPair,
   } from "../scales_generator";
   import InlineTask from "../task_templates/InlineTask.svelte";
 
-  export let mode: "direct_neighbors" | "circle_of_fifth_neigbors";
+  // import { Select, Label } from "flowbite-svelte";
+
+  export let mode: "direct_neighbors" | "circle_of_fifth_neighbors";
 
   const maxFret = 24;
   let qaPair: QAPair;
+  /*
+  let numRevealedStrings = 6;
+
+  let revealedStringsSelectOptions = [
+    { value: 6, name: 6 },
+    { value: 5, name: 5 },
+    { value: 4, name: 4 },
+  ];
+  */
 
   generate();
 
@@ -19,7 +30,7 @@
     qaPair =
       mode == "direct_neighbors"
         ? genRandom3NPSScaleNeighborPair(maxFret)
-        : genRandom3NPSScaleCircleOfFithsPair(maxFret);
+        : genRandom3NPSScaleCircleOfFifthsPair(maxFret);
   }
 </script>
 
@@ -34,6 +45,12 @@
         <b>{qaPair.direction == "up" ? "right" : "left"}</b>
         in the circle of fifths.
       {/if}
+      <!--
+      <Label
+        >Select an option
+        <Select class="mt-2" items={revealedStringsSelectOptions} bind:value={numRevealedStrings} />
+      </Label>
+      -->
     </TaskDescription>
   </div>
   <div slot="question">
@@ -43,3 +60,9 @@
     <Fretboard notes={qaPair.answer} />
   </div>
 </InlineTask>
+
+<style>
+  b {
+    color: #111;
+  }
+</style>

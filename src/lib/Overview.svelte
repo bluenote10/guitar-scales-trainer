@@ -40,7 +40,7 @@
 </script>
 
 <ul>
-  <h1>Guitar Scale Trainer – Exercises</h1>
+  <h1>Guitar Scales Trainer – Exercises</h1>
 
   <p class="preamble">
     This is a small app that helps to master the guitar fretboard by visualizing various scales and

@@ -316,7 +316,7 @@ export function filterToTwoRandomStrings(notes: Notes): Notes {
   return filterToStrings(notes, randTwoStrings());
 }
 
-export function genRandom3NPSScaleCircleOfFithsPair(maxFret: number): QAPair {
+export function genRandom3NPSScaleCircleOfFifthsPair(maxFret: number): QAPair {
   const minFret = 1; // we don't have proper rendering support for fret = 0.
   for (;;) {
     const questionLocator = {

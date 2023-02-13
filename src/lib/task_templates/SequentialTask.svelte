@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { base } from "$app/paths";
+  import BackButton from "$lib/BackButton.svelte";
   import Button from "$lib/Button.svelte";
   import Center from "$lib/Center.svelte";
   import Kbd from "$lib/Kbd.svelte";
@@ -51,7 +51,7 @@
 />
 
 <div>
-  <a href="{base}/">back</a>
+  <BackButton />
 
   <h1>Question / Answer</h1>
 
