@@ -1,5 +1,7 @@
-import { S as SvelteComponent, i as init, s as safe_not_equal, k as element, q as text, a as space, l as claim_element, m as children, r as claim_text, h as detach, c as claim_space, n as attr, b as insert_hydration, F as append_hydration, C as noop, K as destroy_each, x as create_component, y as claim_component, z as mount_component, f as transition_in, t as transition_out, A as destroy_component } from "../../chunks/index-56902217.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, k as element, q as text, a as space, l as claim_element, m as children, r as claim_text, h as detach, c as claim_space, n as attr, b as insert_hydration, F as append_hydration, C as noop, K as destroy_each, x as create_component, y as claim_component, z as mount_component, f as transition_in, t as transition_out, A as destroy_component } from "../../chunks/index-d19db849.js";
 import { b as base } from "../../chunks/paths-054c37c3.js";
+import { t as title$1 } from "../../chunks/DiatonicFromTwoStrings-35f78976.js";
+import { t as title } from "../../chunks/DiatonicNeighbors-eb2c602b.js";
 const Overview_svelte_svelte_type_style_lang = "";
 function get_each_context(ctx, list, i) {
   const child_ctx = ctx.slice();
@@ -223,13 +225,13 @@ function instance($$self) {
   const tasks = [
     {
       route: `${base}/diatonic_neighbors`,
-      title: "Diatonic – Neighboring scales",
+      title,
       scales: "Diatonic (three notes per string)",
       description: "This exercises helps to improve the relationship between neighboring diatonic scales in the next upper/lower position."
     },
     {
       route: `${base}/diatonic_two_strings`,
-      title: "Diatonic – From two strings to full scale pattern",
+      title: title$1,
       scales: "Diatonic (three notes per string)",
       description: "This exercises helps to improve fretboard orientation based on small, two-string fragments."
     },

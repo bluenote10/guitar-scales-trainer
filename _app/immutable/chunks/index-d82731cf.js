@@ -4,7 +4,7 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { S as SvelteComponent, i as init, s as safe_not_equal, D as create_slot, k as element, l as claim_element, m as children, h as detach, n as attr, b as insert_hydration, G as update_slot_base, H as get_all_dirty_from_scope, I as get_slot_changes, f as transition_in, t as transition_out, L as svg_element, e as empty, M as claim_svg_element, N as add_render_callback, F as append_hydration, O as add_resize_listener, C as noop, K as destroy_each, p as set_style, P as getContext, Q as assign, R as exclude_internal_props, T as set_custom_element_data_map, U as set_attributes, V as listen, W as get_spread_update, X as run_all, Y as bubble, x as create_component, y as claim_component, z as mount_component, A as destroy_component, q as text, r as claim_text } from "./index-56902217.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, D as create_slot, k as element, l as claim_element, m as children, h as detach, n as attr, b as insert_hydration, G as update_slot_base, H as get_all_dirty_from_scope, I as get_slot_changes, f as transition_in, t as transition_out, _ as svg_element, e as empty, $ as claim_svg_element, Q as add_render_callback, F as append_hydration, a0 as add_resize_listener, C as noop, K as destroy_each, p as set_style, a1 as getContext, M as assign, N as exclude_internal_props, a2 as set_custom_element_data_map, O as set_attributes, U as listen, P as get_spread_update, V as run_all, W as bubble, x as create_component, y as claim_component, z as mount_component, A as destroy_component, q as text, r as claim_text } from "./index-d19db849.js";
 import { b as base } from "./paths-054c37c3.js";
 const TaskDescription_svelte_svelte_type_style_lang = "";
 function create_fragment$6(ctx) {
@@ -1851,13 +1851,13 @@ function create_fragment$2(ctx) {
   let dispose;
   const default_slot_template = (
     /*#slots*/
-    ctx[2].default
+    ctx[3].default
   );
   const default_slot = create_slot(
     default_slot_template,
     ctx,
     /*$$scope*/
-    ctx[1],
+    ctx[2],
     null
   );
   return {
@@ -1876,9 +1876,11 @@ function create_fragment$2(ctx) {
       this.h();
     },
     h() {
-      attr(button, "class", "button svelte-uksn21");
+      attr(button, "class", "button svelte-15ysy9b");
       button.disabled = /*disabled*/
       ctx[0];
+      set_style(button, "--hPadding", `${/*hPadding*/
+      ctx[1]}px`);
     },
     m(target, anchor) {
       insert_hydration(target, button, anchor);
@@ -1891,7 +1893,7 @@ function create_fragment$2(ctx) {
           button,
           "click",
           /*click_handler*/
-          ctx[3]
+          ctx[4]
         );
         mounted = true;
       }
@@ -1899,20 +1901,20 @@ function create_fragment$2(ctx) {
     p(ctx2, [dirty]) {
       if (default_slot) {
         if (default_slot.p && (!current || dirty & /*$$scope*/
-        2)) {
+        4)) {
           update_slot_base(
             default_slot,
             default_slot_template,
             ctx2,
             /*$$scope*/
-            ctx2[1],
+            ctx2[2],
             !current ? get_all_dirty_from_scope(
               /*$$scope*/
-              ctx2[1]
+              ctx2[2]
             ) : get_slot_changes(
               default_slot_template,
               /*$$scope*/
-              ctx2[1],
+              ctx2[2],
               dirty,
               null
             ),
@@ -1924,6 +1926,11 @@ function create_fragment$2(ctx) {
       1) {
         button.disabled = /*disabled*/
         ctx2[0];
+      }
+      if (dirty & /*hPadding*/
+      2) {
+        set_style(button, "--hPadding", `${/*hPadding*/
+        ctx2[1]}px`);
       }
     },
     i(local) {
@@ -1949,21 +1956,24 @@ function create_fragment$2(ctx) {
 function instance$2($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { disabled = false } = $$props;
+  let { hPadding = 18 } = $$props;
   function click_handler(event) {
     bubble.call(this, $$self, event);
   }
   $$self.$$set = ($$props2) => {
     if ("disabled" in $$props2)
       $$invalidate(0, disabled = $$props2.disabled);
+    if ("hPadding" in $$props2)
+      $$invalidate(1, hPadding = $$props2.hPadding);
     if ("$$scope" in $$props2)
-      $$invalidate(1, $$scope = $$props2.$$scope);
+      $$invalidate(2, $$scope = $$props2.$$scope);
   };
-  return [disabled, $$scope, slots, click_handler];
+  return [disabled, hPadding, $$scope, slots, click_handler];
 }
 class Button extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$2, create_fragment$2, safe_not_equal, { disabled: 0 });
+    init(this, options, instance$2, create_fragment$2, safe_not_equal, { disabled: 0, hPadding: 1 });
   }
 }
 const Center_svelte_svelte_type_style_lang = "";
@@ -2257,12 +2267,13 @@ export {
   Interval as I,
   Kbd as K,
   TaskDescription as T,
-  genRandom3NPSScaleCircleOfFifthsPair as a,
-  Button as b,
-  genRandom3NPSIntervalsUpDownSequence as c,
-  genRandom3NPSScale as d,
-  genRandom3NPSTwoStringsUpDownSequence as e,
+  genRandom3NPSScaleNeighborPair as a,
+  genRandom3NPSScaleCircleOfFifthsPair as b,
+  classNames as c,
+  Button as d,
+  genRandom3NPSIntervalsUpDownSequence as e,
   filterToTwoRandomStrings as f,
-  genRandom3NPSScaleNeighborPair as g,
+  genRandom3NPSScale as g,
+  genRandom3NPSTwoStringsUpDownSequence as h,
   shortcut as s
 };

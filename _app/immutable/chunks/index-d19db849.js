@@ -84,6 +84,21 @@ function exclude_internal_props(props) {
       result[k] = props[k];
   return result;
 }
+function compute_rest_props(props, keys) {
+  const rest = {};
+  keys = new Set(keys);
+  for (const k in props)
+    if (!keys.has(k) && k[0] !== "$")
+      rest[k] = props[k];
+  return rest;
+}
+function compute_slots(slots) {
+  const result = {};
+  for (const key in slots) {
+    result[key] = true;
+  }
+  return result;
+}
 function action_destroyer(action_result) {
   return action_result && is_function(action_result.destroy) ? action_result.destroy : noop;
 }
@@ -351,6 +366,26 @@ function set_style(node, key, value, important) {
     node.style.setProperty(key, value, important ? "important" : "");
   }
 }
+function select_option(select, value) {
+  for (let i = 0; i < select.options.length; i += 1) {
+    const option = select.options[i];
+    if (option.__value === value) {
+      option.selected = true;
+      return;
+    }
+  }
+  select.selectedIndex = -1;
+}
+function select_options(select, value) {
+  for (let i = 0; i < select.options.length; i += 1) {
+    const option = select.options[i];
+    option.selected = ~value.indexOf(option.__value);
+  }
+}
+function select_value(select) {
+  const selected_option = select.querySelector(":checked") || select.options[0];
+  return selected_option && selected_option.__value;
+}
 let crossorigin;
 function is_crossorigin() {
   if (crossorigin === void 0) {
@@ -608,6 +643,9 @@ function get_spread_update(levels, updates) {
   }
   return update2;
 }
+function get_spread_object(spread_props) {
+  return typeof spread_props === "object" && spread_props !== null ? spread_props : {};
+}
 function bind(component, name, callback) {
   const index = component.$$.props[name];
   if (index !== void 0) {
@@ -737,7 +775,7 @@ class SvelteComponent {
   }
 }
 export {
-  bind as $,
+  claim_svg_element as $,
   destroy_component as A,
   tick as B,
   noop as C,
@@ -749,24 +787,30 @@ export {
   get_slot_changes as I,
   component_subscribe as J,
   destroy_each as K,
-  svg_element as L,
-  claim_svg_element as M,
-  add_render_callback as N,
-  add_resize_listener as O,
-  getContext as P,
-  assign as Q,
-  exclude_internal_props as R,
+  compute_rest_props as L,
+  assign as M,
+  exclude_internal_props as N,
+  set_attributes as O,
+  get_spread_update as P,
+  add_render_callback as Q,
+  select_options as R,
   SvelteComponent as S,
-  set_custom_element_data_map as T,
-  set_attributes as U,
-  listen as V,
-  get_spread_update as W,
-  run_all as X,
-  bubble as Y,
-  action_destroyer as Z,
-  createEventDispatcher as _,
+  select_option as T,
+  listen as U,
+  run_all as V,
+  bubble as W,
+  select_value as X,
+  bind as Y,
+  add_flush_callback as Z,
+  svg_element as _,
   space as a,
-  add_flush_callback as a0,
+  add_resize_listener as a0,
+  getContext as a1,
+  set_custom_element_data_map as a2,
+  get_spread_object as a3,
+  action_destroyer as a4,
+  compute_slots as a5,
+  createEventDispatcher as a6,
   insert_hydration as b,
   claim_space as c,
   check_outros as d,

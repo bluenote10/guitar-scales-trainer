@@ -1,6 +1,6 @@
-import { S as SvelteComponent, i as init, s as safe_not_equal, x as create_component, y as claim_component, z as mount_component, f as transition_in, t as transition_out, A as destroy_component, k as element, l as claim_element, m as children, h as detach, n as attr, b as insert_hydration, q as text, r as claim_text, C as noop } from "../../../chunks/index-56902217.js";
-import { d as genRandom3NPSScale, f as filterToTwoRandomStrings, T as TaskDescription, F as Fretboard } from "../../../chunks/index-716012fb.js";
-import { I as InlineTask } from "../../../chunks/InlineTask-820f6a3c.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, x as create_component, y as claim_component, z as mount_component, f as transition_in, t as transition_out, A as destroy_component, k as element, l as claim_element, m as children, h as detach, n as attr, b as insert_hydration, q as text, r as claim_text } from "./index-d19db849.js";
+import { g as genRandom3NPSScale, f as filterToTwoRandomStrings, T as TaskDescription, F as Fretboard } from "./index-d82731cf.js";
+import { I as InlineTask } from "./InlineTask-cb3db1b4.js";
 function create_default_slot(ctx) {
   let t;
   return {
@@ -183,11 +183,12 @@ function create_answer_slot(ctx) {
     }
   };
 }
-function create_fragment$1(ctx) {
+function create_fragment(ctx) {
   let inlinetask;
   let current;
   inlinetask = new InlineTask({
     props: {
+      title,
       $$slots: {
         answer: [create_answer_slot],
         question: [create_question_slot],
@@ -235,6 +236,7 @@ function create_fragment$1(ctx) {
     }
   };
 }
+const title = "Diatonic – From two strings to full scale pattern";
 const maxFret = 24;
 function instance($$self, $$props, $$invalidate) {
   let qNotes;
@@ -249,46 +251,10 @@ function instance($$self, $$props, $$invalidate) {
 class DiatonicFromTwoStrings extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance, create_fragment$1, safe_not_equal, {});
-  }
-}
-function create_fragment(ctx) {
-  let diatonicfromtwostrings;
-  let current;
-  diatonicfromtwostrings = new DiatonicFromTwoStrings({});
-  return {
-    c() {
-      create_component(diatonicfromtwostrings.$$.fragment);
-    },
-    l(nodes) {
-      claim_component(diatonicfromtwostrings.$$.fragment, nodes);
-    },
-    m(target, anchor) {
-      mount_component(diatonicfromtwostrings, target, anchor);
-      current = true;
-    },
-    p: noop,
-    i(local) {
-      if (current)
-        return;
-      transition_in(diatonicfromtwostrings.$$.fragment, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(diatonicfromtwostrings.$$.fragment, local);
-      current = false;
-    },
-    d(detaching) {
-      destroy_component(diatonicfromtwostrings, detaching);
-    }
-  };
-}
-class Page extends SvelteComponent {
-  constructor(options) {
-    super();
-    init(this, options, null, create_fragment, safe_not_equal, {});
+    init(this, options, instance, create_fragment, safe_not_equal, {});
   }
 }
 export {
-  Page as default
+  DiatonicFromTwoStrings as D,
+  title as t
 };
