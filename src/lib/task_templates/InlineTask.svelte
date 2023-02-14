@@ -3,13 +3,17 @@
   import Button from "$lib/Button.svelte";
   import Center from "$lib/Center.svelte";
   import Kbd from "$lib/Kbd.svelte";
+  import Settings from "$lib/icons/Settings.svelte";
   import { shortcut } from "@svelte-put/shortcut";
   import { createEventDispatcher } from "svelte";
+
+  export let title: string;
 
   const dispatch = createEventDispatcher();
 
   let isHidden = true;
   let wasRevealedOnce = false;
+  let settingsVisible = false;
 
   function onRevealHide() {
     isHidden = !isHidden;
@@ -47,9 +51,22 @@
 <div>
   <BackButton />
 
-  <h1>Question / Answer</h1>
+  <div class="title">
+    <h1>{title}</h1>
+    <Button hPadding={7} on:click={() => (settingsVisible = !settingsVisible)}>
+      <Settings />
+    </Button>
+  </div>
 
-  <slot name="description" />
+  {#if $$slots.settings && settingsVisible}
+    <div class="settings">
+      <slot name="settings" />
+    </div>
+  {/if}
+
+  <div class="description">
+    <slot name="description" />
+  </div>
 
   {#if isHidden}
     <slot name="question" />
@@ -77,11 +94,27 @@
 </div>
 
 <style>
+  .title {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   h1 {
     font-size: 1.5rem;
     text-align: center;
     font-weight: bold;
+  }
+
+  .settings {
     margin-top: 60px;
+    margin-bottom: 40px;
+  }
+
+  .description {
+    margin-top: 100px;
+    margin-bottom: 40px;
   }
 
   .footer {

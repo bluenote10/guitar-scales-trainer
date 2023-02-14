@@ -1,8 +1,9 @@
 <script lang="ts">
   export let disabled = false;
+  export let hPadding = 18;
 </script>
 
-<button class="button" {disabled} on:click>
+<button class="button" {disabled} style:--hPadding={`${hPadding}px`} on:click>
   <slot />
 </button>
 
@@ -16,7 +17,7 @@
     cursor: pointer;
     display: inline-block;
     font-weight: 600;
-    padding: 0 18px;
+    padding: 0 var(--hPadding);
     font-size: 18px;
     line-height: 50px;
     height: 50px;

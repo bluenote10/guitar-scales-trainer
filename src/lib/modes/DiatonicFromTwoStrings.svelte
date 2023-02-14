@@ -1,3 +1,7 @@
+<script context="module" lang="ts">
+  export const title = "Diatonic – From two strings to full scale pattern";
+</script>
+
 <script lang="ts">
   import TaskDescription from "$lib/TaskDescription.svelte";
   import Fretboard, { type Notes } from "../Fretboard.svelte";
@@ -16,7 +20,7 @@
   }
 </script>
 
-<InlineTask on:next={generate}>
+<InlineTask {title} on:next={generate}>
   <div slot="description">
     <TaskDescription>Visualize the full scale pattern in that position.</TaskDescription>
   </div>

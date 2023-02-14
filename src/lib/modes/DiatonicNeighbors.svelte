@@ -1,5 +1,10 @@
+<script context="module" lang="ts">
+  export const title = "Diatonic – Neighboring scales";
+</script>
+
 <script lang="ts">
   import TaskDescription from "$lib/TaskDescription.svelte";
+  import Settings from "$lib/icons/Settings.svelte";
   import Fretboard from "../Fretboard.svelte";
   import {
     genRandom3NPSScaleNeighborPair,
@@ -7,14 +12,12 @@
     type QAPair,
   } from "../scales_generator";
   import InlineTask from "../task_templates/InlineTask.svelte";
-
-  // import { Select, Label } from "flowbite-svelte";
+  import { Select, Label } from "flowbite-svelte";
 
   export let mode: "direct_neighbors" | "circle_of_fifth_neighbors";
 
   const maxFret = 24;
   let qaPair: QAPair;
-  /*
   let numRevealedStrings = 6;
 
   let revealedStringsSelectOptions = [
@@ -22,7 +25,6 @@
     { value: 5, name: 5 },
     { value: 4, name: 4 },
   ];
-  */
 
   generate();
 
@@ -34,7 +36,7 @@
   }
 </script>
 
-<InlineTask on:next={generate}>
+<InlineTask {title} on:next={generate}>
   <div slot="description">
     <TaskDescription>
       {#if mode == "direct_neighbors"}
@@ -45,13 +47,13 @@
         <b>{qaPair.direction == "up" ? "right" : "left"}</b>
         in the circle of fifths.
       {/if}
-      <!--
-      <Label
-        >Select an option
-        <Select class="mt-2" items={revealedStringsSelectOptions} bind:value={numRevealedStrings} />
-      </Label>
-      -->
     </TaskDescription>
+  </div>
+  <div slot="settings">
+    <Label>
+      Limit visible to number of strings
+      <Select class="mt-2" items={revealedStringsSelectOptions} bind:value={numRevealedStrings} />
+    </Label>
   </div>
   <div slot="question">
     <Fretboard notes={qaPair.question} />

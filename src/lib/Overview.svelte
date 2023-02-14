@@ -1,17 +1,19 @@
 <script lang="ts">
   import { base } from "$app/paths";
+  import { title as titleDiatonicFromTwoStrings } from "$lib/modes/DiatonicFromTwoStrings.svelte";
+  import { title as titleDiatonicNeighbors } from "$lib/modes/DiatonicNeighbors.svelte";
 
   const tasks = [
     {
       route: `${base}/diatonic_neighbors`,
-      title: "Diatonic – Neighboring scales",
+      title: titleDiatonicNeighbors,
       scales: "Diatonic (three notes per string)",
       description:
         "This exercises helps to improve the relationship between neighboring diatonic scales in the next upper/lower position.",
     },
     {
       route: `${base}/diatonic_two_strings`,
-      title: "Diatonic – From two strings to full scale pattern",
+      title: titleDiatonicFromTwoStrings,
       scales: "Diatonic (three notes per string)",
       description:
         "This exercises helps to improve fretboard orientation based on small, two-string fragments.",
