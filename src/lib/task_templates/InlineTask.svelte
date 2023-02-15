@@ -1,9 +1,9 @@
 <script lang="ts">
-  import BackButton from "$lib/BackButton.svelte";
-  import Button from "$lib/Button.svelte";
   import Center from "$lib/Center.svelte";
   import Kbd from "$lib/Kbd.svelte";
-  import Settings from "$lib/icons/Settings.svelte";
+  import BackButton from "$lib/buttons/BackButton.svelte";
+  import Button from "$lib/buttons/Button.svelte";
+  import SettingsButton from "$lib/buttons/SettingsButton.svelte";
   import { shortcut } from "@svelte-put/shortcut";
   import { createEventDispatcher } from "svelte";
 
@@ -53,9 +53,7 @@
 
   <div class="title">
     <h1>{title}</h1>
-    <Button hPadding={7} on:click={() => (settingsVisible = !settingsVisible)}>
-      <Settings />
-    </Button>
+    <SettingsButton on:click={() => (settingsVisible = !settingsVisible)} />
   </div>
 
   {#if $$slots.settings && settingsVisible}

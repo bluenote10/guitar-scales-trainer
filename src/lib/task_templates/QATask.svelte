@@ -1,8 +1,8 @@
 <script lang="ts">
-  import BackButton from "$lib/BackButton.svelte";
-  import Button from "$lib/Button.svelte";
   import Center from "$lib/Center.svelte";
   import Kbd from "$lib/Kbd.svelte";
+  import BackButton from "$lib/buttons/BackButton.svelte";
+  import Button from "$lib/buttons/Button.svelte";
   import { shortcut } from "@svelte-put/shortcut";
   import { createEventDispatcher } from "svelte";
 

@@ -4,7 +4,7 @@
 
 <script lang="ts">
   import TaskDescription from "$lib/TaskDescription.svelte";
-  import Settings from "$lib/icons/Settings.svelte";
+  import Settings from "$lib/icons/IconSettings.svelte";
   import Fretboard from "../Fretboard.svelte";
   import {
     genRandom3NPSScaleNeighborPair,
