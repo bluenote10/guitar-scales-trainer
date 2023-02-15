@@ -4,7 +4,6 @@
 
 <script lang="ts">
   import TaskDescription from "$lib/TaskDescription.svelte";
-  import Settings from "$lib/icons/IconSettings.svelte";
   import Fretboard from "../Fretboard.svelte";
   import {
     genRandom3NPSScaleNeighborPair,
@@ -12,19 +11,14 @@
     type QAPair,
   } from "../scales_generator";
   import InlineTask from "../task_templates/InlineTask.svelte";
-  import { Select, Label } from "flowbite-svelte";
+  import { Radio, Toggle } from "flowbite-svelte";
 
   export let mode: "direct_neighbors" | "circle_of_fifth_neighbors";
 
   const maxFret = 24;
   let qaPair: QAPair;
   let numRevealedStrings = 6;
-
-  let revealedStringsSelectOptions = [
-    { value: 6, name: 6 },
-    { value: 5, name: 5 },
-    { value: 4, name: 4 },
-  ];
+  let monochrome = false;
 
   generate();
 
@@ -49,22 +43,62 @@
       {/if}
     </TaskDescription>
   </div>
-  <div slot="settings">
-    <Label>
-      Limit visible to number of strings
-      <Select class="mt-2" items={revealedStringsSelectOptions} bind:value={numRevealedStrings} />
-    </Label>
+
+  <div slot="settings" class="settings">
+    <div class="settings-header">String subset</div>
+    <div class="settings-description">
+      Limit the visibility to a subset of strings to make the exercise more challenging.
+    </div>
+    <Radio name="example" class="mt-2 mb-2" bind:group={numRevealedStrings} value={6}>
+      6 strings (full pattern)
+    </Radio>
+    <Radio name="example" class="mt-2 mb-2" bind:group={numRevealedStrings} value={5}>
+      5 strings
+    </Radio>
+    <Radio name="example" class="mt-2 mb-2" bind:group={numRevealedStrings} value={4}>
+      4 strings
+    </Radio>
+    <Radio name="example" class="mt-2 mb-2" bind:group={numRevealedStrings} value={3}>
+      3 strings
+    </Radio>
+    <Radio name="example" class="mt-2 mb-2" bind:group={numRevealedStrings} value={2}>
+      2 strings
+    </Radio>
+
+    <div class="settings-header">Monochrome mode</div>
+    <div class="settings-description">
+      For an extra challenge, disable color hints and switch to monochrome mode.
+    </div>
+    <Toggle on:click={() => (monochrome = !monochrome)} />
   </div>
+
   <div slot="question">
-    <Fretboard notes={qaPair.question} />
+    <Fretboard notes={qaPair.question} {monochrome} />
   </div>
+
   <div slot="answer">
-    <Fretboard notes={qaPair.answer} />
+    <Fretboard notes={qaPair.answer} {monochrome} />
   </div>
 </InlineTask>
 
 <style>
   b {
     color: #111;
+  }
+
+  .settings {
+    font-size: 14px;
+  }
+
+  .settings-header {
+    margin-top: 40px;
+    color: #111;
+    font-weight: bold;
+  }
+
+  .settings-description {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #777;
   }
 </style>

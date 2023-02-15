@@ -10,6 +10,7 @@
   export let numFrets = 24;
   export let numStrings = 6;
   export let notes: Notes = [];
+  export let monochrome: boolean = false;
 
   let width = 300;
 
@@ -75,14 +76,14 @@
         cx={geom.getFingerX(note.fret)}
         cy={geom.getStringY(note.string)}
         r={annotationsRadius}
-        fill={note.color}
-        stroke={note.color}
+        fill={!monochrome ? note.color : "#fbeee0"}
+        stroke={!monochrome ? note.color : "#fbeee0"}
       />
       <circle
         cx={geom.getFingerX(note.fret)}
         cy={geom.getStringY(note.string)}
         r={annotationsRadius}
-        stroke={note.color}
+        stroke={!monochrome ? note.color : "#fbeee0"}
         fill="none"
         filter="url(#brightness-filter)"
         stroke-width="1"

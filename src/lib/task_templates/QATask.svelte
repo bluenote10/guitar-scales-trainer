@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Center from "$lib/Center.svelte";
-  import Kbd from "$lib/Kbd.svelte";
   import BackButton from "$lib/buttons/BackButton.svelte";
-  import Button from "$lib/buttons/Button.svelte";
+  import FancyButton from "$lib/buttons/FancyButton.svelte";
+  import Center from "$lib/helper/Center.svelte";
+  import Kbd from "$lib/helper/Kbd.svelte";
   import { shortcut } from "@svelte-put/shortcut";
   import { createEventDispatcher } from "svelte";
 
@@ -61,12 +61,12 @@
 
   <div class="footer">
     <Center gap={20}>
-      <Button on:click={onRevealHide}>
+      <FancyButton on:click={onRevealHide}>
         <div class="fixed-width">{isHidden ? "Reveal" : "Hide"}</div>
-      </Button>
-      <Button on:click={onNext} disabled={!wasRevealedOnce}>
+      </FancyButton>
+      <FancyButton on:click={onNext} disabled={!wasRevealedOnce}>
         <div class="fixed-width">Next</div>
-      </Button>
+      </FancyButton>
     </Center>
     <Center>
       <p class="hint">
