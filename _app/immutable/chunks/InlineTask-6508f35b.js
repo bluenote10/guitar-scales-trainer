@@ -1,5 +1,5 @@
-import { S as SvelteComponent, i as init, s as safe_not_equal, D as create_slot, _ as svg_element, e as empty, $ as claim_svg_element, m as children, h as detach, n as attr, b as insert_hydration, F as append_hydration, G as update_slot_base, H as get_all_dirty_from_scope, I as get_slot_changes, f as transition_in, t as transition_out, q as text, r as claim_text, u as set_data, M as assign, x as create_component, y as claim_component, z as mount_component, P as get_spread_update, a3 as get_spread_object, A as destroy_component, N as exclude_internal_props, C as noop, k as element, l as claim_element, a as space, c as claim_space, a4 as action_destroyer, g as group_outros, d as check_outros, V as run_all, a5 as compute_slots, a6 as createEventDispatcher } from "./index-d19db849.js";
-import { B as BackButton, d as Button, C as Center, s as shortcut, K as Kbd } from "./index-d82731cf.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, D as create_slot, _ as svg_element, e as empty, $ as claim_svg_element, m as children, h as detach, n as attr, b as insert_hydration, F as append_hydration, G as update_slot_base, H as get_all_dirty_from_scope, I as get_slot_changes, f as transition_in, t as transition_out, q as text, r as claim_text, u as set_data, M as assign, x as create_component, y as claim_component, z as mount_component, P as get_spread_update, a3 as get_spread_object, A as destroy_component, N as exclude_internal_props, C as noop, k as element, l as claim_element, U as listen, W as bubble, a as space, c as claim_space, a4 as action_destroyer, g as group_outros, d as check_outros, V as run_all, a5 as compute_slots, a6 as createEventDispatcher } from "./index-d19db849.js";
+import { B as BackButton, C as Center, s as shortcut, d as Button, K as Kbd } from "./index-b8dfcaa9.js";
 const IconBase_svelte_svelte_type_style_lang = "";
 function create_if_block$1(ctx) {
   let title_1;
@@ -41,7 +41,7 @@ function create_if_block$1(ctx) {
     }
   };
 }
-function create_fragment$3(ctx) {
+function create_fragment$4(ctx) {
   let svg;
   let if_block_anchor;
   let current;
@@ -170,7 +170,7 @@ function create_fragment$3(ctx) {
     }
   };
 }
-function instance$2($$self, $$props, $$invalidate) {
+function instance$3($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { title = null } = $$props;
   let { viewBox } = $$props;
@@ -187,7 +187,7 @@ function instance$2($$self, $$props, $$invalidate) {
 class IconBase extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$2, create_fragment$3, safe_not_equal, { title: 0, viewBox: 1 });
+    init(this, options, instance$3, create_fragment$4, safe_not_equal, { title: 0, viewBox: 1 });
   }
 }
 function create_default_slot$1(ctx) {
@@ -215,7 +215,7 @@ function create_default_slot$1(ctx) {
     }
   };
 }
-function create_fragment$2(ctx) {
+function create_fragment$3(ctx) {
   let iconbase;
   let current;
   const iconbase_spread_levels = [
@@ -269,7 +269,7 @@ function create_fragment$2(ctx) {
     }
   };
 }
-function instance$1($$self, $$props, $$invalidate) {
+function instance$2($$self, $$props, $$invalidate) {
   $$self.$$set = ($$new_props) => {
     $$invalidate(0, $$props = assign(assign({}, $$props), exclude_internal_props($$new_props)));
   };
@@ -279,11 +279,11 @@ function instance$1($$self, $$props, $$invalidate) {
 class IoIosSettings extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$1, create_fragment$2, safe_not_equal, {});
+    init(this, options, instance$2, create_fragment$3, safe_not_equal, {});
   }
 }
-const Settings_svelte_svelte_type_style_lang = "";
-function create_fragment$1(ctx) {
+const IconSettings_svelte_svelte_type_style_lang = "";
+function create_fragment$2(ctx) {
   let div;
   let ioiossettings;
   let current;
@@ -327,10 +327,79 @@ function create_fragment$1(ctx) {
     }
   };
 }
-class Settings extends SvelteComponent {
+class IconSettings extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, null, create_fragment$1, safe_not_equal, {});
+    init(this, options, null, create_fragment$2, safe_not_equal, {});
+  }
+}
+function create_fragment$1(ctx) {
+  let button;
+  let iconsettings;
+  let current;
+  let mounted;
+  let dispose;
+  iconsettings = new IconSettings({});
+  return {
+    c() {
+      button = element("button");
+      create_component(iconsettings.$$.fragment);
+      this.h();
+    },
+    l(nodes) {
+      button = claim_element(nodes, "BUTTON", { class: true });
+      var button_nodes = children(button);
+      claim_component(iconsettings.$$.fragment, button_nodes);
+      button_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(button, "class", "border border-gray-300 rounded-lg px-1 py-1 hover:bg-gray-100 hover:text-gray-700");
+    },
+    m(target, anchor) {
+      insert_hydration(target, button, anchor);
+      mount_component(iconsettings, button, null);
+      current = true;
+      if (!mounted) {
+        dispose = listen(
+          button,
+          "click",
+          /*click_handler*/
+          ctx[0]
+        );
+        mounted = true;
+      }
+    },
+    p: noop,
+    i(local) {
+      if (current)
+        return;
+      transition_in(iconsettings.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(iconsettings.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(button);
+      destroy_component(iconsettings);
+      mounted = false;
+      dispose();
+    }
+  };
+}
+function instance$1($$self) {
+  function click_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  return [click_handler];
+}
+class SettingsButton extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$1, create_fragment$1, safe_not_equal, {});
   }
 }
 const InlineTask_svelte_svelte_type_style_lang = "";
@@ -342,36 +411,6 @@ const get_description_slot_changes = (dirty) => ({});
 const get_description_slot_context = (ctx) => ({});
 const get_settings_slot_changes = (dirty) => ({});
 const get_settings_slot_context = (ctx) => ({});
-function create_default_slot_6(ctx) {
-  let settings;
-  let current;
-  settings = new Settings({});
-  return {
-    c() {
-      create_component(settings.$$.fragment);
-    },
-    l(nodes) {
-      claim_component(settings.$$.fragment, nodes);
-    },
-    m(target, anchor) {
-      mount_component(settings, target, anchor);
-      current = true;
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(settings.$$.fragment, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(settings.$$.fragment, local);
-      current = false;
-    },
-    d(detaching) {
-      destroy_component(settings, detaching);
-    }
-  };
-}
 function create_if_block_1(ctx) {
   let div;
   let current;
@@ -878,7 +917,7 @@ function create_fragment(ctx) {
   let h1;
   let t1;
   let t2;
-  let button;
+  let settingsbutton;
   let t3;
   let t4;
   let div1;
@@ -894,14 +933,8 @@ function create_fragment(ctx) {
   let mounted;
   let dispose;
   backbutton = new BackButton({});
-  button = new Button({
-    props: {
-      hPadding: 7,
-      $$slots: { default: [create_default_slot_6] },
-      $$scope: { ctx }
-    }
-  });
-  button.$on(
+  settingsbutton = new SettingsButton({});
+  settingsbutton.$on(
     "click",
     /*click_handler*/
     ctx[8]
@@ -959,7 +992,7 @@ function create_fragment(ctx) {
         ctx[0]
       );
       t2 = space();
-      create_component(button.$$.fragment);
+      create_component(settingsbutton.$$.fragment);
       t3 = space();
       if (if_block0)
         if_block0.c();
@@ -992,7 +1025,7 @@ function create_fragment(ctx) {
       );
       h1_nodes.forEach(detach);
       t2 = claim_space(div0_nodes);
-      claim_component(button.$$.fragment, div0_nodes);
+      claim_component(settingsbutton.$$.fragment, div0_nodes);
       div0_nodes.forEach(detach);
       t3 = claim_space(div3_nodes);
       if (if_block0)
@@ -1029,7 +1062,7 @@ function create_fragment(ctx) {
       append_hydration(div0, h1);
       append_hydration(h1, t1);
       append_hydration(div0, t2);
-      mount_component(button, div0, null);
+      mount_component(settingsbutton, div0, null);
       append_hydration(div3, t3);
       if (if_block0)
         if_block0.m(div3, null);
@@ -1080,12 +1113,6 @@ function create_fragment(ctx) {
           /*title*/
           ctx2[0]
         );
-      const button_changes = {};
-      if (dirty & /*$$scope*/
-      512) {
-        button_changes.$$scope = { dirty, ctx: ctx2 };
-      }
-      button.$set(button_changes);
       if (
         /*$$slots*/
         ctx2[6].settings && /*settingsVisible*/
@@ -1170,7 +1197,7 @@ function create_fragment(ctx) {
       if (current)
         return;
       transition_in(backbutton.$$.fragment, local);
-      transition_in(button.$$.fragment, local);
+      transition_in(settingsbutton.$$.fragment, local);
       transition_in(if_block0);
       transition_in(description_slot, local);
       transition_in(if_block1);
@@ -1180,7 +1207,7 @@ function create_fragment(ctx) {
     },
     o(local) {
       transition_out(backbutton.$$.fragment, local);
-      transition_out(button.$$.fragment, local);
+      transition_out(settingsbutton.$$.fragment, local);
       transition_out(if_block0);
       transition_out(description_slot, local);
       transition_out(if_block1);
@@ -1192,7 +1219,7 @@ function create_fragment(ctx) {
       if (detaching)
         detach(div3);
       destroy_component(backbutton);
-      destroy_component(button);
+      destroy_component(settingsbutton);
       if (if_block0)
         if_block0.d();
       if (description_slot)

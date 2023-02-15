@@ -2317,6 +2317,10 @@ input[type="range"].range-lg::-moz-range-thumb {
   padding-left: 0.125rem;
   padding-right: 0.125rem;
 }
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;

@@ -1,33 +1,33 @@
 import { S as SvelteComponent, i as init, s as safe_not_equal, x as create_component, y as claim_component, z as mount_component, C as noop, f as transition_in, t as transition_out, A as destroy_component } from "../../../chunks/index-d19db849.js";
-import { D as DiatonicNeighbors } from "../../../chunks/DiatonicNeighbors-eb2c602b.js";
+import { D as DiatonicFromTwoStrings } from "../../../chunks/DiatonicFromTwoStrings-3b29dcff.js";
 function create_fragment(ctx) {
-  let diatonicneighbors;
+  let diatonicfromtwostrings;
   let current;
-  diatonicneighbors = new DiatonicNeighbors({ props: { mode: "direct_neighbors" } });
+  diatonicfromtwostrings = new DiatonicFromTwoStrings({});
   return {
     c() {
-      create_component(diatonicneighbors.$$.fragment);
+      create_component(diatonicfromtwostrings.$$.fragment);
     },
     l(nodes) {
-      claim_component(diatonicneighbors.$$.fragment, nodes);
+      claim_component(diatonicfromtwostrings.$$.fragment, nodes);
     },
     m(target, anchor) {
-      mount_component(diatonicneighbors, target, anchor);
+      mount_component(diatonicfromtwostrings, target, anchor);
       current = true;
     },
     p: noop,
     i(local) {
       if (current)
         return;
-      transition_in(diatonicneighbors.$$.fragment, local);
+      transition_in(diatonicfromtwostrings.$$.fragment, local);
       current = true;
     },
     o(local) {
-      transition_out(diatonicneighbors.$$.fragment, local);
+      transition_out(diatonicfromtwostrings.$$.fragment, local);
       current = false;
     },
     d(detaching) {
-      destroy_component(diatonicneighbors, detaching);
+      destroy_component(diatonicfromtwostrings, detaching);
     }
   };
 }
