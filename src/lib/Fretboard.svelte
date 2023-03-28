@@ -12,7 +12,7 @@
   export let notes: Notes = [];
   export let monochrome: boolean = false;
 
-  let width = 300;
+  let width = 0;
 
   const centerInlays = [3, 5, 7, 9, 15, 17, 19, 21];
   $: centerInlayY = height / 2;
@@ -33,14 +33,19 @@
   $: maxY = geom.height;
 </script>
 
-<div class="frame" bind:clientWidth={width}>
-  <svg class="svg" {width} {height} xmlns="http://www.w3.org/2000/svg">
-    <!-- viewBox="-1 -1 2 2" -->
-    <rect width="100%" height="100%" fill="#15161B" />
+<!--
+Note that there is a noticeable delay between rendering of the initial page,
+and the rendering of the fretboard with the proper width/height. This might be
+due to prerendering (div exists statically, but JavaScript resizing/onMount handler
+only execute much later). To avoid the jump in the SVG rendering, we set the initial
+drawing size to 0, but make sure that the containing div already has the proper aspect
+ratio, so that the height doesn't change when the SVG gets rendered properly. This
+minimizes the effect of the delay.
+-->
 
-    <!--
-		<text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
-		-->
+<div class="frame" bind:clientWidth={width} style:--aspect-ratio={geom.aspectRatio}>
+  <svg class="svg" {width} {height} xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="#15161B" />
 
     <filter id="brightness-filter">
       <feComponentTransfer>
@@ -100,6 +105,8 @@
     /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px,
       rgba(17, 17, 26, 0.1) 0px 16px 56px;
+
+    aspect-ratio: var(--aspect-ratio);
   }
 
   .svg {

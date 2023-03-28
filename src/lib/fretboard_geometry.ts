@@ -2,11 +2,13 @@ const SEMITONE_SCALE_FACTOR = 1.0594630943592953;
 
 export class Geometry {
   height: number;
+  aspectRatio: number;
   sumFretFactors: number[];
 
   constructor(public width: number, public numStrings: number, public numFrets: number) {
     const heightRatio = (0.064 / 0.48) * (numStrings / 6);
     this.height = width * heightRatio;
+    this.aspectRatio = 1 / heightRatio;
 
     // In theory this might be calculated via https://en.wikipedia.org/wiki/Faulhaber%27s_formula
     // but not really practical.
