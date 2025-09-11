@@ -5,7 +5,11 @@ export class Geometry {
   aspectRatio: number;
   sumFretFactors: number[];
 
-  constructor(public width: number, public numStrings: number, public numFrets: number) {
+  constructor(
+    public width: number,
+    public numStrings: number,
+    public numFrets: number,
+  ) {
     const heightRatio = (0.064 / 0.48) * (numStrings / 6);
     this.height = width * heightRatio;
     this.aspectRatio = 1 / heightRatio;

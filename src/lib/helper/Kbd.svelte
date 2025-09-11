@@ -36,7 +36,9 @@
     border-top-color: rgb(159, 166, 173);
     border-top-style: solid;
     border-top-width: 1px;
-    box-shadow: rgba(12, 13, 14, 0.15) 0px 1px 1px 0px, rgb(255, 255, 255) 0px 1px 0px 0px inset;
+    box-shadow:
+      rgba(12, 13, 14, 0.15) 0px 1px 1px 0px,
+      rgb(255, 255, 255) 0px 1px 0px 0px inset;
     margin-bottom: 0px;
     margin-left: 1.1px;
     margin-right: 1.1px;
