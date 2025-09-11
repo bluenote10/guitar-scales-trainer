@@ -12,7 +12,7 @@
     "test": "vitest run",
     "test:watch": "vitest watch",
     "lint": "eslint .",
-    "format": "prettier --plugin-search-dir . --write .",
+    "format": "prettier --write .",
     "check-all": "npm run check && npm run lint && npm run test && npm run build && npm run format"
   },
   "devDependencies": {
@@ -22,7 +22,7 @@
     "@svelte-put/shortcut": "^1.1.0",
     "@sveltejs/adapter-static": "^3.0.0",
     "@sveltejs/kit": "^2.38.0",
-    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "classnames": "^2.3.2",
