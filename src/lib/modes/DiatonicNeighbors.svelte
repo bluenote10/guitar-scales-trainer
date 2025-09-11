@@ -69,7 +69,7 @@
     <div class="settings-description">
       For an extra challenge, disable color hints and switch to monochrome mode.
     </div>
-    <Toggle on:click={() => (monochrome = !monochrome)} />
+    <Toggle bind:checked={monochrome} />
   </div>
 
   <div slot="question">
