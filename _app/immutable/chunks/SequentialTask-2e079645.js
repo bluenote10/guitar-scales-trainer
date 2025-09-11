@@ -1,5 +1,5 @@
-import { S as SvelteComponent, i as init, s as safe_not_equal, D as create_slot, k as element, x as create_component, a as space, q as text, l as claim_element, m as children, y as claim_component, c as claim_space, r as claim_text, h as detach, n as attr, b as insert_hydration, z as mount_component, F as append_hydration, a4 as action_destroyer, G as update_slot_base, H as get_all_dirty_from_scope, I as get_slot_changes, f as transition_in, t as transition_out, A as destroy_component, V as run_all, a6 as createEventDispatcher, C as noop } from "./index-d19db849.js";
-import { B as BackButton, C as Center, s as shortcut, d as Button, K as Kbd } from "./index-b8dfcaa9.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, D as create_slot, k as element, x as create_component, a as space, q as text, l as claim_element, m as children, y as claim_component, c as claim_space, r as claim_text, h as detach, n as attr, b as insert_hydration, z as mount_component, F as append_hydration, W as action_destroyer, G as update_slot_base, H as get_all_dirty_from_scope, I as get_slot_changes, f as transition_in, t as transition_out, A as destroy_component, U as run_all, a4 as createEventDispatcher, C as noop } from "./index-3dd64e7b.js";
+import { B as BackButton, C as Center, s as shortcut, d as FancyButton, K as Kbd } from "./index-b373e42a.js";
 const SequentialTask_svelte_svelte_type_style_lang = "";
 const get_sequence_slot_changes = (dirty) => ({});
 const get_sequence_slot_context = (ctx) => ({});
@@ -66,22 +66,22 @@ function create_default_slot_4(ctx) {
   };
 }
 function create_default_slot_3(ctx) {
-  let button0;
+  let fancybutton0;
   let t;
-  let button1;
+  let fancybutton1;
   let current;
-  button0 = new Button({
+  fancybutton0 = new FancyButton({
     props: {
       $$slots: { default: [create_default_slot_5] },
       $$scope: { ctx }
     }
   });
-  button0.$on(
+  fancybutton0.$on(
     "click",
     /*onIncrementIdx*/
     ctx[1]
   );
-  button1 = new Button({
+  fancybutton1 = new FancyButton({
     props: {
       disabled: !/*wasRevealedEntirely*/
       ctx[0],
@@ -89,63 +89,63 @@ function create_default_slot_3(ctx) {
       $$scope: { ctx }
     }
   });
-  button1.$on(
+  fancybutton1.$on(
     "click",
     /*onNext*/
     ctx[2]
   );
   return {
     c() {
-      create_component(button0.$$.fragment);
+      create_component(fancybutton0.$$.fragment);
       t = space();
-      create_component(button1.$$.fragment);
+      create_component(fancybutton1.$$.fragment);
     },
     l(nodes) {
-      claim_component(button0.$$.fragment, nodes);
+      claim_component(fancybutton0.$$.fragment, nodes);
       t = claim_space(nodes);
-      claim_component(button1.$$.fragment, nodes);
+      claim_component(fancybutton1.$$.fragment, nodes);
     },
     m(target, anchor) {
-      mount_component(button0, target, anchor);
+      mount_component(fancybutton0, target, anchor);
       insert_hydration(target, t, anchor);
-      mount_component(button1, target, anchor);
+      mount_component(fancybutton1, target, anchor);
       current = true;
     },
     p(ctx2, dirty) {
-      const button0_changes = {};
+      const fancybutton0_changes = {};
       if (dirty & /*$$scope*/
       64) {
-        button0_changes.$$scope = { dirty, ctx: ctx2 };
+        fancybutton0_changes.$$scope = { dirty, ctx: ctx2 };
       }
-      button0.$set(button0_changes);
-      const button1_changes = {};
+      fancybutton0.$set(fancybutton0_changes);
+      const fancybutton1_changes = {};
       if (dirty & /*wasRevealedEntirely*/
       1)
-        button1_changes.disabled = !/*wasRevealedEntirely*/
+        fancybutton1_changes.disabled = !/*wasRevealedEntirely*/
         ctx2[0];
       if (dirty & /*$$scope*/
       64) {
-        button1_changes.$$scope = { dirty, ctx: ctx2 };
+        fancybutton1_changes.$$scope = { dirty, ctx: ctx2 };
       }
-      button1.$set(button1_changes);
+      fancybutton1.$set(fancybutton1_changes);
     },
     i(local) {
       if (current)
         return;
-      transition_in(button0.$$.fragment, local);
-      transition_in(button1.$$.fragment, local);
+      transition_in(fancybutton0.$$.fragment, local);
+      transition_in(fancybutton1.$$.fragment, local);
       current = true;
     },
     o(local) {
-      transition_out(button0.$$.fragment, local);
-      transition_out(button1.$$.fragment, local);
+      transition_out(fancybutton0.$$.fragment, local);
+      transition_out(fancybutton1.$$.fragment, local);
       current = false;
     },
     d(detaching) {
-      destroy_component(button0, detaching);
+      destroy_component(fancybutton0, detaching);
       if (detaching)
         detach(t);
-      destroy_component(button1, detaching);
+      destroy_component(fancybutton1, detaching);
     }
   };
 }

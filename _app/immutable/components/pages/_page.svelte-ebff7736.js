@@ -1,7 +1,7 @@
-import { S as SvelteComponent, i as init, s as safe_not_equal, k as element, q as text, a as space, l as claim_element, m as children, r as claim_text, h as detach, c as claim_space, n as attr, b as insert_hydration, F as append_hydration, C as noop, K as destroy_each, x as create_component, y as claim_component, z as mount_component, f as transition_in, t as transition_out, A as destroy_component } from "../../chunks/index-d19db849.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, k as element, q as text, a as space, l as claim_element, m as children, r as claim_text, h as detach, c as claim_space, n as attr, b as insert_hydration, F as append_hydration, C as noop, K as destroy_each, x as create_component, y as claim_component, z as mount_component, f as transition_in, t as transition_out, A as destroy_component } from "../../chunks/index-3dd64e7b.js";
 import { b as base } from "../../chunks/paths-054c37c3.js";
-import { t as title$1 } from "../../chunks/DiatonicFromTwoStrings-3b29dcff.js";
-import { t as title } from "../../chunks/DiatonicNeighbors-38c7b8d4.js";
+import { t as title$1 } from "../../chunks/DiatonicFromTwoStrings-a374d848.js";
+import { t as title } from "../../chunks/DiatonicNeighbors-be63cbe5.js";
 const Overview_svelte_svelte_type_style_lang = "";
 function get_each_context(ctx, list, i) {
   const child_ctx = ctx.slice();
@@ -148,7 +148,7 @@ function create_fragment$1(ctx) {
       t0 = text("Guitar Scales Trainer – Exercises");
       t1 = space();
       p = element("p");
-      t2 = text("This is a small app that helps to master the guitar fretboard by visualizing various scales and\n    patterns. The exercises force you to visualize different aspects of a scale, like horizontally\n    or vertically related scales, musically related scales, and so on. The idea is to challenge the\n    brain in all sorts of different ways to gain a deeper understanding of the guitar fretboard. The\n    exercises are randomly generated to make to practice all aspects equally, and avoiding to become\n    for instance only familiar with moving a scale upwards, but not downwards. All exercises can be\n    done without a guitar, but of course if can even be more effective to practice the scale along\n    on the instrument to add muscle memory to the process.");
+      t2 = text("This is a small app that helps to master the guitar fretboard by visualizing various scales and\n    patterns. The exercises force you to visualize different aspects of a scale, like horizontally\n    or vertically related scales, musically related scales, and so on. The idea is to challenge the\n    brain in all sorts of different ways to gain a deeper understanding of the guitar fretboard. The\n    exercises are randomly generated to practice all aspects equally, and avoiding to become for\n    instance only familiar with moving a scale upwards, but not downwards. All exercises can be done\n    without a guitar, but of course if can be even more effective to practice the scale along on the\n    instrument to add muscle memory to the process.");
       t3 = space();
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
@@ -165,7 +165,7 @@ function create_fragment$1(ctx) {
       t1 = claim_space(ul_nodes);
       p = claim_element(ul_nodes, "P", { class: true });
       var p_nodes = children(p);
-      t2 = claim_text(p_nodes, "This is a small app that helps to master the guitar fretboard by visualizing various scales and\n    patterns. The exercises force you to visualize different aspects of a scale, like horizontally\n    or vertically related scales, musically related scales, and so on. The idea is to challenge the\n    brain in all sorts of different ways to gain a deeper understanding of the guitar fretboard. The\n    exercises are randomly generated to make to practice all aspects equally, and avoiding to become\n    for instance only familiar with moving a scale upwards, but not downwards. All exercises can be\n    done without a guitar, but of course if can even be more effective to practice the scale along\n    on the instrument to add muscle memory to the process.");
+      t2 = claim_text(p_nodes, "This is a small app that helps to master the guitar fretboard by visualizing various scales and\n    patterns. The exercises force you to visualize different aspects of a scale, like horizontally\n    or vertically related scales, musically related scales, and so on. The idea is to challenge the\n    brain in all sorts of different ways to gain a deeper understanding of the guitar fretboard. The\n    exercises are randomly generated to practice all aspects equally, and avoiding to become for\n    instance only familiar with moving a scale upwards, but not downwards. All exercises can be done\n    without a guitar, but of course if can be even more effective to practice the scale along on the\n    instrument to add muscle memory to the process.");
       p_nodes.forEach(detach);
       t3 = claim_space(ul_nodes);
       for (let i = 0; i < each_blocks.length; i += 1) {

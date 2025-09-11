@@ -4,7 +4,7 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { S as SvelteComponent, i as init, s as safe_not_equal, D as create_slot, k as element, l as claim_element, m as children, h as detach, n as attr, b as insert_hydration, G as update_slot_base, H as get_all_dirty_from_scope, I as get_slot_changes, f as transition_in, t as transition_out, _ as svg_element, e as empty, $ as claim_svg_element, Q as add_render_callback, F as append_hydration, a0 as add_resize_listener, C as noop, K as destroy_each, p as set_style, a1 as getContext, M as assign, N as exclude_internal_props, a2 as set_custom_element_data_map, O as set_attributes, U as listen, P as get_spread_update, V as run_all, W as bubble, x as create_component, y as claim_component, z as mount_component, A as destroy_component, q as text, r as claim_text } from "./index-d19db849.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, D as create_slot, k as element, l as claim_element, m as children, h as detach, n as attr, b as insert_hydration, G as update_slot_base, H as get_all_dirty_from_scope, I as get_slot_changes, f as transition_in, t as transition_out, $ as svg_element, e as empty, a0 as claim_svg_element, a1 as add_render_callback, p as set_style, F as append_hydration, a2 as add_resize_listener, C as noop, K as destroy_each, R as getContext, M as assign, N as exclude_internal_props, a3 as set_custom_element_data_map, O as set_attributes, T as listen, P as get_spread_update, U as run_all, V as bubble, x as create_component, y as claim_component, z as mount_component, A as destroy_component, q as text, r as claim_text } from "./index-3dd64e7b.js";
 import { b as base } from "./paths-054c37c3.js";
 const TaskDescription_svelte_svelte_type_style_lang = "";
 function create_fragment$6(ctx) {
@@ -136,12 +136,14 @@ const SEMITONE_SCALE_FACTOR = 1.0594630943592953;
 class Geometry {
   constructor(width, numStrings, numFrets) {
     __publicField(this, "height");
+    __publicField(this, "aspectRatio");
     __publicField(this, "sumFretFactors");
     this.width = width;
     this.numStrings = numStrings;
     this.numFrets = numFrets;
     const heightRatio = 0.064 / 0.48 * (numStrings / 6);
     this.height = width * heightRatio;
+    this.aspectRatio = 1 / heightRatio;
     const sumFretFactors = [0];
     let sumFretFactor = 0;
     for (let i = 0; i <= numFrets; ++i) {
@@ -163,22 +165,22 @@ class Geometry {
 const Fretboard_svelte_svelte_type_style_lang = "";
 function get_each_context(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[15] = list[i];
+  child_ctx[16] = list[i];
   return child_ctx;
 }
 function get_each_context_1(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[18] = list[i];
+  child_ctx[19] = list[i];
   return child_ctx;
 }
 function get_each_context_2(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[10] = list[i];
+  child_ctx[11] = list[i];
   return child_ctx;
 }
 function get_each_context_3(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[23] = list[i];
+  child_ctx[24] = list[i];
   return child_ctx;
 }
 function create_each_block_3(ctx) {
@@ -196,21 +198,21 @@ function create_each_block_3(ctx) {
     },
     h() {
       attr(circle, "cx", circle_cx_value = /*geom*/
-      ctx[2].getFingerX(
+      ctx[3].getFingerX(
         /*centerInlay*/
-        ctx[23]
+        ctx[24]
       ));
       attr(
         circle,
         "cy",
         /*centerInlayY*/
-        ctx[9]
+        ctx[10]
       );
       attr(
         circle,
         "r",
         /*inlayRadius*/
-        ctx[8]
+        ctx[9]
       );
       attr(circle, "fill", "#FFF8DC");
     },
@@ -219,29 +221,29 @@ function create_each_block_3(ctx) {
     },
     p(ctx2, dirty) {
       if (dirty & /*geom*/
-      4 && circle_cx_value !== (circle_cx_value = /*geom*/
-      ctx2[2].getFingerX(
+      8 && circle_cx_value !== (circle_cx_value = /*geom*/
+      ctx2[3].getFingerX(
         /*centerInlay*/
-        ctx2[23]
+        ctx2[24]
       ))) {
         attr(circle, "cx", circle_cx_value);
       }
       if (dirty & /*centerInlayY*/
-      512) {
+      1024) {
         attr(
           circle,
           "cy",
           /*centerInlayY*/
-          ctx2[9]
+          ctx2[10]
         );
       }
       if (dirty & /*inlayRadius*/
-      256) {
+      512) {
         attr(
           circle,
           "r",
           /*inlayRadius*/
-          ctx2[8]
+          ctx2[9]
         );
       }
     },
@@ -273,15 +275,15 @@ function create_each_block_2(ctx) {
     },
     h() {
       attr(line, "x1", line_x__value = /*frets*/
-      ctx[10]);
+      ctx[11]);
       attr(line, "y1", "0");
       attr(line, "x2", line_x__value_1 = /*frets*/
-      ctx[10]);
+      ctx[11]);
       attr(
         line,
         "y2",
         /*maxY*/
-        ctx[4]
+        ctx[5]
       );
       set_style(line, "stroke", "#D7D7D7");
       set_style(line, "stroke-width", "3");
@@ -291,22 +293,22 @@ function create_each_block_2(ctx) {
     },
     p(ctx2, dirty) {
       if (dirty & /*frets*/
-      1024 && line_x__value !== (line_x__value = /*frets*/
-      ctx2[10])) {
+      2048 && line_x__value !== (line_x__value = /*frets*/
+      ctx2[11])) {
         attr(line, "x1", line_x__value);
       }
       if (dirty & /*frets*/
-      1024 && line_x__value_1 !== (line_x__value_1 = /*frets*/
-      ctx2[10])) {
+      2048 && line_x__value_1 !== (line_x__value_1 = /*frets*/
+      ctx2[11])) {
         attr(line, "x2", line_x__value_1);
       }
       if (dirty & /*maxY*/
-      16) {
+      32) {
         attr(
           line,
           "y2",
           /*maxY*/
-          ctx2[4]
+          ctx2[5]
         );
       }
     },
@@ -339,15 +341,15 @@ function create_each_block_1(ctx) {
     h() {
       attr(line, "x1", "0");
       attr(line, "y1", line_y__value = /*string*/
-      ctx[18]);
+      ctx[19]);
       attr(
         line,
         "x2",
         /*maxX*/
-        ctx[5]
+        ctx[6]
       );
       attr(line, "y2", line_y__value_1 = /*string*/
-      ctx[18]);
+      ctx[19]);
       set_style(line, "stroke", "#98817B");
       set_style(line, "stroke-width", "1");
     },
@@ -356,22 +358,22 @@ function create_each_block_1(ctx) {
     },
     p(ctx2, dirty) {
       if (dirty & /*strings*/
-      64 && line_y__value !== (line_y__value = /*string*/
-      ctx2[18])) {
+      128 && line_y__value !== (line_y__value = /*string*/
+      ctx2[19])) {
         attr(line, "y1", line_y__value);
       }
       if (dirty & /*maxX*/
-      32) {
+      64) {
         attr(
           line,
           "x2",
           /*maxX*/
-          ctx2[5]
+          ctx2[6]
         );
       }
       if (dirty & /*strings*/
-      64 && line_y__value_1 !== (line_y__value_1 = /*string*/
-      ctx2[18])) {
+      128 && line_y__value_1 !== (line_y__value_1 = /*string*/
+      ctx2[19])) {
         attr(line, "y2", line_y__value_1);
       }
     },
@@ -420,45 +422,54 @@ function create_each_block(ctx) {
       this.h();
     },
     h() {
-      attr(circle0, "class", "shadow svelte-1f7dm2n");
+      attr(circle0, "class", "shadow svelte-1p46h9k");
       attr(circle0, "cx", circle0_cx_value = /*geom*/
-      ctx[2].getFingerX(
+      ctx[3].getFingerX(
         /*note*/
-        ctx[15].fret
+        ctx[16].fret
       ));
       attr(circle0, "cy", circle0_cy_value = /*geom*/
-      ctx[2].getStringY(
+      ctx[3].getStringY(
         /*note*/
-        ctx[15].string
+        ctx[16].string
       ));
       attr(
         circle0,
         "r",
         /*annotationsRadius*/
-        ctx[7]
+        ctx[8]
       );
-      attr(circle0, "fill", circle0_fill_value = /*note*/
-      ctx[15].color);
-      attr(circle0, "stroke", circle0_stroke_value = /*note*/
-      ctx[15].color);
-      attr(circle1, "cx", circle1_cx_value = /*geom*/
-      ctx[2].getFingerX(
+      attr(circle0, "fill", circle0_fill_value = !/*monochrome*/
+      ctx[1] ? (
         /*note*/
-        ctx[15].fret
+        ctx[16].color
+      ) : "#fbeee0");
+      attr(circle0, "stroke", circle0_stroke_value = !/*monochrome*/
+      ctx[1] ? (
+        /*note*/
+        ctx[16].color
+      ) : "#fbeee0");
+      attr(circle1, "cx", circle1_cx_value = /*geom*/
+      ctx[3].getFingerX(
+        /*note*/
+        ctx[16].fret
       ));
       attr(circle1, "cy", circle1_cy_value = /*geom*/
-      ctx[2].getStringY(
+      ctx[3].getStringY(
         /*note*/
-        ctx[15].string
+        ctx[16].string
       ));
       attr(
         circle1,
         "r",
         /*annotationsRadius*/
-        ctx[7]
+        ctx[8]
       );
-      attr(circle1, "stroke", circle1_stroke_value = /*note*/
-      ctx[15].color);
+      attr(circle1, "stroke", circle1_stroke_value = !/*monochrome*/
+      ctx[1] ? (
+        /*note*/
+        ctx[16].color
+      ) : "#fbeee0");
       attr(circle1, "fill", "none");
       attr(circle1, "filter", "url(#brightness-filter)");
       attr(circle1, "stroke-width", "1");
@@ -469,68 +480,77 @@ function create_each_block(ctx) {
     },
     p(ctx2, dirty) {
       if (dirty & /*geom, notes*/
-      5 && circle0_cx_value !== (circle0_cx_value = /*geom*/
-      ctx2[2].getFingerX(
+      9 && circle0_cx_value !== (circle0_cx_value = /*geom*/
+      ctx2[3].getFingerX(
         /*note*/
-        ctx2[15].fret
+        ctx2[16].fret
       ))) {
         attr(circle0, "cx", circle0_cx_value);
       }
       if (dirty & /*geom, notes*/
-      5 && circle0_cy_value !== (circle0_cy_value = /*geom*/
-      ctx2[2].getStringY(
+      9 && circle0_cy_value !== (circle0_cy_value = /*geom*/
+      ctx2[3].getStringY(
         /*note*/
-        ctx2[15].string
+        ctx2[16].string
       ))) {
         attr(circle0, "cy", circle0_cy_value);
       }
       if (dirty & /*annotationsRadius*/
-      128) {
+      256) {
         attr(
           circle0,
           "r",
           /*annotationsRadius*/
-          ctx2[7]
+          ctx2[8]
         );
       }
-      if (dirty & /*notes*/
-      1 && circle0_fill_value !== (circle0_fill_value = /*note*/
-      ctx2[15].color)) {
+      if (dirty & /*monochrome, notes*/
+      3 && circle0_fill_value !== (circle0_fill_value = !/*monochrome*/
+      ctx2[1] ? (
+        /*note*/
+        ctx2[16].color
+      ) : "#fbeee0")) {
         attr(circle0, "fill", circle0_fill_value);
       }
-      if (dirty & /*notes*/
-      1 && circle0_stroke_value !== (circle0_stroke_value = /*note*/
-      ctx2[15].color)) {
+      if (dirty & /*monochrome, notes*/
+      3 && circle0_stroke_value !== (circle0_stroke_value = !/*monochrome*/
+      ctx2[1] ? (
+        /*note*/
+        ctx2[16].color
+      ) : "#fbeee0")) {
         attr(circle0, "stroke", circle0_stroke_value);
       }
       if (dirty & /*geom, notes*/
-      5 && circle1_cx_value !== (circle1_cx_value = /*geom*/
-      ctx2[2].getFingerX(
+      9 && circle1_cx_value !== (circle1_cx_value = /*geom*/
+      ctx2[3].getFingerX(
         /*note*/
-        ctx2[15].fret
+        ctx2[16].fret
       ))) {
         attr(circle1, "cx", circle1_cx_value);
       }
       if (dirty & /*geom, notes*/
-      5 && circle1_cy_value !== (circle1_cy_value = /*geom*/
-      ctx2[2].getStringY(
+      9 && circle1_cy_value !== (circle1_cy_value = /*geom*/
+      ctx2[3].getStringY(
         /*note*/
-        ctx2[15].string
+        ctx2[16].string
       ))) {
         attr(circle1, "cy", circle1_cy_value);
       }
       if (dirty & /*annotationsRadius*/
-      128) {
+      256) {
         attr(
           circle1,
           "r",
           /*annotationsRadius*/
-          ctx2[7]
+          ctx2[8]
         );
       }
-      if (dirty & /*notes*/
-      1 && circle1_stroke_value !== (circle1_stroke_value = /*note*/
-      ctx2[15].color)) {
+      if (dirty & /*monochrome, notes*/
+      3 && circle1_stroke_value !== (circle1_stroke_value = !/*monochrome*/
+      ctx2[1] ? (
+        /*note*/
+        ctx2[16].color
+      ) : "#fbeee0")) {
         attr(circle1, "stroke", circle1_stroke_value);
       }
     },
@@ -562,7 +582,7 @@ function create_fragment$5(ctx) {
   let div_resize_listener;
   let each_value_3 = (
     /*centerInlays*/
-    ctx[11]
+    ctx[12]
   );
   let each_blocks_3 = [];
   for (let i = 0; i < each_value_3.length; i += 1) {
@@ -570,7 +590,7 @@ function create_fragment$5(ctx) {
   }
   let each_value_2 = (
     /*frets*/
-    ctx[10]
+    ctx[11]
   );
   let each_blocks_2 = [];
   for (let i = 0; i < each_value_2.length; i += 1) {
@@ -578,7 +598,7 @@ function create_fragment$5(ctx) {
   }
   let each_value_1 = (
     /*strings*/
-    ctx[6]
+    ctx[7]
   );
   let each_blocks_1 = [];
   for (let i = 0; i < each_value_1.length; i += 1) {
@@ -678,46 +698,52 @@ function create_fragment$5(ctx) {
       attr(feFuncB, "slope", "2");
       attr(filter, "id", "brightness-filter");
       attr(circle0, "cx", circle0_cx_value = /*geom*/
-      ctx[2].getFingerX(12));
+      ctx[3].getFingerX(12));
       attr(circle0, "cy", circle0_cy_value = 0.25 * /*height*/
-      ctx[3]);
+      ctx[4]);
       attr(
         circle0,
         "r",
         /*inlayRadius*/
-        ctx[8]
+        ctx[9]
       );
       attr(circle0, "fill", "#FFF8DC");
       attr(circle1, "cx", circle1_cx_value = /*geom*/
-      ctx[2].getFingerX(12));
+      ctx[3].getFingerX(12));
       attr(circle1, "cy", circle1_cy_value = 0.75 * /*height*/
-      ctx[3]);
+      ctx[4]);
       attr(
         circle1,
         "r",
         /*inlayRadius*/
-        ctx[8]
+        ctx[9]
       );
       attr(circle1, "fill", "#FFF8DC");
-      attr(svg, "class", "svg svelte-1f7dm2n");
+      attr(svg, "class", "svg svelte-1p46h9k");
       attr(
         svg,
         "width",
         /*width*/
-        ctx[1]
+        ctx[2]
       );
       attr(
         svg,
         "height",
         /*height*/
-        ctx[3]
+        ctx[4]
       );
       attr(svg, "xmlns", "http://www.w3.org/2000/svg");
-      attr(div, "class", "frame svelte-1f7dm2n");
+      attr(div, "class", "frame svelte-1p46h9k");
       add_render_callback(() => (
         /*div_elementresize_handler*/
-        ctx[14].call(div)
+        ctx[15].call(div)
       ));
+      set_style(
+        div,
+        "--aspect-ratio",
+        /*geom*/
+        ctx[3].aspectRatio
+      );
     },
     m(target, anchor) {
       insert_hydration(target, div, anchor);
@@ -747,14 +773,14 @@ function create_fragment$5(ctx) {
       div_resize_listener = add_resize_listener(
         div,
         /*div_elementresize_handler*/
-        ctx[14].bind(div)
+        ctx[15].bind(div)
       );
     },
     p(ctx2, [dirty]) {
       if (dirty & /*geom, centerInlays, centerInlayY, inlayRadius*/
-      2820) {
+      5640) {
         each_value_3 = /*centerInlays*/
-        ctx2[11];
+        ctx2[12];
         let i;
         for (i = 0; i < each_value_3.length; i += 1) {
           const child_ctx = get_each_context_3(ctx2, each_value_3, i);
@@ -772,47 +798,47 @@ function create_fragment$5(ctx) {
         each_blocks_3.length = each_value_3.length;
       }
       if (dirty & /*geom*/
-      4 && circle0_cx_value !== (circle0_cx_value = /*geom*/
-      ctx2[2].getFingerX(12))) {
+      8 && circle0_cx_value !== (circle0_cx_value = /*geom*/
+      ctx2[3].getFingerX(12))) {
         attr(circle0, "cx", circle0_cx_value);
       }
       if (dirty & /*height*/
-      8 && circle0_cy_value !== (circle0_cy_value = 0.25 * /*height*/
-      ctx2[3])) {
+      16 && circle0_cy_value !== (circle0_cy_value = 0.25 * /*height*/
+      ctx2[4])) {
         attr(circle0, "cy", circle0_cy_value);
       }
       if (dirty & /*inlayRadius*/
-      256) {
+      512) {
         attr(
           circle0,
           "r",
           /*inlayRadius*/
-          ctx2[8]
+          ctx2[9]
         );
       }
       if (dirty & /*geom*/
-      4 && circle1_cx_value !== (circle1_cx_value = /*geom*/
-      ctx2[2].getFingerX(12))) {
+      8 && circle1_cx_value !== (circle1_cx_value = /*geom*/
+      ctx2[3].getFingerX(12))) {
         attr(circle1, "cx", circle1_cx_value);
       }
       if (dirty & /*height*/
-      8 && circle1_cy_value !== (circle1_cy_value = 0.75 * /*height*/
-      ctx2[3])) {
+      16 && circle1_cy_value !== (circle1_cy_value = 0.75 * /*height*/
+      ctx2[4])) {
         attr(circle1, "cy", circle1_cy_value);
       }
       if (dirty & /*inlayRadius*/
-      256) {
+      512) {
         attr(
           circle1,
           "r",
           /*inlayRadius*/
-          ctx2[8]
+          ctx2[9]
         );
       }
       if (dirty & /*frets, maxY*/
-      1040) {
+      2080) {
         each_value_2 = /*frets*/
-        ctx2[10];
+        ctx2[11];
         let i;
         for (i = 0; i < each_value_2.length; i += 1) {
           const child_ctx = get_each_context_2(ctx2, each_value_2, i);
@@ -830,9 +856,9 @@ function create_fragment$5(ctx) {
         each_blocks_2.length = each_value_2.length;
       }
       if (dirty & /*strings, maxX*/
-      96) {
+      192) {
         each_value_1 = /*strings*/
-        ctx2[6];
+        ctx2[7];
         let i;
         for (i = 0; i < each_value_1.length; i += 1) {
           const child_ctx = get_each_context_1(ctx2, each_value_1, i);
@@ -849,8 +875,8 @@ function create_fragment$5(ctx) {
         }
         each_blocks_1.length = each_value_1.length;
       }
-      if (dirty & /*geom, notes, annotationsRadius*/
-      133) {
+      if (dirty & /*geom, notes, annotationsRadius, monochrome*/
+      267) {
         each_value = /*notes*/
         ctx2[0];
         let i;
@@ -870,21 +896,30 @@ function create_fragment$5(ctx) {
         each_blocks.length = each_value.length;
       }
       if (dirty & /*width*/
-      2) {
+      4) {
         attr(
           svg,
           "width",
           /*width*/
-          ctx2[1]
+          ctx2[2]
         );
       }
       if (dirty & /*height*/
-      8) {
+      16) {
         attr(
           svg,
           "height",
           /*height*/
-          ctx2[3]
+          ctx2[4]
+        );
+      }
+      if (dirty & /*geom*/
+      8) {
+        set_style(
+          div,
+          "--aspect-ratio",
+          /*geom*/
+          ctx2[3].aspectRatio
         );
       }
     },
@@ -914,60 +949,64 @@ function instance$4($$self, $$props, $$invalidate) {
   let { numFrets = 24 } = $$props;
   let { numStrings = 6 } = $$props;
   let { notes = [] } = $$props;
-  let width = 300;
+  let { monochrome = false } = $$props;
+  let width = 0;
   const centerInlays = [3, 5, 7, 9, 15, 17, 19, 21];
   function div_elementresize_handler() {
     width = this.clientWidth;
-    $$invalidate(1, width);
+    $$invalidate(2, width);
   }
   $$self.$$set = ($$props2) => {
     if ("numFrets" in $$props2)
-      $$invalidate(12, numFrets = $$props2.numFrets);
+      $$invalidate(13, numFrets = $$props2.numFrets);
     if ("numStrings" in $$props2)
-      $$invalidate(13, numStrings = $$props2.numStrings);
+      $$invalidate(14, numStrings = $$props2.numStrings);
     if ("notes" in $$props2)
       $$invalidate(0, notes = $$props2.notes);
+    if ("monochrome" in $$props2)
+      $$invalidate(1, monochrome = $$props2.monochrome);
   };
   $$self.$$.update = () => {
     if ($$self.$$.dirty & /*width, numStrings, numFrets*/
-    12290) {
-      $$invalidate(2, geom = new Geometry(width, numStrings, numFrets));
+    24580) {
+      $$invalidate(3, geom = new Geometry(width, numStrings, numFrets));
     }
     if ($$self.$$.dirty & /*geom*/
-    4) {
-      $$invalidate(3, height = geom.height);
+    8) {
+      $$invalidate(4, height = geom.height);
     }
     if ($$self.$$.dirty & /*height*/
-    8) {
-      $$invalidate(9, centerInlayY = height / 2);
+    16) {
+      $$invalidate(10, centerInlayY = height / 2);
     }
     if ($$self.$$.dirty & /*height, numStrings*/
-    8200) {
-      $$invalidate(8, inlayRadius = height / numStrings * 0.5 * 0.6);
+    16400) {
+      $$invalidate(9, inlayRadius = height / numStrings * 0.5 * 0.6);
     }
     if ($$self.$$.dirty & /*height, numStrings*/
-    8200) {
-      $$invalidate(7, annotationsRadius = height / numStrings * 0.5 * 0.8);
+    16400) {
+      $$invalidate(8, annotationsRadius = height / numStrings * 0.5 * 0.8);
     }
     if ($$self.$$.dirty & /*numStrings, geom*/
-    8196) {
-      $$invalidate(6, strings = range(numStrings).map((i) => geom.getStringY(i)));
+    16392) {
+      $$invalidate(7, strings = range(numStrings).map((i) => geom.getStringY(i)));
     }
     if ($$self.$$.dirty & /*numFrets, geom*/
-    4100) {
-      $$invalidate(10, frets = range(numFrets).map((i) => geom.getFretX(i + 1)));
+    8200) {
+      $$invalidate(11, frets = range(numFrets).map((i) => geom.getFretX(i + 1)));
     }
     if ($$self.$$.dirty & /*geom*/
-    4) {
-      $$invalidate(5, maxX = geom.width);
+    8) {
+      $$invalidate(6, maxX = geom.width);
     }
     if ($$self.$$.dirty & /*geom*/
-    4) {
-      $$invalidate(4, maxY = geom.height);
+    8) {
+      $$invalidate(5, maxY = geom.height);
     }
   };
   return [
     notes,
+    monochrome,
     width,
     geom,
     height,
@@ -987,7 +1026,12 @@ function instance$4($$self, $$props, $$invalidate) {
 class Fretboard extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$4, create_fragment$5, safe_not_equal, { numFrets: 12, numStrings: 13, notes: 0 });
+    init(this, options, instance$4, create_fragment$5, safe_not_equal, {
+      numFrets: 13,
+      numStrings: 14,
+      notes: 0,
+      monochrome: 1
+    });
   }
 }
 function defaultGuitarTuning() {
@@ -1324,220 +1368,6 @@ function allValid(sequence, minFret, maxFret) {
   }
   return true;
 }
-const Center_svelte_svelte_type_style_lang = "";
-function create_fragment$4(ctx) {
-  let div;
-  let current;
-  const default_slot_template = (
-    /*#slots*/
-    ctx[2].default
-  );
-  const default_slot = create_slot(
-    default_slot_template,
-    ctx,
-    /*$$scope*/
-    ctx[1],
-    null
-  );
-  return {
-    c() {
-      div = element("div");
-      if (default_slot)
-        default_slot.c();
-      this.h();
-    },
-    l(nodes) {
-      div = claim_element(nodes, "DIV", { class: true });
-      var div_nodes = children(div);
-      if (default_slot)
-        default_slot.l(div_nodes);
-      div_nodes.forEach(detach);
-      this.h();
-    },
-    h() {
-      attr(div, "class", "outer svelte-t5s85t");
-      set_style(div, "--gap", `${/*gap*/
-      ctx[0]}px`);
-    },
-    m(target, anchor) {
-      insert_hydration(target, div, anchor);
-      if (default_slot) {
-        default_slot.m(div, null);
-      }
-      current = true;
-    },
-    p(ctx2, [dirty]) {
-      if (default_slot) {
-        if (default_slot.p && (!current || dirty & /*$$scope*/
-        2)) {
-          update_slot_base(
-            default_slot,
-            default_slot_template,
-            ctx2,
-            /*$$scope*/
-            ctx2[1],
-            !current ? get_all_dirty_from_scope(
-              /*$$scope*/
-              ctx2[1]
-            ) : get_slot_changes(
-              default_slot_template,
-              /*$$scope*/
-              ctx2[1],
-              dirty,
-              null
-            ),
-            null
-          );
-        }
-      }
-      if (dirty & /*gap*/
-      1) {
-        set_style(div, "--gap", `${/*gap*/
-        ctx2[0]}px`);
-      }
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(default_slot, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(default_slot, local);
-      current = false;
-    },
-    d(detaching) {
-      if (detaching)
-        detach(div);
-      if (default_slot)
-        default_slot.d(detaching);
-    }
-  };
-}
-function instance$3($$self, $$props, $$invalidate) {
-  let { $$slots: slots = {}, $$scope } = $$props;
-  let { gap = 10 } = $$props;
-  $$self.$$set = ($$props2) => {
-    if ("gap" in $$props2)
-      $$invalidate(0, gap = $$props2.gap);
-    if ("$$scope" in $$props2)
-      $$invalidate(1, $$scope = $$props2.$$scope);
-  };
-  return [gap, $$scope, slots];
-}
-class Center extends SvelteComponent {
-  constructor(options) {
-    super();
-    init(this, options, instance$3, create_fragment$4, safe_not_equal, { gap: 0 });
-  }
-}
-const Kbd_svelte_svelte_type_style_lang = "";
-function create_fragment$3(ctx) {
-  let kbd;
-  let current;
-  const default_slot_template = (
-    /*#slots*/
-    ctx[2].default
-  );
-  const default_slot = create_slot(
-    default_slot_template,
-    ctx,
-    /*$$scope*/
-    ctx[1],
-    null
-  );
-  return {
-    c() {
-      kbd = element("kbd");
-      if (default_slot)
-        default_slot.c();
-      this.h();
-    },
-    l(nodes) {
-      kbd = claim_element(nodes, "KBD", { class: true });
-      var kbd_nodes = children(kbd);
-      if (default_slot)
-        default_slot.l(kbd_nodes);
-      kbd_nodes.forEach(detach);
-      this.h();
-    },
-    h() {
-      attr(kbd, "class", "kbd svelte-1joz423");
-      set_style(kbd, "--fontSize", `${/*fontSize*/
-      ctx[0]}px`);
-    },
-    m(target, anchor) {
-      insert_hydration(target, kbd, anchor);
-      if (default_slot) {
-        default_slot.m(kbd, null);
-      }
-      current = true;
-    },
-    p(ctx2, [dirty]) {
-      if (default_slot) {
-        if (default_slot.p && (!current || dirty & /*$$scope*/
-        2)) {
-          update_slot_base(
-            default_slot,
-            default_slot_template,
-            ctx2,
-            /*$$scope*/
-            ctx2[1],
-            !current ? get_all_dirty_from_scope(
-              /*$$scope*/
-              ctx2[1]
-            ) : get_slot_changes(
-              default_slot_template,
-              /*$$scope*/
-              ctx2[1],
-              dirty,
-              null
-            ),
-            null
-          );
-        }
-      }
-      if (dirty & /*fontSize*/
-      1) {
-        set_style(kbd, "--fontSize", `${/*fontSize*/
-        ctx2[0]}px`);
-      }
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(default_slot, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(default_slot, local);
-      current = false;
-    },
-    d(detaching) {
-      if (detaching)
-        detach(kbd);
-      if (default_slot)
-        default_slot.d(detaching);
-    }
-  };
-}
-function instance$2($$self, $$props, $$invalidate) {
-  let { $$slots: slots = {}, $$scope } = $$props;
-  let { fontSize } = $$props;
-  $$self.$$set = ($$props2) => {
-    if ("fontSize" in $$props2)
-      $$invalidate(0, fontSize = $$props2.fontSize);
-    if ("$$scope" in $$props2)
-      $$invalidate(1, $$scope = $$props2.$$scope);
-  };
-  return [fontSize, $$scope, slots];
-}
-class Kbd extends SvelteComponent {
-  constructor(options) {
-    super();
-    init(this, options, instance$2, create_fragment$3, safe_not_equal, { fontSize: 0 });
-  }
-}
 var classnamesExports = {};
 var classnames = {
   get exports() {
@@ -1793,7 +1623,7 @@ function create_dynamic_element(ctx) {
     }
   };
 }
-function create_fragment$2(ctx) {
+function create_fragment$4(ctx) {
   let previous_tag = (
     /*href*/
     ctx[0] ? "a" : "button"
@@ -1867,7 +1697,7 @@ function create_fragment$2(ctx) {
     }
   };
 }
-function instance$1($$self, $$props, $$invalidate) {
+function instance$3($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { href = void 0 } = $$props;
   let { active = false } = $$props;
@@ -1946,7 +1776,7 @@ function instance$1($$self, $$props, $$invalidate) {
 class PaginationItem extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$1, create_fragment$2, safe_not_equal, {
+    init(this, options, instance$3, create_fragment$4, safe_not_equal, {
       href: 0,
       active: 2,
       activeClass: 3,
@@ -2006,7 +1836,7 @@ function create_default_slot(ctx) {
     }
   };
 }
-function create_fragment$1(ctx) {
+function create_fragment$3(ctx) {
   let paginationitem;
   let current;
   paginationitem = new PaginationItem({
@@ -2054,11 +1884,11 @@ function create_fragment$1(ctx) {
 class BackButton extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, null, create_fragment$1, safe_not_equal, {});
+    init(this, options, null, create_fragment$3, safe_not_equal, {});
   }
 }
-const Button_svelte_svelte_type_style_lang = "";
-function create_fragment(ctx) {
+const FancyButton_svelte_svelte_type_style_lang = "";
+function create_fragment$2(ctx) {
   let button;
   let current;
   let mounted;
@@ -2167,7 +1997,7 @@ function create_fragment(ctx) {
     }
   };
 }
-function instance($$self, $$props, $$invalidate) {
+function instance$2($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { disabled = false } = $$props;
   let { hPadding = 18 } = $$props;
@@ -2184,10 +2014,224 @@ function instance($$self, $$props, $$invalidate) {
   };
   return [disabled, hPadding, $$scope, slots, click_handler];
 }
-class Button extends SvelteComponent {
+class FancyButton extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance, create_fragment, safe_not_equal, { disabled: 0, hPadding: 1 });
+    init(this, options, instance$2, create_fragment$2, safe_not_equal, { disabled: 0, hPadding: 1 });
+  }
+}
+const Center_svelte_svelte_type_style_lang = "";
+function create_fragment$1(ctx) {
+  let div;
+  let current;
+  const default_slot_template = (
+    /*#slots*/
+    ctx[2].default
+  );
+  const default_slot = create_slot(
+    default_slot_template,
+    ctx,
+    /*$$scope*/
+    ctx[1],
+    null
+  );
+  return {
+    c() {
+      div = element("div");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", { class: true });
+      var div_nodes = children(div);
+      if (default_slot)
+        default_slot.l(div_nodes);
+      div_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(div, "class", "outer svelte-t5s85t");
+      set_style(div, "--gap", `${/*gap*/
+      ctx[0]}px`);
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      if (default_slot) {
+        default_slot.m(div, null);
+      }
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & /*$$scope*/
+        2)) {
+          update_slot_base(
+            default_slot,
+            default_slot_template,
+            ctx2,
+            /*$$scope*/
+            ctx2[1],
+            !current ? get_all_dirty_from_scope(
+              /*$$scope*/
+              ctx2[1]
+            ) : get_slot_changes(
+              default_slot_template,
+              /*$$scope*/
+              ctx2[1],
+              dirty,
+              null
+            ),
+            null
+          );
+        }
+      }
+      if (dirty & /*gap*/
+      1) {
+        set_style(div, "--gap", `${/*gap*/
+        ctx2[0]}px`);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+function instance$1($$self, $$props, $$invalidate) {
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let { gap = 10 } = $$props;
+  $$self.$$set = ($$props2) => {
+    if ("gap" in $$props2)
+      $$invalidate(0, gap = $$props2.gap);
+    if ("$$scope" in $$props2)
+      $$invalidate(1, $$scope = $$props2.$$scope);
+  };
+  return [gap, $$scope, slots];
+}
+class Center extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$1, create_fragment$1, safe_not_equal, { gap: 0 });
+  }
+}
+const Kbd_svelte_svelte_type_style_lang = "";
+function create_fragment(ctx) {
+  let kbd;
+  let current;
+  const default_slot_template = (
+    /*#slots*/
+    ctx[2].default
+  );
+  const default_slot = create_slot(
+    default_slot_template,
+    ctx,
+    /*$$scope*/
+    ctx[1],
+    null
+  );
+  return {
+    c() {
+      kbd = element("kbd");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      kbd = claim_element(nodes, "KBD", { class: true });
+      var kbd_nodes = children(kbd);
+      if (default_slot)
+        default_slot.l(kbd_nodes);
+      kbd_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(kbd, "class", "kbd svelte-1joz423");
+      set_style(kbd, "--fontSize", `${/*fontSize*/
+      ctx[0]}px`);
+    },
+    m(target, anchor) {
+      insert_hydration(target, kbd, anchor);
+      if (default_slot) {
+        default_slot.m(kbd, null);
+      }
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & /*$$scope*/
+        2)) {
+          update_slot_base(
+            default_slot,
+            default_slot_template,
+            ctx2,
+            /*$$scope*/
+            ctx2[1],
+            !current ? get_all_dirty_from_scope(
+              /*$$scope*/
+              ctx2[1]
+            ) : get_slot_changes(
+              default_slot_template,
+              /*$$scope*/
+              ctx2[1],
+              dirty,
+              null
+            ),
+            null
+          );
+        }
+      }
+      if (dirty & /*fontSize*/
+      1) {
+        set_style(kbd, "--fontSize", `${/*fontSize*/
+        ctx2[0]}px`);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(kbd);
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+function instance($$self, $$props, $$invalidate) {
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let { fontSize } = $$props;
+  $$self.$$set = ($$props2) => {
+    if ("fontSize" in $$props2)
+      $$invalidate(0, fontSize = $$props2.fontSize);
+    if ("$$scope" in $$props2)
+      $$invalidate(1, $$scope = $$props2.$$scope);
+  };
+  return [fontSize, $$scope, slots];
+}
+class Kbd extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance, create_fragment, safe_not_equal, { fontSize: 0 });
   }
 }
 var __assign = function() {
@@ -2270,7 +2314,7 @@ export {
   genRandom3NPSScaleNeighborPair as a,
   genRandom3NPSScaleCircleOfFifthsPair as b,
   classNames as c,
-  Button as d,
+  FancyButton as d,
   genRandom3NPSIntervalsUpDownSequence as e,
   filterToTwoRandomStrings as f,
   genRandom3NPSScale as g,

@@ -366,26 +366,6 @@ function set_style(node, key, value, important) {
     node.style.setProperty(key, value, important ? "important" : "");
   }
 }
-function select_option(select, value) {
-  for (let i = 0; i < select.options.length; i += 1) {
-    const option = select.options[i];
-    if (option.__value === value) {
-      option.selected = true;
-      return;
-    }
-  }
-  select.selectedIndex = -1;
-}
-function select_options(select, value) {
-  for (let i = 0; i < select.options.length; i += 1) {
-    const option = select.options[i];
-    option.selected = ~value.indexOf(option.__value);
-  }
-}
-function select_value(select) {
-  const selected_option = select.querySelector(":checked") || select.options[0];
-  return selected_option && selected_option.__value;
-}
 let crossorigin;
 function is_crossorigin() {
   if (crossorigin === void 0) {
@@ -775,7 +755,7 @@ class SvelteComponent {
   }
 }
 export {
-  claim_svg_element as $,
+  svg_element as $,
   destroy_component as A,
   tick as B,
   noop as C,
@@ -792,25 +772,23 @@ export {
   exclude_internal_props as N,
   set_attributes as O,
   get_spread_update as P,
-  add_render_callback as Q,
-  select_options as R,
+  compute_slots as Q,
+  getContext as R,
   SvelteComponent as S,
-  select_option as T,
-  listen as U,
-  run_all as V,
-  bubble as W,
-  select_value as X,
+  listen as T,
+  run_all as U,
+  bubble as V,
+  action_destroyer as W,
+  is_function as X,
   bind as Y,
-  add_flush_callback as Z,
-  svg_element as _,
+  get_spread_object as Z,
+  add_flush_callback as _,
   space as a,
-  add_resize_listener as a0,
-  getContext as a1,
-  set_custom_element_data_map as a2,
-  get_spread_object as a3,
-  action_destroyer as a4,
-  compute_slots as a5,
-  createEventDispatcher as a6,
+  claim_svg_element as a0,
+  add_render_callback as a1,
+  add_resize_listener as a2,
+  set_custom_element_data_map as a3,
+  createEventDispatcher as a4,
   insert_hydration as b,
   claim_space as c,
   check_outros as d,

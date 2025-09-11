@@ -829,9 +829,6 @@ input[type="range"].range-lg::-moz-range-thumb {
 .pointer-events-none {
   pointer-events: none;
 }
-.visible {
-  visibility: visible;
-}
 .fixed {
   position: fixed;
 }
