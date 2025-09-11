@@ -10,7 +10,7 @@
   export let numFrets = 24;
   export let numStrings = 6;
   export let notes: Notes = [];
-  export let monochrome: boolean = false;
+  export let monochrome = false;
 
   let width = 0;
 
