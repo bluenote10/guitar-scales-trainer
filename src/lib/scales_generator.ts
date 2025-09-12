@@ -1,6 +1,6 @@
 import {
   allDefined,
-  assertUnreachable,
+  assertNever,
   randChoice,
   randRange,
   randRangeBiased,
@@ -53,7 +53,7 @@ export function getNeighborMode(mode: Mode, direction: Direction): [Mode, number
       case Mode.locrian:
         return [Mode.ionian, 1];
       default:
-        assertUnreachable(mode);
+        assertNever(mode);
     }
   } else if (direction == "down") {
     switch (mode) {
@@ -72,10 +72,10 @@ export function getNeighborMode(mode: Mode, direction: Direction): [Mode, number
       case Mode.locrian:
         return [Mode.aeolian, -2];
       default:
-        assertUnreachable(mode);
+        assertNever(mode);
     }
   } else {
-    assertUnreachable(direction);
+    assertNever(direction);
   }
 }
 
@@ -111,7 +111,7 @@ export function getCircleOfFifthsNeighborMode(mode: Mode, direction: Direction):
       case Mode.locrian:
         return [Mode.phrygian, 0];
       default:
-        assertUnreachable(mode);
+        assertNever(mode);
     }
   } else if (direction == "down") {
     switch (mode) {
@@ -130,10 +130,10 @@ export function getCircleOfFifthsNeighborMode(mode: Mode, direction: Direction):
       case Mode.locrian:
         return [Mode.lydian, -1];
       default:
-        assertUnreachable(mode);
+        assertNever(mode);
     }
   } else {
-    assertUnreachable(direction);
+    assertNever(direction);
   }
 }
 
@@ -154,7 +154,7 @@ function getPitchOffset(mode: Mode): number {
     case Mode.locrian:
       return 11;
     default:
-      assertUnreachable(mode);
+      assertNever(mode);
   }
 }
 

@@ -8,7 +8,13 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "strict": true
+    // Linting
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": false, // For now allow non-erasable syntax
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
   }
   // Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
   //

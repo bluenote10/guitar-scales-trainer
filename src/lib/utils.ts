@@ -6,9 +6,9 @@ export function range(n: number): number[] {
   return [...Array(n).keys()];
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function assertUnreachable(x: never): never {
-  throw new Error("Didn't expect to get here");
+export function assertNever(x: never): never {
+  console.error("Should be unreachable:", x);
+  throw new Error("Unreachable");
 }
 
 export function randChoice<T>(choices: Array<T>): T {
