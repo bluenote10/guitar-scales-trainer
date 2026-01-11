@@ -15,8 +15,20 @@ export default [
   // JavaScript recommended
   js.configs.recommended,
 
-  // TypeScript recommended (no type-checking to keep it fast and simple)
+  // TypeScript recommended
   ...tseslint.configs.recommended,
+
+  // Ideally I'd like to switch to `recommendedTypeChecked`, but that seems tricky.
+  // {
+  //   languageOptions: {
+  //     parserOptions: {
+  //       projectService: true,
+  //       tsconfigRootDir: import.meta.dirname,
+  //       extraFileExtensions: [".svelte"],
+  //     },
+  //   },
+  // },
+  // ...tseslint.configs.recommendedTypeChecked,
 
   // Svelte recommended for flat config
   ...svelte.configs["flat/recommended"],
