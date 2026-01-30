@@ -1,44 +1,44 @@
 <script lang="ts">
-  import { base } from "$app/paths";
+  import { resolve } from "$app/paths";
   import { title as titleDiatonicFromTwoStrings } from "$lib/modes/DiatonicFromTwoStrings.svelte";
   import { title as titleDiatonicNeighbors } from "$lib/modes/DiatonicNeighbors.svelte";
 
   const tasks = [
     {
-      route: `${base}/diatonic_neighbors`,
+      route: "/diatonic_neighbors" as const,
       title: titleDiatonicNeighbors,
       scales: "Diatonic (three notes per string)",
       description:
         "This exercises helps to improve the relationship between neighboring diatonic scales in the next upper/lower position.",
     },
     {
-      route: `${base}/diatonic_two_strings`,
+      route: "/diatonic_two_strings" as const,
       title: titleDiatonicFromTwoStrings,
       scales: "Diatonic (three notes per string)",
       description:
         "This exercises helps to improve fretboard orientation based on small, two-string fragments.",
     },
     {
-      route: `${base}/diatonic_circle_of_fifths_neighbors`,
+      route: "/diatonic_circle_of_fifths_neighbors" as const,
       title: "Diatonic – Circle of fifths neighboring scales",
       scales: "Diatonic (three notes per string)",
       description:
         "This exercises helps to improve the relationship between diatonic scales in the same position, which are neighbors in the circle of fifths.",
     },
     {
-      route: `${base}/diatonic_two_strings_sequential`,
+      route: "/diatonic_two_strings_sequential" as const,
       title: "Diatonic – Two strings up and down the neck",
       scales: "Diatonic (three notes per string)",
       description:
         "This exercises helps to improve moving a scale up and down the neck on just two strings.",
     },
     {
-      route: `${base}/diatonic_intervals`,
+      route: "/diatonic_intervals" as const,
       title: "Diatonic – Intervals",
       scales: "Diatonic (three notes per string)",
       description: "This exercises helps to improve thinking in intervals.",
     },
-  ];
+  ] as const;
 </script>
 
 <ul>
@@ -55,9 +55,9 @@
     instrument to add muscle memory to the process.
   </p>
 
-  {#each tasks as task}
+  {#each tasks as task (task.route)}
     <li>
-      <a href={task.route} class="block-link">
+      <a href={resolve(task.route)} class="block-link">
         <div class="block">
           <h2>{task.title}</h2>
           <p class="description">{task.description}</p>

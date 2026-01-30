@@ -16,6 +16,7 @@
     "check-all": "npm run check && npm run lint && npm run test && npm run build && npm run format"
   },
   "devDependencies": {
+    "@eslint/compat": "^2.0.1",
     "@fontsource/fira-mono": "^4.5.10",
     "@fontsource/overpass": "^4.5.11",
     "@popperjs/core": "^2.11.6",
@@ -24,13 +25,10 @@
     "@sveltejs/kit": "^2.38.0",
     "@tailwindcss/postcss": "^4.1.13",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
-    "@typescript-eslint/eslint-plugin": "^8.43.0",
-    "@typescript-eslint/parser": "^8.43.0",
     "classnames": "^2.3.2",
     "eslint": "^9.35.0",
-    "eslint-config-flat-gitignore": "^2.1.0",
     "eslint-config-prettier": "^10.1.0",
-    "eslint-plugin-svelte": "^2.46.0",
+    "eslint-plugin-svelte": "^3.14.0",
     "flowbite": "^3.1.2",
     "flowbite-svelte": "^1.13.8",
     "postcss": "^8.4.14",

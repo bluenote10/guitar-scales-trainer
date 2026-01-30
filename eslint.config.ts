@@ -1,22 +1,22 @@
 // ESLint 9 flat config
+import { includeIgnoreFile } from "@eslint/compat";
 import js from "@eslint/js";
-import gitignore from "eslint-config-flat-gitignore";
 import prettier from "eslint-config-prettier";
 import svelte from "eslint-plugin-svelte";
-import * as tseslint from "typescript-eslint";
+import { defineConfig } from "eslint/config";
+import ts from "typescript-eslint";
 
-export default [
+export default defineConfig(
   // Respect .gitignore automatically
-  gitignore(),
+  // @ts-expect-error(fine for Node 22+)
+  includeIgnoreFile(import.meta.dirname + "/.gitignore"),
   {
     ignores: ["svelte.config.js", "postcss.config.cjs"],
   },
 
-  // JavaScript recommended
+  // Base recommended rules
   js.configs.recommended,
-
-  // TypeScript recommended
-  ...tseslint.configs.recommended,
+  ...ts.configs.recommended,
 
   // Ideally I'd like to switch to `recommendedTypeChecked`, but that seems tricky.
   // {
@@ -28,22 +28,36 @@ export default [
   //     },
   //   },
   // },
-  // ...tseslint.configs.recommendedTypeChecked,
+  // ...ts.configs.recommendedTypeChecked,
 
-  // Svelte recommended for flat config
-  ...svelte.configs["flat/recommended"],
-  // Ensure TypeScript is used for <script lang="ts"> in .svelte files
+  // Svelte recommended (sets up parser, processor, and svelte-specific rules)
+  ...svelte.configs.recommended,
+
+  // Disable formatting rules that conflict with Prettier
+  prettier,
+  ...svelte.configs.prettier,
+
+  // Custom rules
   {
-    files: ["**/*.svelte"],
+    rules: {
+      // no-undef is already disabled by ts.configs.recommended (TypeScript handles this better).
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+        },
+      ],
+    },
+  },
+
+  // Svelte file-specific TypeScript parser options
+  {
+    files: ["**/*.svelte", "**/*.svelte.ts", "**/*.svelte.js"],
     languageOptions: {
       parserOptions: {
-        parser: tseslint.parser,
+        parser: ts.parser,
       },
     },
   },
-  // Apply Prettier plugin settings for Svelte
-  ...svelte.configs["flat/prettier"],
-
-  // Disable rules that conflict with Prettier formatting
-  prettier,
-];
+);

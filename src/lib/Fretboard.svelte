@@ -55,21 +55,21 @@ minimizes the effect of the delay.
       </feComponentTransfer>
     </filter>
 
-    {#each centerInlays as centerInlay}
+    {#each centerInlays as centerInlay, i (i)}
       <circle cx={geom.getFingerX(centerInlay)} cy={centerInlayY} r={inlayRadius} fill="#FFF8DC" />
     {/each}
     <circle cx={geom.getFingerX(12)} cy={0.25 * height} r={inlayRadius} fill="#FFF8DC" />
     <circle cx={geom.getFingerX(12)} cy={0.75 * height} r={inlayRadius} fill="#FFF8DC" />
 
-    {#each frets as frets}
-      <line x1={frets} y1="0" x2={frets} y2={maxY} style="stroke:#D7D7D7;stroke-width:3" />
+    {#each frets as fret, i (i)}
+      <line x1={fret} y1="0" x2={fret} y2={maxY} style="stroke:#D7D7D7;stroke-width:3" />
     {/each}
 
-    {#each strings as string}
+    {#each strings as string, i (i)}
       <line x1="0" y1={string} x2={maxX} y2={string} style="stroke:#98817B;stroke-width:1" />
     {/each}
 
-    {#each notes as note}
+    {#each notes as note, i (i)}
       <!--
         Note that a filter (for brightness) cannot be applied only to stroke, but not to fill,
         which is why we draw the circle twice...
